@@ -1,80 +1,157 @@
-.carousel_div1{
-    background: url(../img/login-bg1.jpg) fixed center center;
-}
-.carousel_div2{
-    background: url(../img/login-bg2.jpg) fixed center center;
-}
-.carousel_div3{
-    background: url(../img/login-bg3.jpg) fixed center center;
-}
-
-
+/**The MIT License (MIT) Copyright (c) 2018 yangxiaobing*/
 
 body {
-    overflow: hidden;
-}
-.layer_notice {
-    background: #5fb878 none repeat scroll 0 0;
-    float: left;
-    height: 75px;
-    overflow: hidden;
-    padding: 10px;
-    width: 330px;
-}
-.layer_notice ul li {
-    color: #fff;
-}
-.video-player {
-    background-color: transparent;
-    min-width: 100%;
-    min-height: 100%;
-    display: block;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-}
-
-.video_mask {
     width: 100%;
     height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 90;
-    background-color: rgba(0, 0, 0, 0.3);
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,"\5FAE\8F6F\96C5\9ED1",Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #515a6e;
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
 }
 
-.login {
-    height: 260px;
-    width: 260px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin: -150px 0 0 -150px;
-    z-index: 99;
-}
-
-.login h1 {
-    text-align: center;
-    color: #fff;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.form_code {
+.login-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url(../../static/img/login-bg.jpg);
+    background-size: cover;
+    background-position: 50%;
     position: relative;
 }
 
-.form_code .code {
+.login-content {
     position: absolute;
-    right: 0;
-    top: 1px;
-    cursor: pointer;
+    right: 160px;
+    top: 50%;
+    -webkit-transform: translateY(-60%);
+    transform: translateY(-60%);
+    width: 300px;
 }
 
-.login_btn {
+.login-card {
+    background: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    position: relative;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.login-card-head{
+    border-bottom: 1px solid #e8eaec;
+    padding: 14px 16px;
+    line-height: 1;
+}
+
+.login-card-head p {
+    display: inline-block;
     width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #17233d;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.login-card-body{
+    padding: 16px;
+}
+.login-form-content {
+    padding: 10px 0 0;
+}
+
+
+
+
+.login-form .layui-form-item {
+    position: relative;
+    display: block;
+    height: 38px;
+    margin-bottom: 20px;
+}
+
+.login-form .login-label {
+    display: block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    position: absolute;
+    z-index: 1;
+    left: 6px;
+    top: 10px;
+    opacity: .5;
+}
+.login-form .login-label i.layui-icon {
+    line-height: 20px;
+    vertical-align: top;
+}
+.layui-input{
+    font-size: 12px;
+}
+.login-form input[type="text"], .login-form input[type="password"] {
+    margin-top: -2px;
+    background: #FFFFFF;
+    left: 0;
+    padding-left: 32px;
+    box-shadow: none;
+    color: #666666;
+}
+.login-form .login-code input {
+    width: 65%;
+}
+
+.login-form .login-code .code {
+    display: inline-block;
+    width: 35%;
+    height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+
+.code-img {
+    width: 100%;
+    height: 38px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+}
+.code-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+.login_btn {
+    color: #fff;
+    background-color: #2d8cf0;
+    border-color: #2d8cf0;
+    border-radius: 4px;
+    width: 100%;
+    line-height: 1.5 !important;
+    height: 34px !important;
+    font-size: 12px;
+}
+
+.login_btn:hover {
+    color: #fff;
+    background-color: #57a3f3;
+    border-color: #57a3f3;
+}
+.login-tip {
+    font-size: 12px;
+    text-align: center;
+    color: #c3c3c3;
 }

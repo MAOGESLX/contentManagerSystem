@@ -32,17 +32,12 @@
  */
 package com.yxb.cms.controller;
 
-import com.yxb.cms.architect.annotation.SystemControllerLog;
-import com.yxb.cms.architect.constant.Constants;
 import com.yxb.cms.handler.RedisClient;
 import com.yxb.cms.service.DataCleaningService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Map;
 
 
 /**
@@ -95,13 +90,13 @@ public class IndexController extends BasicController {
     @ResponseBody
     public String  ajaxEchartsByLoginInfo() {
 
-        String userPv = redisClient.get(Constants.REDIS_KEY_ECHARTS_USER_PV);
-        if(StringUtils.isNotEmpty(userPv)){
-            return userPv;
-        }
+//        String userPv = redisClient.get(Constants.REDIS_KEY_ECHARTS_USER_PV);
+//        if(StringUtils.isNotEmpty(userPv)){
+//            return userPv;
+//        }
         log.info("redis值为空，查询数据库，并重新set到redis");
         String dataUserPv = dataCleaningService.selectEchartsByLoginInfo();
-        redisClient.set(Constants.REDIS_KEY_ECHARTS_USER_PV,dataUserPv);
+//        redisClient.set(Constants.REDIS_KEY_ECHARTS_USER_PV,dataUserPv);
         return dataUserPv;
 
     }

@@ -86,7 +86,7 @@ public class MyBatisDataSourceConfig {
 
         log.info("------------------myBatis DruiDataSource init ---------");
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(jdbcProperties.getUrl());
         dataSource.setUsername(jdbcProperties.getUsername());
         dataSource.setPassword(jdbcProperties.getPassword());

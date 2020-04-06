@@ -78,7 +78,7 @@
         /**用户表格加载*/
          table.render({
             elem: '#resTableList',
-            url: '${ctx}/res/ajax_res_list.do',
+            url: '${ctx}/res/ajax_res_list.action',
             id:'resTableId',
             method: 'post',
             height:'full-140',
@@ -134,7 +134,7 @@
 
         /**新增菜单*/
         $(".resAdd_btn").click(function(){
-            var url = "${ctx}/res/res_edit.do";
+            var url = "${ctx}/res/res_edit.action";
             common.cmsLayOpen('新增菜单',url,'750px','470px');
         });
 
@@ -147,7 +147,7 @@
             if(layEvent === 'res_edit') {
 
                 var resId = data.resId;
-                var url =  "${ctx}/res/res_update.do?resId="+resId;
+                var url =  "${ctx}/res/res_update.action?resId="+resId;
                 common.cmsLayOpen('编辑菜单',url,'750px','470px');
             //失效菜单
             }else if(layEvent === 'res_fail'){

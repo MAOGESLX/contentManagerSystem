@@ -94,7 +94,7 @@
                     announcementIds.push(item.announcementId);
 
                 });
-                var url = "${ctx}/announcement/ajax_ins_allread_anninfo_user.do";
+                var url = "${ctx}/announcement/ajax_ins_allread_anninfo_user.action";
                 var param = {announcementIds:announcementIds};
                 common.ajaxCmsConfirm('系统提示', '是否将选中的未读公告标记为已读?',url,param);
             }
@@ -108,12 +108,12 @@
             //公告详情
             if(layEvent === 'announcement_detail') {
                 var announcementId = data.announcementId;
-                var url =  "${ctx}/announcement/announcement_detail.do?announcementId="+announcementId;
+                var url =  "${ctx}/announcement/announcement_detail.action?announcementId="+announcementId;
                 common.cmsLayOpenTip('公告详情',url,'100%','100%');
             //已读
             }else if(layEvent === 'announcement_read') {
                 var announcementId = data.announcementId;
-                var url = "${ctx}/announcement/ajax_ins_read_anninfo_user.do";
+                var url = "${ctx}/announcement/ajax_ins_read_anninfo_user.action";
                 var param = {announcementId:announcementId};
                 common.ajaxCmsConfirm('系统提示', '是否将当前公告标记为已读?',url,param);
 
@@ -131,7 +131,7 @@
             //公告详情
             if(layEvent === 'announcement_detail') {
                 var announcementId = data.announcementId;
-                var url =  "${ctx}/announcement/announcement_detail.do?announcementId="+announcementId;
+                var url =  "${ctx}/announcement/announcement_detail.action?announcementId="+announcementId;
                 common.cmsLayOpenTip('公告详情',url,'100%','100%');
 
             }
@@ -144,7 +144,7 @@
             //公告详情
             if(layEvent === 'announcement_detail') {
                 var announcementId = data.announcementId;
-                var url =  "${ctx}/announcement/announcement_detail.do?announcementId="+announcementId;
+                var url =  "${ctx}/announcement/announcement_detail.action?announcementId="+announcementId;
                 common.cmsLayOpenTip('公告详情',url,'100%','100%');
 
 
@@ -157,19 +157,19 @@
 
     /**加载未读公告数*/
     function unReadAnnInfo() {
-        $.post("${ctx}/announcement/ajax_unread_anninfo_count.do", function(data) {
+        $.post("${ctx}/announcement/ajax_unread_anninfo_count.action", function(data) {
             $(".unreadSpan").text(data);
         });
     }
     /**查询已读公告数*/
     function readAnnInfo() {
-        $.post("${ctx}/announcement/ajax_read_anninfo_count.do", function(data) {
+        $.post("${ctx}/announcement/ajax_read_anninfo_count.action", function(data) {
             $(".readSpan").text(data);
         });
     }
     /**查询全部公告数*/
     function allreadAnnInfo() {
-        $.post("${ctx}/announcement/ajax_allread_anninfo_count.do", function(data) {
+        $.post("${ctx}/announcement/ajax_allread_anninfo_count.action", function(data) {
             $(".allreadSpan").text(data);
         });
 
@@ -180,7 +180,7 @@
 
         table.render({
             elem: '#unReadAnnInfoTableList',
-            url: '${ctx}/announcement/ajax_unread_anninfo_list.do',
+            url: '${ctx}/announcement/ajax_unread_anninfo_list.action',
             id:'unReadAnnInfoTableId',
             method: 'post',
             height:'full-125',
@@ -211,7 +211,7 @@
 
         table.render({
             elem: '#readAnnInfoTableList',
-            url: '${ctx}/announcement/ajax_read_anninfo_list.do',
+            url: '${ctx}/announcement/ajax_read_anninfo_list.action',
             id:'allReadAnnInfoTableId',
             method: 'post',
             height:'full-120',
@@ -241,7 +241,7 @@
         var loading = layer.load(0,{ shade: [0.3,'#000']});
         table.render({
             elem: '#allReadAnnInfoTableList',
-            url: '${ctx}/announcement/ajax_allread_anninfo_list.do',
+            url: '${ctx}/announcement/ajax_allread_anninfo_list.action',
             id:'allReadAnnInfoTableId',
             method: 'post',
             height:'full-120',

@@ -65,7 +65,7 @@ public class LoginController extends BasicController {
     /**
      * 登陆代理，跳转到顶级父窗口
      **/
-    @RequestMapping("/loginProxy.do")
+    @RequestMapping("/loginProxy.action")
     public String toLoginProxy() {
         return "main/loginProxy";
     }
@@ -75,7 +75,7 @@ public class LoginController extends BasicController {
      *
      * @return
      */
-    @RequestMapping("/login.do")
+    @RequestMapping("/login.action")
     public String toLoginPage()  {
         return "login";
     }
@@ -83,9 +83,9 @@ public class LoginController extends BasicController {
     /**
      * 生成验证码
      */
-    @RequestMapping("/captcha.do")
+    @RequestMapping("/captcha.action")
     public void Captcha(HttpServletResponse response,HttpSession session)throws IOException {
-        CreateImageCode vCode = new CreateImageCode(116,36,5,10);
+        CreateImageCode vCode = new CreateImageCode(78,33,4,10);
         session.setAttribute("code", vCode.getCode());
         vCode.write(response.getOutputStream());
     }
@@ -96,7 +96,7 @@ public class LoginController extends BasicController {
      * @param password 密码
      * @return
      */
-    @RequestMapping("/loginCheck.do")
+    @RequestMapping("/loginCheck.action")
     @ResponseBody
     @SystemControllerLog(description="用户登陆")
     public BussinessMsg loginCheck(String username, String password,String code,HttpServletRequest request){
@@ -154,7 +154,7 @@ public class LoginController extends BasicController {
     /**
      * 用户退出
      */
-    @RequestMapping("/logout.do")
+    @RequestMapping("/logout.action")
     public String logout(){
         Subject currentUser = SecurityUtils.getSubject();
         currentUser.logout();

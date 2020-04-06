@@ -59,7 +59,7 @@ public class IndexController extends BasicController {
      *跳转到主页
      * @return
      */
-    @RequestMapping("/index.do")
+    @RequestMapping("/index.action")
     public String toIndexPage() {
         return "main/index";
     }
@@ -68,7 +68,7 @@ public class IndexController extends BasicController {
      * 跳转到欢迎页
      * @return
      */
-    @RequestMapping("/home.do")
+    @RequestMapping("/home.action")
     public String toHomePage() {
         return "main/home";
     }
@@ -77,7 +77,7 @@ public class IndexController extends BasicController {
      * 跳转到权限不足页面
      * @return
      */
-    @RequestMapping("/unauthorized.do")
+    @RequestMapping("/unauthorized.action")
     public String toUnauthorizedPage() {
         return "error/unauthorized";
     }
@@ -86,7 +86,7 @@ public class IndexController extends BasicController {
      * 网站访问量,图表展示
      * @return
      */
-    @RequestMapping("/ajax_echarts_login_info.do")
+    @RequestMapping("/ajax_echarts_login_info.action")
     @ResponseBody
     public String  ajaxEchartsByLoginInfo() {
 

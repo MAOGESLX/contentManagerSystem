@@ -68,7 +68,7 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
     public FilterRegistrationBean disableSpringBootErrorFilter(ErrorPageFilter filter) {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         filterRegistrationBean.setFilter(filter);
-        filterRegistrationBean.addUrlPatterns("*.do");
+        filterRegistrationBean.addUrlPatterns("*.action");
         return filterRegistrationBean;
     }
 

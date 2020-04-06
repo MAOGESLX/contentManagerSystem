@@ -74,7 +74,7 @@
         /**公告表格加载*/
         table.render({
             elem: '#announcementTableList',
-            url: '${ctx}/announcement/ajax_announcement_list.do',
+            url: '${ctx}/announcement/ajax_announcement_list.action',
             id:'announcementTableId',
             method: 'post',
             height:'full-140',
@@ -135,7 +135,7 @@
 
         /**新增公告*/
         $(".announcementAdd_btn").click(function(){
-            var url = "${ctx}/announcement/announcement_add.do";
+            var url = "${ctx}/announcement/announcement_add.action";
             common.cmsLayOpen('新增公告',url,'890px','480px');
         });
 
@@ -149,13 +149,13 @@
             //公告详情
             if(layEvent === 'announcement_detail') {
                 var announcementId = data.announcementId;
-                var url =  "${ctx}/announcement/announcement_detail.do?announcementId="+announcementId;
+                var url =  "${ctx}/announcement/announcement_detail.action?announcementId="+announcementId;
                 common.cmsLayOpenTip('公告详情',url,'100%','100%');
 
              //公告删除
             }else if(layEvent === 'announcement_delete') {
                 var announcementId = data.announcementId;
-                var url = "${ctx}/announcement/ajax_del_announcement.do";
+                var url = "${ctx}/announcement/ajax_del_announcement.action";
                 var param = {announcementId:announcementId};
                 common.ajaxCmsConfirm('系统提示', '确定要删除当前公告吗?',url,param);
 

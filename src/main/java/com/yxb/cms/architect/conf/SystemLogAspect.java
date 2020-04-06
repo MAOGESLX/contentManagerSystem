@@ -226,8 +226,8 @@ public class SystemLogAspect {
 
         @Override
         public void run() {
-            String logIpAddress = ClientIpUtil.getIpAddrSource(logIp);
-            systemLog.setLogIpAddress(logIpAddress);
+           // String logIpAddress = ClientIpUtil.getIpAddrSource(logIp);
+            systemLog.setLogIpAddress("192.168.1.0");
             systemLogService.insertSelective(systemLog);
         }
     }

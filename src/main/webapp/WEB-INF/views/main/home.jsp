@@ -40,7 +40,7 @@
             <div class="layui-show" style="padding: 10px 15px;">
                 <div class="panel_box row">
                     <div class="panel col">
-                        <a href="javascript:;" data-url="${ctx}/announcement/announcement_unread_list.do">
+                        <a href="javascript:;" data-url="${ctx}/announcement/announcement_unread_list.action">
                             <div class="panel_icon">
                                 <i class="layui-icon larry-icon larry-gonggaoguanli" data-icon="larry-gonggaoguanli"></i>
                             </div>
@@ -147,7 +147,7 @@
         function loadDrugs() {
             psLineChar.clear();
             psLineChar.showLoading({text: '正在努力的读取数据中...'});
-            $.post("${ctx}/main/ajax_echarts_login_info.do", function(data) {
+            $.post("${ctx}/main/ajax_echarts_login_info.action", function(data) {
 
                 var dataJson =  jQuery.parseJSON(data);
                 var option = {
@@ -209,7 +209,7 @@
     /**页面赋值初始化*/
     function homeInit() {
         /**加载未读公告数*/
-        $.post("${ctx}/announcement/ajax_unread_anninfo_count.do", function(data) {
+        $.post("${ctx}/announcement/ajax_unread_anninfo_count.action", function(data) {
             $(".unreadAnnInfo span").text(data);
         });
     }

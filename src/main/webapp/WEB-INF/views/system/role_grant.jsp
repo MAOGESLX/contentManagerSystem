@@ -69,7 +69,7 @@
             var roleGranLoading = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
 
             $.ajax({
-                url : '${ctx}/role/ajax_save_role_res.do',
+                url : '${ctx}/role/ajax_save_role_res.action',
                 type : 'post',
                 async: false,
                 data : {
@@ -104,7 +104,7 @@
     /**获取所有有效的资源菜单*/
     function initResourceAllTree(){
         resourceTree =  $('#resourceTree').tree({
-            url:'${ctx}/role/ajax_resource_tree_list.do',
+            url:'${ctx}/role/ajax_resource_tree_list.action',
             parentField : 'pid',
             checkbox : true,
             cascadeCheck : false,

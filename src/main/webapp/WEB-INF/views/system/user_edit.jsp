@@ -93,7 +93,7 @@
             var userSaveLoading = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
             //登陆验证
             $.ajax({
-                url : '${ctx}/user/ajax_save_user.do',
+                url : '${ctx}/user/ajax_save_user.action',
                 type : 'post',
                 async: false,
                 data : data.field,

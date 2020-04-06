@@ -13,22 +13,21 @@
 </head>
 <body>
 <div class="login-bg">
-
     <div class="login-content">
         <div class="login-card">
             <div class="login-card-head">
-                <p><span>欢迎登录</span></p>
+                <p><span>后台管理系统V2.0</span></p>
             </div>
             <div class="login-card-body">
                 <div class="login-form-content">
                     <form class="layui-form login-form " method="post">
                         <div class="layui-form-item">
                             <label class="login-label"><i class="layui-icon layui-icon-username"></i></label>
-                            <input type="text" id="loginName" name="userAccount" lay-verify="required" lay-reqText="请输入您的用户名" lay-verType="tips" placeholder="请输入您的用户名" autocomplete="off" value="" class="layui-input">
+                            <input type="text" id="username" name="username" lay-verify="required" lay-reqText="请输入您的用户名" lay-verType="tips" placeholder="请输入您的用户名" autocomplete="off" value="" class="layui-input">
                         </div>
                         <div class="layui-form-item">
                             <label class="login-label"><i class="layui-icon layui-icon-password"></i></label>
-                            <input type="password" id="loginPwd" name="password" lay-verify="required" lay-reqText="请输入您的密码" lay-verType="tips" placeholder="请输入您的密码" autocomplete="off" value="" class="layui-input">
+                            <input type="password" id="password" name="password" lay-verify="required" lay-reqText="请输入您的密码" lay-verType="tips" placeholder="请输入您的密码" autocomplete="off" value="" class="layui-input">
                         </div>
                         <div class="layui-form-item login-code">
                             <label class="login-label"><i class="layui-icon layui-icon-vercode"></i></label>
@@ -39,33 +38,13 @@
                             <button class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>
                         </div>
                     </form>
-                    <p class="login-tip">输入任意用户名和密码即可</p>
+                    <p class="login-tip">账号:admin/123456</p>
                 </div>
 
             </div>
 
         </div>
-
-        <%--<h1>UMS-CLI</h1>--%>
-        <%--<form class="layui-form" action="" method="post">--%>
-            <%--<div class="layui-form-item">--%>
-                <%--<input type="text" id="loginName" name="userAccount" lay-verify="required" lay-reqText="请输入账号" lay-verType="tips" placeholder="请输入账号" autocomplete="off" value="" class="layui-input">--%>
-            <%--</div>--%>
-            <%--<div class="layui-form-item">--%>
-                <%--<input type="password" id="loginPwd" name="password" lay-verify="required" lay-reqText="请输入密码" lay-verType="tips" placeholder="请输入密码" autocomplete="off" value="" class="layui-input">--%>
-            <%--</div>--%>
-            <%--<div class="layui-form-item form_code">--%>
-                <%--<input class="layui-input" id="code" name="code" placeholder="验证码" lay-verify="required" lay-reqText="请输入验证码" lay-verType="tips" type="text" autocomplete="off" style="width: 183px;">--%>
-                <%--<div class="code"><img src="${ctx}/captcha.action" width="78" height="30"></div>--%>
-            <%--</div>--%>
-            <%--<div class="login_btn-content">--%>
-                <%--<button class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>--%>
-            <%--</div>--%>
-        <%--</form>--%>
-
     </div>
-
-
 </div>
 <script type="text/javascript">
     var $, layOpenWin;
@@ -93,8 +72,8 @@
                 type: 'post',
                 async: false,
                 data: {
-                    userAccount: $("#loginName").val(),
-                    password: $("#loginPwd").val(),
+                    username: $("#username").val(),
+                    password: $("#password").val(),
                     code: $("#code").val()
                 },
                 success: function (data) {
@@ -124,6 +103,5 @@
 
 
 </script>
-
 </body>
 </html>

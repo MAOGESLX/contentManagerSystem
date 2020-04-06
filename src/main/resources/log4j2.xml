@@ -6,7 +6,7 @@
 	<!--定义了两个常量方便后面复用 -->
 	<properties>  
 		<!--生成的日志文件目录地址  -->
-        <property name="LOG_HOME">/data/logs/tomcat/cms</property>
+        <property name="LOG_HOME">~/data/logs/tomcat/cms</property>
         <!--日志文件名称 -->
         <property name="FILE_NAME">contentManagerSystem</property>
     </properties> 

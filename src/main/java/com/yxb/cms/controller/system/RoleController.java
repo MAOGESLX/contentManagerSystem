@@ -75,7 +75,7 @@ public class RoleController extends BasicController {
      *跳转到角色列表页面
      * @return
      */
-    @RequestMapping("/role_list.do")
+    @RequestMapping("/role_list.action")
     public String toRoleListPage() {
         return "system/role_list";
     }
@@ -84,7 +84,7 @@ public class RoleController extends BasicController {
      * @param role 角色实体
      * @return
      */
-    @RequestMapping("/ajax_role_list.do")
+    @RequestMapping("/ajax_role_list.action")
     @ResponseBody
     public String ajaxRoleList(Role role){
         return roleService.selectRoleResultPageList(role);
@@ -95,7 +95,7 @@ public class RoleController extends BasicController {
      * @param role 角色实体
      * @return
      */
-    @RequestMapping("/excel_role_export.do")
+    @RequestMapping("/excel_role_export.action")
     public ModelAndView excelRolesExport(Role role){
         ExcelExport excelExport = roleService.excelExportRoleList(role);
         return CommonHelper.getExcelModelAndView(excelExport);
@@ -107,7 +107,7 @@ public class RoleController extends BasicController {
      * 跳转到角色新增页面
      * @return
      */
-    @RequestMapping("/role_add.do")
+    @RequestMapping("/role_add.action")
     public String toRoleAddPage(Model model) {
         //新增页面标识
         model.addAttribute("pageFlag", "addPage");
@@ -119,7 +119,7 @@ public class RoleController extends BasicController {
      * @param roleId 角色Id
      * @return
      */
-    @RequestMapping("/role_update.do")
+    @RequestMapping("/role_update.action")
     public String roleUpdatePage(Model model,Integer roleId){
         Role role = roleService.selectRoleById(roleId);
         //修改页面标识
@@ -133,7 +133,7 @@ public class RoleController extends BasicController {
      * @param role 角色实体
      * @return
      */
-    @RequestMapping("/ajax_save_role.do")
+    @RequestMapping("/ajax_save_role.action")
     @ResponseBody
     @SystemControllerLog(description="保存角色信息")
     public BussinessMsg ajaxSaveRole(Role role){
@@ -150,7 +150,7 @@ public class RoleController extends BasicController {
      * @param roleId 角色Id
      * @return
      */
-    @RequestMapping("/ajax_role_fail.do")
+    @RequestMapping("/ajax_role_fail.action")
     @ResponseBody
     @SystemControllerLog(description="失效角色")
     public BussinessMsg ajaxRoleFail(Integer roleId){
@@ -167,7 +167,7 @@ public class RoleController extends BasicController {
      * @param roleIds 角色Id
      * @return
      */
-    @RequestMapping("/ajax_role_batch_fail.do")
+    @RequestMapping("/ajax_role_batch_fail.action")
     @ResponseBody
     @SystemControllerLog(description="批销失效角色")
     public BussinessMsg ajaxRoleBatchFail(@RequestParam(value = "roleIds[]") Integer[] roleIds){
@@ -185,7 +185,7 @@ public class RoleController extends BasicController {
      * @param roleId 角色Id
      * @return
      */
-    @RequestMapping("/role_grant.do")
+    @RequestMapping("/role_grant.action")
     public String roleGrantPage(Model model,Integer roleId){
         Role role = roleService.selectRoleResourcesByRoleId(roleId);
         model.addAttribute("role",role);
@@ -208,7 +208,7 @@ public class RoleController extends BasicController {
      * @param resourceIds   资源菜单Ids
      * @return
      */
-    @RequestMapping("/ajax_save_role_res.do")
+    @RequestMapping("/ajax_save_role_res.action")
     @ResponseBody
     @SystemControllerLog(description="角色赋权")
     public BussinessMsg ajaxSaveOrUpdateRoleResource(Integer roleId, @RequestParam(value = "resourceIds[]",required = false) Integer[] resourceIds ){

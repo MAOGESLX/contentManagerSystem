@@ -204,14 +204,14 @@
 
         /**业务日志导出*/
         $(".excelSysLogExport_btn").click(function(){
-            var url = '${ctx}/syslog/excel_sys_log_export.do';
+            var url = '${ctx}/syslog/excel_sys_log_export.action';
             $("#sysSearchForm").attr("action",url);
             $("#sysSearchForm").submit();
         });
 
         /**异常日志导出*/
         $(".excelSysExceptionLogExport_btn").click(function(){
-            var url = '${ctx}/syslog/excel_sys_exception_log_export.do';
+            var url = '${ctx}/syslog/excel_sys_exception_log_export.action';
             $("#sysExceptionForm").attr("action",url);
             $("#sysExceptionForm").submit();
         });
@@ -227,7 +227,7 @@
 
         table.render({
             elem: '#sysLogTableList',
-            url: '${ctx}/syslog/ajax_sys_log_list.do',
+            url: '${ctx}/syslog/ajax_sys_log_list.action',
             id:'sysLogTableId',
             method: 'post',
             height:'full-183',
@@ -269,7 +269,7 @@
 
         table.render({
             elem: '#sysLogExceptionTableList',
-            url: '${ctx}/syslog/ajax_sys_log_list.do',
+            url: '${ctx}/syslog/ajax_sys_log_list.action',
             id:'sysLogExceptionTableId',
             method: 'post',
             height:'full-183',

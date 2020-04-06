@@ -45,7 +45,7 @@ package com.yxb.cms.architect.constant;
  */
 public enum BussinessCode {
 	// 成功
-	GLOBAL_SUCCESS("0000","成功"),
+	GLOBAL_SUCCESS("200","成功"),
 	//失败
 	GLOBAL_ERROR("9999", "系统正在维护中,请稍后再试!"),
 

@@ -78,7 +78,7 @@
         /**角色表格加载*/
         table.render({
             elem: '#roleTableList',
-            url: '${ctx}/role/ajax_role_list.do',
+            url: '${ctx}/role/ajax_role_list.action',
             id:'roleTableId',
             method: 'post',
             height:'full-140',
@@ -130,14 +130,14 @@
         });
         /**角色新增*/
         $(".roleAdd_btn").click(function(){
-            var url = "${ctx}/role/role_add.do";
+            var url = "${ctx}/role/role_add.action";
             common.cmsLayOpen('新增角色',url,'550px','340px');
         });
 
 
         /**导出角色信息*/
         $(".excelRoleExport_btn").click(function(){
-            var url = '${ctx}/role/excel_role_export.do';
+            var url = '${ctx}/role/excel_role_export.action';
             $("#roleSearchForm").attr("action",url);
             $("#roleSearchForm").submit();
         });
@@ -169,7 +169,7 @@
                     common.cmsLayErrorMsg("当前选择的角色已失效");
                     return false;
                 }
-                var url = "${ctx}/role/ajax_role_batch_fail.do";
+                var url = "${ctx}/role/ajax_role_batch_fail.action";
                 var param = {roleIds:roleIds};
                 common.ajaxCmsConfirm('系统提示', '失效角色、解除角色、用户、菜单绑定关系?',url,param);
 
@@ -184,7 +184,7 @@
             //修改角色
             if(layEvent === 'role_edit') {
                 var roleId = data.roleId;
-                var url = "${ctx}/role/role_update.do?roleId="+roleId;
+                var url = "${ctx}/role/role_update.action?roleId="+roleId;
                 common.cmsLayOpen('编辑角色',url,'550px','340px');
 
             //角色授权
@@ -196,7 +196,7 @@
                     common.cmsLayErrorMsg("当前角色已失效,不能授权");
                     return false;
                 }
-                var url =  "${ctx}/role/role_grant.do?roleId="+roleId;
+                var url =  "${ctx}/role/role_grant.action?roleId="+roleId;
                 common.cmsLayOpen('角色授权',url,'255px','520px');
 
 
@@ -209,7 +209,7 @@
                     return false;
                 }
 
-                var url = "${ctx}/role/ajax_role_fail.do";
+                var url = "${ctx}/role/ajax_role_fail.action";
                 var param = {roleId:roleId};
                 common.ajaxCmsConfirm('系统提示', '失效角色、解除角色、用户、菜单绑定关系?',url,param);
 

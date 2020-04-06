@@ -68,7 +68,7 @@ public class AnnouncementInfoController extends BasicController {
      *跳转到公告列表页面
      * @return
      */
-    @RequestMapping("/announcement_list.do")
+    @RequestMapping("/announcement_list.action")
     public String toAnnouncementListPage() {
         return "system/announcement_list";
     }
@@ -78,7 +78,7 @@ public class AnnouncementInfoController extends BasicController {
      * @param announcement 公告实体
      * @return
      */
-    @RequestMapping("/ajax_announcement_list.do")
+    @RequestMapping("/ajax_announcement_list.action")
     @ResponseBody
     public String ajaxUserList(AnnouncementInfo announcement) {
         return announcementInfoService.selectAnnInfoResultPageList(announcement);
@@ -88,7 +88,7 @@ public class AnnouncementInfoController extends BasicController {
      *跳转到公告新增页面
      * @return
      */
-    @RequestMapping("/announcement_add.do")
+    @RequestMapping("/announcement_add.action")
     public String toAnnouncementAddPage() {
         return "system/announcement_add";
     }
@@ -100,7 +100,7 @@ public class AnnouncementInfoController extends BasicController {
      * @param announcementContent   公告内容
      * @return
      */
-    @RequestMapping("/ajax_save_announcement.do")
+    @RequestMapping("/ajax_save_announcement.action")
     @ResponseBody
     public BussinessMsg ajaxSaveAnnouncement(Integer announcementType, String announcementTitle,String announcementContent){
         try {
@@ -117,7 +117,7 @@ public class AnnouncementInfoController extends BasicController {
      * @param announcementId 公告Id
      * @return
      */
-    @RequestMapping("/announcement_detail.do")
+    @RequestMapping("/announcement_detail.action")
     public String toAnnouncementDetailPage(Model model, Integer announcementId) {
         AnnouncementInfo announcementInfo = announcementInfoService.selectAnnouncementInfoById(announcementId);
         model.addAttribute("announcementInfo",announcementInfo);
@@ -129,7 +129,7 @@ public class AnnouncementInfoController extends BasicController {
      * @param announcementId 公告Id
      * @return
      */
-    @RequestMapping("/ajax_del_announcement.do")
+    @RequestMapping("/ajax_del_announcement.action")
     @ResponseBody
     public BussinessMsg ajaxDelAnnouncement(Integer announcementId){
         try {
@@ -144,7 +144,7 @@ public class AnnouncementInfoController extends BasicController {
      * 查询用户未读公告信息
      * @return
      */
-    @RequestMapping("/ajax_unread_anninfo_count.do")
+    @RequestMapping("/ajax_unread_anninfo_count.action")
     @ResponseBody
     public  Integer ajaxUnreadAnnInfoCount(){
         if(null != this.getCurrentLoginId()){
@@ -158,7 +158,7 @@ public class AnnouncementInfoController extends BasicController {
      * 查询用户已读公告信息
      * @return
      */
-    @RequestMapping("/ajax_read_anninfo_count.do")
+    @RequestMapping("/ajax_read_anninfo_count.action")
     @ResponseBody
     public  Integer ajaxReadAnnInfoCount(){
         if(null != this.getCurrentLoginId()){
@@ -172,7 +172,7 @@ public class AnnouncementInfoController extends BasicController {
      * 查询全部公告信息
      * @return
      */
-    @RequestMapping("/ajax_allread_anninfo_count.do")
+    @RequestMapping("/ajax_allread_anninfo_count.action")
     @ResponseBody
     public  Integer ajaxAllReadAnnInfoCount(){
         Long allReadCount = announcementInfoMapper.selectAllReadAnnInfoCount();
@@ -185,7 +185,7 @@ public class AnnouncementInfoController extends BasicController {
      *跳转到未读公告列表页面
      * @return
      */
-    @RequestMapping("/announcement_unread_list.do")
+    @RequestMapping("/announcement_unread_list.action")
     public String toAnnouncementUnReadListPage() {
         return "system/announcement_unread_list";
     }
@@ -194,7 +194,7 @@ public class AnnouncementInfoController extends BasicController {
      * 未读公告列表List
      * @return
      */
-    @RequestMapping("/ajax_unread_anninfo_list.do")
+    @RequestMapping("/ajax_unread_anninfo_list.action")
     @ResponseBody
     public String ajaxUnReadAnnInfoList() {
         return announcementInfoService.selectUnreadAnnInfoListByUserId(this.getCurrentLoginId());
@@ -203,7 +203,7 @@ public class AnnouncementInfoController extends BasicController {
      * 已读公告列表List
      * @return
      */
-    @RequestMapping("/ajax_read_anninfo_list.do")
+    @RequestMapping("/ajax_read_anninfo_list.action")
     @ResponseBody
     public String ajaxReadAnnInfoList() {
         return announcementInfoService.selectReadAnnInfoListByUserId(this.getCurrentLoginId());
@@ -212,7 +212,7 @@ public class AnnouncementInfoController extends BasicController {
      * 全部公告列表List
      * @return
      */
-    @RequestMapping("/ajax_allread_anninfo_list.do")
+    @RequestMapping("/ajax_allread_anninfo_list.action")
     @ResponseBody
     public String ajaxAllReadAnnInfoList() {
         return announcementInfoService.selectAllReadAnnInfoListByUserId();
@@ -223,7 +223,7 @@ public class AnnouncementInfoController extends BasicController {
      * @param announcementId 公告Id
      * @return
      */
-    @RequestMapping("/ajax_ins_read_anninfo_user.do")
+    @RequestMapping("/ajax_ins_read_anninfo_user.action")
     @ResponseBody
     public BussinessMsg ajaxReadAnnUserInfo(Integer announcementId){
         try {
@@ -239,7 +239,7 @@ public class AnnouncementInfoController extends BasicController {
      * @param announcementIds 公告Ids
      * @return
      */
-    @RequestMapping("/ajax_ins_allread_anninfo_user.do")
+    @RequestMapping("/ajax_ins_allread_anninfo_user.action")
     @ResponseBody
     public BussinessMsg ajaxAllReadAnnUserInfo(@RequestParam(value = "announcementIds[]") Integer[] announcementIds){
         try {

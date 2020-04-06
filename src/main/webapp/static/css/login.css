@@ -19,9 +19,8 @@ body {
 .login-bg {
     width: 100%;
     height: 100%;
-    background-image: url(../../static/img/login-bg.jpg);
+    background: url(../../static/img/login-bg.jpg) fixed;
     background-size: cover;
-    background-position: 50%;
     position: relative;
 }
 
@@ -29,9 +28,9 @@ body {
     position: absolute;
     right: 160px;
     top: 50%;
-    -webkit-transform: translateY(-60%);
-    transform: translateY(-60%);
     width: 300px;
+    margin: -150px 0 0 -150px;
+
 }
 
 .login-card {
@@ -53,12 +52,13 @@ body {
     width: 100%;
     height: 20px;
     line-height: 20px;
-    font-size: 14px;
+    font-size: 17px;
     color: #17233d;
     font-weight: 700;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: center;
 }
 .login-card-body{
     padding: 16px;
@@ -66,14 +66,10 @@ body {
 .login-form-content {
     padding: 10px 0 0;
 }
-
-
-
-
 .login-form .layui-form-item {
     position: relative;
     display: block;
-    height: 38px;
+    height: 32px;
     margin-bottom: 20px;
 }
 
@@ -95,14 +91,20 @@ body {
 }
 .layui-input{
     font-size: 12px;
+    background: #FFFFFF;
+    color: #515a6e;
+    border: 1px solid #dcdee2;
+
 }
+.layui-input:hover{
+    border-color: #57a3f3 !important;
+}
+
 .login-form input[type="text"], .login-form input[type="password"] {
     margin-top: -2px;
-    background: #FFFFFF;
     left: 0;
     padding-left: 32px;
     box-shadow: none;
-    color: #666666;
 }
 .login-form .login-code input {
     width: 65%;
@@ -154,4 +156,13 @@ body {
     font-size: 12px;
     text-align: center;
     color: #c3c3c3;
+}
+@media screen and (max-width:750px){
+    .login-content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -150px 0 0 -150px;
+
+    }
 }

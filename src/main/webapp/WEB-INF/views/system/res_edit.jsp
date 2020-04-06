@@ -228,7 +228,7 @@
                 }
                 //加载父级菜单
                 $.ajax({
-                    url : '${ctx}/res/ajax_res_parent_menu.do',
+                    url : '${ctx}/res/ajax_res_parent_menu.action',
                     type : 'post',
                     async: false,
                     data : {
@@ -260,7 +260,7 @@
 
         /**选择图标*/
         $(".select_img").click(function(){
-            var url = "${ctx}/res/res_img.do";
+            var url = "${ctx}/res/res_img.action";
             common.cmsLayOpen('选择图标',url,'485px','370px');
         });
 
@@ -307,7 +307,7 @@
         form.on("submit(saveRes)",function(data){
             var resSaveLoading = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
             $.ajax({
-                url : '${ctx}/res/ajax_save_resource.do',
+                url : '${ctx}/res/ajax_save_resource.action',
                 type : 'post',
                 async: false,
                 data : data.field,

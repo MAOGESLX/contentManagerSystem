@@ -70,7 +70,7 @@ public class ResourceController extends BasicController {
      *跳转到资源列表页面
      * @return
      */
-    @RequestMapping("/res_list.do")
+    @RequestMapping("/res_list.action")
     public String toResListPage() {
         return "system/res_list";
     }
@@ -81,7 +81,7 @@ public class ResourceController extends BasicController {
      * @param resource
      * @return
      */
-    @RequestMapping("/ajax_res_list.do")
+    @RequestMapping("/ajax_res_list.action")
     @ResponseBody
     public String ajaxResourceList(Resource resource){
         return resourceService.selectResourceResultPageList(resource);
@@ -92,7 +92,7 @@ public class ResourceController extends BasicController {
      * @param resource
      * @return
      */
-    @RequestMapping("/ajax_res_tree_list.do")
+    @RequestMapping("/ajax_res_tree_list.action")
     @ResponseBody
     public String ajaxResourceTreeList(Resource resource){
         List<Resource> resourceList = resourceMapper.selectResourceAllList();
@@ -104,7 +104,7 @@ public class ResourceController extends BasicController {
      * 选择图标
      * @return
      */
-    @RequestMapping("/res_img.do")
+    @RequestMapping("/res_img.action")
     public String toResImgPage() {
         return "system/res_img";
     }
@@ -112,7 +112,7 @@ public class ResourceController extends BasicController {
      * 资源添加页面
      * @return
      */
-    @RequestMapping("/res_edit.do")
+    @RequestMapping("/res_edit.action")
     public String toResEditPage(Model model) {
         //新增页面标识
         model.addAttribute("pageFlag", "addPage");
@@ -124,7 +124,7 @@ public class ResourceController extends BasicController {
      * @param resId 菜单Id
      * @return
      */
-    @RequestMapping("/res_update.do")
+    @RequestMapping("/res_update.action")
     public String userUpdatePage(Model model, Integer resId){
         Resource res = resourceService.selectByPrimaryKey(resId);
         Long resParentCount = resourceMapper.selectCountResParentByResId(resId);
@@ -143,7 +143,7 @@ public class ResourceController extends BasicController {
      * @param resId 菜单Id
      * @return
      */
-    @RequestMapping("ajax_res_parent_menu.do")
+    @RequestMapping("ajax_res_parent_menu.action")
     @ResponseBody
     public List<Resource> ajaxResParentMenu(Integer resType,Integer resLevel,Integer resId){
         return resourceService.selectParentResListByResTypeAndResLevel(resType,resLevel,resId);
@@ -155,7 +155,7 @@ public class ResourceController extends BasicController {
      * @param res 角色实体
      * @return
      */
-    @RequestMapping("/ajax_save_resource.do")
+    @RequestMapping("/ajax_save_resource.action")
     @ResponseBody
     public BussinessMsg ajaxSaveResource(Resource res){
         try {
@@ -167,13 +167,13 @@ public class ResourceController extends BasicController {
     }
 
 
-    @RequestMapping("/ajax_res_menu_top.do")
+    @RequestMapping("/ajax_res_menu_top.action")
     @ResponseBody
     public String ajaxResMenuTop(){
         return resourceService.selectResMenuTop();
     }
 
-    @RequestMapping("/ajax_res_menu_left.do")
+    @RequestMapping("/ajax_res_menu_left.action")
     @ResponseBody
     public String ajaxResMenuLeft(Integer resParentid){
         return resourceService.selectResLevelListByParentid(resParentid);

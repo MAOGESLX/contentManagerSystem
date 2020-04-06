@@ -78,7 +78,7 @@
         /**用户表格加载*/
         table.render({
             elem: '#userTableList',
-            url: '${ctx}/user/ajax_user_list.do',
+            url: '${ctx}/user/ajax_user_list.action',
             id:'userTableId',
             method: 'post',
             height:'full-140',
@@ -130,13 +130,13 @@
 
         /**新增用户*/
         $(".userAdd_btn").click(function(){
-            var url = "${ctx}/user/user_add.do";
+            var url = "${ctx}/user/user_add.action";
             common.cmsLayOpen('新增用户',url,'550px','265px');
         });
 
         /**导出用户信息*/
         $(".excelUserExport_btn").click(function(){
-            var url = '${ctx}/user/excel_users_export.do';
+            var url = '${ctx}/user/excel_users_export.action';
             $("#userSearchForm").attr("action",url);
             $("#userSearchForm").submit();
         });
@@ -182,7 +182,7 @@
                     return false;
                 }
 
-                var url = "${ctx}/user/ajax_user_batch_fail.do";
+                var url = "${ctx}/user/ajax_user_batch_fail.action";
                 var param = {userIds:userIds};
                 common.ajaxCmsConfirm('系统提示', '确定失效当前用户，并解除与角色绑定关系吗?',url,param);
 
@@ -198,7 +198,7 @@
             //修改用户
             if(layEvent === 'user_edit') {
                 var userId = data.userId;
-                var url =  "${ctx}/user/user_update.do?userId="+userId;
+                var url =  "${ctx}/user/user_update.action?userId="+userId;
                 common.cmsLayOpen('编辑用户',url,'550px','265px');
 
             //分配角色
@@ -209,7 +209,7 @@
                     common.cmsLayErrorMsg("当前用户已失效,不能被分配角色");
                     return false;
                 }
-                var url =  "${ctx}/user/user_grant.do?userId="+userId;
+                var url =  "${ctx}/user/user_grant.action?userId="+userId;
                 common.cmsLayOpen('分配角色',url,'500px','440px');
 
             //用户失效
@@ -226,7 +226,7 @@
                     return false;
                 }
 
-                var url = "${ctx}/user/ajax_user_fail.do";
+                var url = "${ctx}/user/ajax_user_fail.action";
                 var param = {userId:userId};
                 common.ajaxCmsConfirm('系统提示', '确定失效用户，并解除与角色绑定关系吗?',url,param);
 

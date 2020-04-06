@@ -67,7 +67,7 @@ public class SystemLogController extends BasicController {
      *跳转到日志管理页面
      * @return
      */
-    @RequestMapping("/sys_log_list.do")
+    @RequestMapping("/sys_log_list.action")
     public String toSysLogPage(Model model) {
         String currentDate = DateUtil.Date2Stirng(new Date());
         model.addAttribute("currentDate",currentDate);
@@ -78,7 +78,7 @@ public class SystemLogController extends BasicController {
      * @param systemLog 日志实体
      * @return
      */
-    @RequestMapping("/ajax_sys_log_list.do")
+    @RequestMapping("/ajax_sys_log_list.action")
     @ResponseBody
     public String ajaxSysLogList(SystemLog systemLog){
         return systemLogService.selectSystemLogResultPageList(systemLog);
@@ -89,7 +89,7 @@ public class SystemLogController extends BasicController {
      * @param systemLog 日志实体
      * @return
      */
-    @RequestMapping("/excel_sys_log_export.do")
+    @RequestMapping("/excel_sys_log_export.action")
     public ModelAndView excelSysLogExport(SystemLog systemLog){
         ExcelExport excelExport = systemLogService.excelExportSystemLogList(systemLog);
         return CommonHelper.getExcelModelAndView(excelExport);
@@ -100,7 +100,7 @@ public class SystemLogController extends BasicController {
      * @param systemLog 日志实体
      * @return
      */
-    @RequestMapping("/excel_sys_exception_log_export.do")
+    @RequestMapping("/excel_sys_exception_log_export.action")
     public ModelAndView excelSysExceptionLogExport(SystemLog systemLog){
         ExcelExport excelExport = systemLogService.excelExportSysExceptionLogList(systemLog);
         return CommonHelper.getExcelModelAndView(excelExport);

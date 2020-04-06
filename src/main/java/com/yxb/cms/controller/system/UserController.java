@@ -72,7 +72,7 @@ public class UserController extends BasicController {
      *跳转到用户列表页面
      * @return
      */
-    @RequestMapping("/user_list.do")
+    @RequestMapping("/user_list.action")
     public String toUserListPage() {
         return "system/user_list";
     }
@@ -81,7 +81,7 @@ public class UserController extends BasicController {
      * @param user
      * @return
      */
-    @RequestMapping("/ajax_user_list.do")
+    @RequestMapping("/ajax_user_list.action")
     @ResponseBody
     public String ajaxUserList(User user){
         return userService.selectUserResultPageList(user);
@@ -92,7 +92,7 @@ public class UserController extends BasicController {
      * @param user 用户实体
      * @return
      */
-    @RequestMapping("/excel_users_export.do")
+    @RequestMapping("/excel_users_export.action")
     public ModelAndView excelUsersExport(User user){
         ExcelExport excelExport = userService.excelExportUserList(user);
         return CommonHelper.getExcelModelAndView(excelExport);
@@ -102,7 +102,7 @@ public class UserController extends BasicController {
      * 跳转到用户新增页面
      * @return
      */
-    @RequestMapping("/user_add.do")
+    @RequestMapping("/user_add.action")
     public String toUserAddPage(Model model) {
         //新增页面标识
         model.addAttribute("pageFlag", "addPage");
@@ -114,7 +114,7 @@ public class UserController extends BasicController {
      * @param userId 用户Id
      * @return
      */
-    @RequestMapping("/user_update.do")
+    @RequestMapping("/user_update.action")
     public String userUpdatePage(Model model,Integer userId){
         User user = userService.selectUserById(userId);
         //修改页面标识
@@ -127,7 +127,7 @@ public class UserController extends BasicController {
      * @param user 用户实体
      * @return
      */
-    @RequestMapping("/ajax_save_user.do")
+    @RequestMapping("/ajax_save_user.action")
     @ResponseBody
     @SystemControllerLog(description="保存用户信息")
     public BussinessMsg ajaxSaveUser(User user){
@@ -144,7 +144,7 @@ public class UserController extends BasicController {
      * @param userId 用户Id
      * @return
      */
-    @RequestMapping("/ajax_user_fail.do")
+    @RequestMapping("/ajax_user_fail.action")
     @ResponseBody
     @SystemControllerLog(description="失效用户信息")
     public BussinessMsg ajaxUserFail(Integer userId){
@@ -161,7 +161,7 @@ public class UserController extends BasicController {
      * @param userIds 用户Id
      * @return
      */
-    @RequestMapping("/ajax_user_batch_fail.do")
+    @RequestMapping("/ajax_user_batch_fail.action")
     @ResponseBody
     @SystemControllerLog(description="批量失效用户信息")
     public BussinessMsg ajaxUserBatchFail(@RequestParam(value = "userIds[]") Integer[] userIds){
@@ -178,7 +178,7 @@ public class UserController extends BasicController {
      * @param userId 用户Id
      * @return
      */
-    @RequestMapping("/user_grant.do")
+    @RequestMapping("/user_grant.action")
     public String userGrantPage(Model model,Integer userId){
         User user = userService.selectUserRolesByUserId(userId);
         model.addAttribute("user", user);
@@ -191,7 +191,7 @@ public class UserController extends BasicController {
      * 查询待分配的角色信息(用以给用户分配角色时显示)
      * @param  roleIds 已分配角色Id
      */
-    @RequestMapping("/ajax_undistributed_role_list.do")
+    @RequestMapping("/ajax_undistributed_role_list.action")
     @ResponseBody
     public String ajaxUndistributedRoleList(String roleIds){
         return roleService.selectUserRoleByRoleIdList(roleIds);
@@ -200,7 +200,7 @@ public class UserController extends BasicController {
      * 查询状态为有效,已分配的角色信息(用已用户分配角色显示)
      * @param roleIds 已分配角色Id
      */
-    @RequestMapping("/ajax_deceased_role_list.do")
+    @RequestMapping("/ajax_deceased_role_list.action")
     @ResponseBody
     public String ajaxDeceasedRoleList(String roleIds){
         return roleService.selectDeceasedUserRoleByRoleIdList(roleIds);
@@ -212,7 +212,7 @@ public class UserController extends BasicController {
      * @param roleIds 分配的角色信息
      * @return
      */
-    @RequestMapping("/ajax_save_user_role.do")
+    @RequestMapping("/ajax_save_user_role.action")
     @ResponseBody
     @SystemControllerLog(description="用户分配角色")
     public BussinessMsg ajaxSaveUserRole(Integer userId,String roleIds){

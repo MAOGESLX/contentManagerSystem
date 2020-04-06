@@ -8,7 +8,6 @@
 
 
 <link rel="stylesheet" href="${ctx}/static/css/nprogress.css">
-<link rel="stylesheet" href="${ctx}/static/font_extend/iconfont.css">
 
 <link rel="stylesheet" href="${ctx}/static/layui_v2/css/layui.css">
 <link rel="stylesheet" href="${ctx}/static/css/main.css">

@@ -4,222 +4,159 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>后台管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="后台管理系统">
-    <meta name="description" content="致力于提供通用版本后台管理解决方案">
-    <link rel="shortcut icon" href="${ctx}/static/img/favicon.ico">
+    <title>后台管理系统</title>
+    <link rel="shortcut icon" href="${ctx}/static/img/f_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="${ctx}/static/css/index.css">
 
-    <link rel="stylesheet" href="${ctx}/static/layui_v2/css/layui.css">
-    <link rel="stylesheet" href="${ctx}/static/css/global.css">
-
-    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_9h680jcse4620529.css">
-    <link rel="stylesheet" href="${ctx}/static/css/main.css">
-    <link rel="stylesheet" href="${ctx}/static/css/backstage.css">
-    <script src="${ctx}/static/layui_v2/layui.js"></script>
-    <script type="text/javascript" src="${ctx}/static/js/index.js"></script>
-
-
-</head>
-<body class="main_body larryTheme-A">
-
-    <div class="layui-layout layui-layout-admin ">
-        <!-- 顶部-->
-        <div class="layui-header header header-menu ">
-            <div class="layui-main ">
-                <a href="#" class="logo">CMS后台管理系统</a>
-                <!-- 左侧导航收缩开关 -->
-                <div class="side-menu-switch" id="toggle"><span class="switch" ara-hidden="true"></span></div>
-                <!-- 顶级菜单 -->
-                <div class="larry-top-menu posb topMenu" id="topMenu"></div>
-                <!-- 右侧常用菜单导航 -->
-                <div class="larry-right-menu posb" >
-                    <ul class="layui-nav clearfix ">
-                        <button class="layui-btn layui-btn-small" id="dianzhan">
-                            <i class="larry-icon larry-dianzan"></i>
-                            打赏作者
-                        </button>
-                        <%--<li style="" class="layui-nav-item">--%>
-                            <%--<a class="onFullScreen" id="FullScreen"><i class="larry-icon larry-quanping"></i>全屏</a>--%>
-                        <%--</li>--%>
-                        <li style="" class="layui-nav-item lockcms">
-                            <a id="lock"><i class="larry-icon larry-diannao5"></i>锁屏</a>
-                        </li>
-                        <%--<li style="" class="layui-nav-item">--%>
-                            <%--<a id="clearCached"><i class="larry-icon larry-qingchuhuancun"></i>清除缓存</a>--%>
-                        <%--</li>--%>
-                        <%--<li style="" class="layui-nav-item">--%>
-                            <%--<a id="larryTheme"><i class="larry-icon larry-theme1"></i>设置主题</a>--%>
-                        <%--</li>--%>
-                        <li class="layui-nav-item kjfs posb" >
-                            <a class="kuaijiefangshi"><i class="larry-icon larry-kuaijie"></i><cite>快捷方式</cite><span class="layui-nav-more"></span></a>
-                            <dl class="layui-nav-child">
-                                <dd>
-                                    <a href="/about/about_brief.html" target="_blank">关于我们</a>
-                                </dd>
-                                <dd>
-                                    <a href="http://fly.layui.com/" target="_blank">Layui社区</a>
-                                </dd>
-                                <dd>
-                                    <a href="http://www.layui.com/doc/" target="_blank">Layui文档</a>
-                                </dd>
-                                <dd>
-                                    <a href="http://fly.layui.com/case/u/5849928" target="_blank">我的案例</a>
-                                </dd>
-
-
-                            </dl>
-                        </li>
-                        <li class="layui-nav-item exit">
-                            <a id="logout"><i class="larry-icon larry-exit"></i><cite>退出</cite></a>
-                        </li>
-                    </ul>
-
-                </div>
+<body class="layui-layout-body" >
+<div id="future_side">
+    <!-- 外层DIV-->
+    <div class="layui-layout">
+        <!--头部 -->
+        <div class="layui-header">
+            <div class="layui-logo">
+                <span>后台管理系统</span>
             </div>
-        </div>
 
-        <!-- 左侧导航-->
-        <div class="layui-side layui-bg-black">
-            <div class="user-photo">
-                <a class="img" title="我的头像" ><img src="${ctx}/static/img/face.jpg"></a>
-                <p>你好！<span class="userName" id="userNameSpan" title="${LOGIN_NAME.userName}">${LOGIN_NAME.userName}</span>, 欢迎登录</p>
-            </div>
-            <!-- 左侧菜单-->
-            <div class="navBar layui-side-scroll" id="navBarId"></div>
+            <ul class="layui-nav layui-layout-right" >
+                <li class="layui-nav-item">
 
+                    <a href="javascript:;">
+                        <img class="layui-nav-img" src="${ctx}/static/img/face.jpg">
+                        <cite>超级管理员${LOGIN_ACCOUNT.userName}</cite><span class="layui-nav-more"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a id="userPersonal" lay-href>个人信息</a></dd>
+                        <dd><a id="changePassword" lay-href>修改密码</a></dd>
+                        <dd ><a id="logout" lay-href>退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
-        <!--中间内容 -->
-        <div class="layui-body layui-form" id="larry-body">
-            <div class="layui-tab marg0" id="larry-tab" lay-filter="bodyTab">
-                <! -- 选项卡-->
-                <ul class="layui-tab-title top_tab" id="top_tabs">
-                    <li class="layui-this" lay-id=""><i class="larry-icon larry-houtaishouye"></i> <cite>后台首页</cite></li>
+        <!-- 左侧DIV-->
+        <div class="layui-side layui-side-menu">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree layui-left-nav" lay-shrink="all">
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="${ctx}/main/workplace.action">
+                            <img class="img-nav" src="${ctx}/static/img/workplace.png" width="16" height="16">
+                            <cite>工作台</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="">
+                            <img class="img-nav" src="${ctx}/static/img/system.png" width="16" height="16">
+                            <cite>系统管理</cite>
+                        </a>
+
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" data-url="/system/user/user_page.action">
+                                    <div class="layui-first-menu"></div>
+                                    <cite style="margin-left: 20px;line-height: 38px">用户管理</cite>
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
                 </ul>
-                <div class="larry-title-box" style="height: 41px;" >
-                    <div class="go-left key-press pressKey" id="titleLeft" title="滚动至最右侧"><i class="larry-icon larry-weibiaoti6-copy"></i> </div>
-                    <div class="title-right" id="titleRbox">
-                        <div class="go-right key-press pressKey" id="titleRight" title="滚动至最左侧"><i class="larry-icon larry-right"></i></div>
-                        <div class="refresh key-press" id="refresh_iframe"><i class="larry-icon larry-shuaxin2"></i><cite>刷新</cite></div>
-
-                        <div class="often key-press">
-                            <ul class="layui-nav posr">
-                                <li class="layui-nav-item posb">
-                                    <a class="top"><i class="larry-icon larry-caozuo"></i><cite>常用操作</cite><span class="layui-nav-more"></span></a>
-                                    <dl class="layui-nav-child">
-                                        <dd>
-                                            <a href="javascript:;" class="closeCurrent"><i class="larry-icon larry-guanbidangqianye"></i>关闭当前选项卡</a>
-                                        </dd>
-                                        <dd>
-                                            <a href="javascript:;" class="closeOther"><i class="larry-icon larry-guanbiqita"></i>关闭其他选项卡</a>
-                                        </dd>
-                                        <dd>
-                                            <a href="javascript:;" class="closeAll"><i class="larry-icon larry-guanbiquanbufenzu"></i>关闭全部选项卡</a>
-                                        </dd>
-                                    </dl>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-tab-content clildFrame" style="height:793px;">
-                    <div class="layui-tab-item layui-show layui-anim layui-anim-upbit">
-                        <iframe src="${ctx}/main/home.action" data-id="0" name="ifr_0" id="ifr_0"></iframe>
-                    </div>
-                </div>
             </div>
         </div>
-        <!-- 底部-->
-        <div class="layui-footer footer layui-larry-foot">
-
-            <div class="layui-main">
-                <p>Copyright 2017 © yangxiaobing,873559947@qq.com(推荐使用IE9+,Firefox、Chrome 浏览器访问)</p>
+        <!-- 内容主体区域 -->
+        <div class="layui-body-item layui-show" id="main-content">
+            <div id="menuLeft" class="menu-display">
+                <img src="${ctx}/static/img/menu_left.png" id="flexible">
             </div>
+            <iframe src=""  id="ifr" name="ifr"></iframe>
+
         </div>
     </div>
-
-
-</body>
-</html>
+</div>
 
 <script type="text/javascript">
     layui.config({
-        base : "${ctx}/static/js/"
-    }).use(['form', 'layer','common'], function () {
-        var $ = layui.jquery,
-                form = layui.form,
-                layer = layui.layer,
-                common = layui.common;
+        base: "${ctx}/static/js/"
+    }).use(['element','jquery','layer','layOpenWin'], function() {
 
+        var element = layui.element,
+            layer = layui.layer,
+            $ = layui.jquery,
+            layOpenWin = layui.layOpenWin;
 
-
-        if($("#userNameSpan").text().length > 6){
-            $("#userNameSpan").text($("#userNameSpan").text().substring(0,6) +"...");
-
+        //登录首页默认展示第一个菜单项
+        var dataUrl = $(".layui-left-nav .layui-nav-item a:first").attr("data-url");
+        if(dataUrl && dataUrl != '${ctx}'){
+            $(".layui-left-nav .layui-nav-item:first").addClass("layui-this");
+            $("#ifr").attr("src",dataUrl);
+        }else{
+            $("#ifr").attr("src","${ctx}/main/workplace.action");
         }
 
-        //锁屏
-        function lockPage(){
-            parent.layer.open({
-                title : false,
-                type : 1,
-                anim: 4,
-                content : '	<div class="admin-header-lock" id="lock-box">'+
-                '<div class="admin-header-lock-img"><img src="${ctx}/static/img/face.jpg"/></div>'+
-                '<div class="admin-header-lock-name" id="lockUserName">${LOGIN_NAME.userName}</div>'+
-                '<div class="input_btn">'+
-                '<input type="password" class="admin-header-lock-input layui-input" autocomplete="off" placeholder="请输入密码解锁.." name="lockPwd" id="lockPwd" />'+
-                '<button class="layui-btn" id="unlock">解锁</button>'+
-                '</div>'+
-                '</div>',
-                closeBtn : 0,
-                shade : 1
+        NProgress.start();
+        // 添加新窗口
+        $("body").on("click",".layui-left-nav .layui-nav-item a",function(){
 
-            });
-            $(".layui-layer-shade").addClass("lockBg")
-            $(".admin-header-lock-input").focus();
-        }
-
-        $(".lockcms").on("click",function(){
-            window.sessionStorage.setItem("lockcms",true);
-            lockPage();
-        })
-        // 判断是否显示锁屏
-        if(window.sessionStorage.getItem("lockcms") == "true"){
-            lockPage();
-        }
-
-        // 解锁
-        $("body").on("click","#unlock",function(){
-            if($(this).siblings(".admin-header-lock-input").val() == ''){
-                layer.msg("请输入解锁密码！");
-                $(this).siblings(".admin-header-lock-input").focus();
-            }else{
-                if($(this).siblings(".admin-header-lock-input").val() == ${LOGIN_NAME.userPassword}){
-                    window.sessionStorage.setItem("lockcms",false);
-                    $(this).siblings(".admin-header-lock-input").val('');
-                    layer.closeAll("page");
-                }else{
-                    layer.msg("密码错误，请重新输入！");
-                    $(this).siblings(".admin-header-lock-input").val('').focus();
+            if($(this).attr("data-url")){
+                //如果不存在子级
+                if($(this).siblings().length == 0){
+                    NProgress.start();
+                    $("#ifr").attr("src",$(this).attr("data-url"));
                 }
+            }
+            $(this).parent("li").siblings().removeClass("layui-nav-itemed");
+        });
+
+        /**个人信息*/
+        $('#userPersonal').click(function () {
+            var url = "${ctx}/system/user/user_personal_page.action";
+            $("#ifr").attr("src",url);
+
+
+        });
+
+        /**修改密码*/
+        $("#changePassword").click(function(){
+            var url = "${ctx}/system/user/change_password_page.action";
+            layOpenWin.layOpen('修改密码',url,'550px','430px');
+        });
+
+
+        /**退出*/
+        $('#logout').click(function () {
+            var url = '${ctx}/logout.action';
+            layOpenWin.logOut('退出登录提示', '你确定要退出系统吗？', url)
+        });
+
+
+        /**打开或隐藏选项卡*/
+        $("#flexible").click(function () {
+            $("#future_side").toggleClass("future-side-shrink");
+
+            if($("#future_side").hasClass("future-side-shrink")){
+                $(this).attr("src", "${ctx}/static/img/menu_right.png");
+            }else{
+                $(this).attr("src", "${ctx}/static/img/menu_left.png");
+
             }
         });
 
-//        $('#lock').mouseover(function () {
-//            layer.tips('请按Alt+L快速锁屏！', '#lock', {tips: [1, '#009688'], time: 2000})
-//        });
-//        $(top.window).keydown(function (e) {
-//            if (e.altKey && e.which == 76) {
-//                lockPage();
-//            }
-//        });
-//        $(top.window).keyup(function(event){
-//            if(event.keyCode ==13){
-//                $("#unlock").click();
-//            }
-//        });
+        var iframe = document.getElementById("ifr");
+        if (iframe.attachEvent){
+            iframe.attachEvent("onload", function(){
+                NProgress.done();
+            });
+        } else {
+            iframe.onload = function(){
+                NProgress.done();
+            };
+        }
+
 
     });
 
 </script>
+
+
+</body>
+</html>

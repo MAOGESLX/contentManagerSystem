@@ -24,7 +24,7 @@ contentManagerSystem是一个自由软件，您可以自由分发、修改其中
 如果没有找到，请连接到 http://www.gnu.org/licenses/ 查看。
 
 
-项目截图演示
+项目截图
 -----------------------------------
 ![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/1.png)
 ![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/2.png)

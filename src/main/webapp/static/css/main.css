@@ -36,4 +36,39 @@ body {
     border-bottom-color: #27affd !important;
 }
 
+/**layui-nav*/
+
+.layui-nav .layui-this::after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 5px;
+    background-color: #fff;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+}
+
+.layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this {
+    background-color: #fff !important;
+    color: #0e9ee1 !important;
+}
+
+.layui-btn:hover {
+
+    opacity: 1 !important;
+    filter: alpha(opacity=80);
+    color: #ffffff;
+    border: 1px solid #57a3f3;
+
+    background-color: #57a3f3;
+
+}
+
+/**新增*/
+.layui-btn-add {
+    background-color: #2d8cf0;
+    color: #fff;
+    border: 1px solid #2d8cf0;
+}
 

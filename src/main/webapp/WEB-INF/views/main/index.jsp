@@ -41,13 +41,13 @@
 
                     <li class="layui-nav-item">
                         <a href="javascript:;" data-url="${ctx}/main/workplace.action">
-                            <img class="img-nav" src="${ctx}/static/img/workplace.png" width="16" height="16">
+                            <img class="img-nav" src="${ctx}/static/img/workplace.png">
                             <cite>工作台</cite>
                         </a>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;" data-url="">
-                            <img class="img-nav" src="${ctx}/static/img/system.png" width="16" height="16">
+                            <img class="img-nav" src="${ctx}/static/img/system.png">
                             <cite>系统管理</cite>
                         </a>
 
@@ -55,7 +55,15 @@
                             <dd>
                                 <a href="javascript:;" data-url="/system/user/user_page.action">
                                     <div class="layui-first-menu"></div>
-                                    <cite style="margin-left: 20px;line-height: 38px">用户管理</cite>
+                                    <cite>用户管理</cite>
+                                </a>
+                            </dd>
+                        </dl>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" data-url="/system/user/user_page.action">
+                                    <div class="layui-first-menu"></div>
+                                    <cite>角色管理</cite>
                                 </a>
                             </dd>
                         </dl>

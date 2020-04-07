@@ -32,7 +32,6 @@
  */
 package com.yxb.cms.controller;
 
-import com.yxb.cms.handler.RedisClient;
 import com.yxb.cms.service.DataCleaningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,8 +51,7 @@ public class IndexController extends BasicController {
 
     @Autowired
     private DataCleaningService dataCleaningService;
-    @Autowired
-    private RedisClient redisClient;
+
 
     /**
      *跳转到主页

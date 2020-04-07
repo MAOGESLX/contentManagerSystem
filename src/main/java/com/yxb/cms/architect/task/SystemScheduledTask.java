@@ -32,8 +32,6 @@
  */
 package com.yxb.cms.architect.task;
 
-import com.yxb.cms.architect.constant.Constants;
-import com.yxb.cms.handler.RedisClient;
 import com.yxb.cms.service.DataCleaningService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -54,8 +52,7 @@ public class SystemScheduledTask {
     @Autowired
     private DataCleaningService dataCleaningService;
 
-    @Autowired
-    private RedisClient redisClient;
+
 
 
     /**
@@ -68,7 +65,6 @@ public class SystemScheduledTask {
         try {
             dataCleaningService.insertDataCleanBatchByLogin();
             log.info(">>>>>>>>>>>>>将清洗数据set到redis");
-            redisClient.set(Constants.REDIS_KEY_ECHARTS_USER_PV,dataCleaningService.selectEchartsByLoginInfo());
         } catch (Exception e) {
             log.error("用户访问量数据清洗异常", e);
         }

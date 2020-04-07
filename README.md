@@ -26,7 +26,7 @@ contentManagerSystem是一个自由软件，您可以自由分发、修改其中
 
 项目截图
 -----------------------------------
-![](https://gitee.com/yangxiaobing_175/contentManagerSystem/blob/master/temp/1.png)
+![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/1.png)
 ![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/2.png)
 ![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/3.png)
 ![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/4.png)

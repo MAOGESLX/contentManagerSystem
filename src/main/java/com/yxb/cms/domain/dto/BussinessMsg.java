@@ -30,24 +30,48 @@
  * - License: GNU Lesser General Public License (GPL)
  * - source code availability: http://git.oschina.net/yangxiaobing_175/contentManagerSystem
  */
-package com.yxb.cms.domain.bo;
+package com.yxb.cms.domain.dto;
 
-import org.apache.shiro.subject.Subject;
-
+import java.io.Serializable;
 
 /**
- * 权限验证BO，支持el表达式,调用方式<br>
- * ${currentUser.isPermitted('resModelCode')} true:false
+ * 后台管理系统业务返回Message通用类
+ *
  * @author yangxiaobing
  * @date 2017/7/11
  */
-public class PermissionSubject {
-	private Subject subject;
 
-	public PermissionSubject(Subject subject) {
-		this.subject = subject;
-	}
-	public boolean isPermitted(String permission) {
-		return subject.isPermitted(permission);
-	}
+
+public class BussinessMsg implements Serializable {
+    //返回Code
+    private String returnCode;
+    //返回描述
+    private String returnMessage;
+    //返回数据
+    private Object returnData;
+
+
+    public String getReturnCode() {
+        return returnCode;
+    }
+
+    public void setReturnCode(String returnCode) {
+        this.returnCode = returnCode;
+    }
+
+    public String getReturnMessage() {
+        return returnMessage;
+    }
+
+    public void setReturnMessage(String returnMessage) {
+        this.returnMessage = returnMessage;
+    }
+
+    public Object getReturnData() {
+        return returnData;
+    }
+
+    public void setReturnData(Object returnData) {
+        this.returnData = returnData;
+    }
 }

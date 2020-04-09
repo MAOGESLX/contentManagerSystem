@@ -32,7 +32,7 @@
  */
 package com.yxb.cms.architect.view;
 
-import com.yxb.cms.domain.bo.ExcelExport;
+import com.yxb.cms.domain.dto.ExcelExport;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.springframework.util.ReflectionUtils;

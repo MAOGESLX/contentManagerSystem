@@ -33,7 +33,7 @@
 package com.yxb.cms.service;
 
 import com.yxb.cms.dao.SystemLogMapper;
-import com.yxb.cms.domain.bo.ExcelExport;
+import com.yxb.cms.domain.dto.ExcelExport;
 import com.yxb.cms.domain.vo.SystemLog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

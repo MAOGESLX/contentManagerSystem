@@ -36,7 +36,7 @@ import com.yxb.cms.architect.constant.BussinessCode;
 import com.yxb.cms.architect.utils.BussinessMsgUtil;
 import com.yxb.cms.controller.BasicController;
 import com.yxb.cms.dao.ResourceMapper;
-import com.yxb.cms.domain.bo.BussinessMsg;
+import com.yxb.cms.domain.dto.BussinessMsg;
 import com.yxb.cms.domain.vo.Resource;
 import com.yxb.cms.service.ResourceService;
 import org.nutz.json.Json;
@@ -46,7 +46,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

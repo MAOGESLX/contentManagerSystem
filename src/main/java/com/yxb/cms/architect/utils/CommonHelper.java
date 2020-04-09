@@ -33,7 +33,7 @@
 package com.yxb.cms.architect.utils;
 
 import com.yxb.cms.architect.view.ExcelView;
-import com.yxb.cms.domain.bo.ExcelExport;
+import com.yxb.cms.domain.dto.ExcelExport;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;

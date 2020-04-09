@@ -37,7 +37,7 @@ import com.yxb.cms.architect.constant.BussinessCode;
 import com.yxb.cms.architect.constant.Constants;
 import com.yxb.cms.architect.utils.BussinessMsgUtil;
 import com.yxb.cms.architect.utils.CreateImageCode;
-import com.yxb.cms.domain.bo.BussinessMsg;
+import com.yxb.cms.domain.dto.BussinessMsg;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;

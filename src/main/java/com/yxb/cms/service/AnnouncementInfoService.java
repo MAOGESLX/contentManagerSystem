@@ -36,7 +36,7 @@ import com.yxb.cms.architect.constant.BussinessCode;
 import com.yxb.cms.architect.utils.BussinessMsgUtil;
 import com.yxb.cms.dao.AnnouncementInfoMapper;
 import com.yxb.cms.dao.AnnouncementInfoUserMapper;
-import com.yxb.cms.domain.bo.BussinessMsg;
+import com.yxb.cms.domain.dto.BussinessMsg;
 import com.yxb.cms.domain.vo.AnnouncementInfo;
 import com.yxb.cms.domain.vo.AnnouncementInfoUser;
 import org.apache.logging.log4j.LogManager;

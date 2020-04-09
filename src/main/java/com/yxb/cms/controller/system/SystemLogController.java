@@ -35,7 +35,7 @@ package com.yxb.cms.controller.system;
 import com.yxb.cms.architect.utils.CommonHelper;
 import com.yxb.cms.architect.utils.DateUtil;
 import com.yxb.cms.controller.BasicController;
-import com.yxb.cms.domain.bo.ExcelExport;
+import com.yxb.cms.domain.dto.ExcelExport;
 import com.yxb.cms.domain.vo.SystemLog;
 import com.yxb.cms.service.SystemLogService;
 import org.springframework.beans.factory.annotation.Autowired;

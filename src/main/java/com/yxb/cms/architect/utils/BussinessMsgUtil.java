@@ -33,7 +33,7 @@
 package com.yxb.cms.architect.utils;
 
 import com.yxb.cms.architect.constant.BussinessCode;
-import com.yxb.cms.domain.bo.BussinessMsg;
+import com.yxb.cms.domain.dto.BussinessMsg;
 
 /**
  * 后台管理系统返回码信息帮助类

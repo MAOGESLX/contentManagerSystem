@@ -32,7 +32,6 @@
  */
 package com.yxb.cms.dao;
 
-import com.yxb.cms.domain.vo.DataCleaning;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

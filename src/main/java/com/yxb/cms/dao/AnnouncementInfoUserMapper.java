@@ -32,7 +32,6 @@
  */
 package com.yxb.cms.dao;
 
-import com.yxb.cms.domain.vo.AnnouncementInfoUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

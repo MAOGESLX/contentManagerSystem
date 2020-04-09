@@ -37,8 +37,6 @@ import com.yxb.cms.architect.utils.BussinessMsgUtil;
 import com.yxb.cms.controller.BasicController;
 import com.yxb.cms.dao.AnnouncementInfoMapper;
 import com.yxb.cms.domain.dto.BussinessMsg;
-import com.yxb.cms.domain.vo.AnnouncementInfo;
-import com.yxb.cms.service.AnnouncementInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -30,42 +30,74 @@
  * - License: GNU Lesser General Public License (GPL)
  * - source code availability: http://git.oschina.net/yangxiaobing_175/contentManagerSystem
  */
-package com.yxb.cms.architect.filter;
+package com.yxb.cms.controller.view;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.yxb.cms.domain.dto.MenuTree;
+import com.yxb.cms.service.MenuInfoService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.annotation.Resource;
+import java.util.List;
+
 
 /**
- * 自定义拦截器
+ * 主页Controller
+ *
  * @author yangxiaobing
- * @date 2017/7/26.
+ * @date 2017/7/6
  */
-//@Component
-public class MyWebFilter implements Filter {
-    private Logger log = LogManager.getLogger(MyWebFilter.class);
+@Controller
+@RequestMapping("main")
+public class IndexController extends BaseController {
+
+    @Resource
+    private MenuInfoService menuInfoService;
 
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
+    /**
+     *跳转到主页
+     * @return
+     */
+    @RequestMapping("/index.action")
+    public String toIndexPage(Model model) {
+        List<MenuTree> menuInfo = menuInfoService.getMenuInfo(this.getCurrentUser(), this.getCurrentUser().getUserRole());
+        model.addAttribute("menuTree", menuInfo);
+        return "main/index";
     }
 
-    @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        HttpServletResponse response = (HttpServletResponse) res;
-        HttpServletRequest request = (HttpServletRequest) req;
-        log.info("==>拦截请求"+response.getStatus());
-log.info(((HttpServletRequest) req).getRequestURL());
-        chain.doFilter(req, res);
+    /**
+     * 跳转到工作台
+     *
+     * @return
+     */
+    @RequestMapping("/workplace.action")
+    public String toWorkplacePage(Model model) {
+        return "main/workplace";
+    }
+    /**
+     * 跳转到数据分析
+     *
+     * @return
+     */
+    @RequestMapping("/data_analysis.action")
+    public String toDataAnalysisPage(Model model) {
+        return "main/data_analysis";
     }
 
-    @Override
-    public void destroy() {
 
+
+
+    /**
+     * 跳转到权限不足页面
+     * @return
+     */
+    @RequestMapping("/unauthorized.action")
+    public String toUnauthorizedPage() {
+        return "error/unauthorized";
     }
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.yxb.cms.dao;
 
 import com.yxb.cms.domain.vo.DbUserRole;
+import org.apache.ibatis.annotations.Param;
 
 public interface DbUserRoleMapper {
     /**
@@ -50,4 +51,11 @@ public interface DbUserRoleMapper {
      * @mbggenerated Thu Apr 09 18:03:43 CST 2020
      */
     int updateByPrimaryKey(DbUserRole record);
+
+    /**
+     * 根据用户Id,查询用户角色信息
+     * @param userId 用户Id
+     * @return
+     */
+    DbUserRole selectUserRolesByUserId(@Param("userId") String userId);
 }

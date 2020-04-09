@@ -24,7 +24,7 @@
 
                     <a href="javascript:;">
                         <img class="layui-nav-img" src="${ctx}/static/img/face.jpg">
-                        <cite>超级管理员${LOGIN_ACCOUNT.userName}</cite><span class="layui-nav-more"></span>
+                        <cite>${LOGIN_ACCOUNT.userName}</cite><span class="layui-nav-more"></span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a id="userPersonal" lay-href>个人信息</a></dd>
@@ -39,35 +39,24 @@
             <div class="layui-side-scroll">
                 <ul class="layui-nav layui-nav-tree layui-left-nav" lay-shrink="all">
 
-                    <li class="layui-nav-item">
-                        <a href="javascript:;" data-url="${ctx}/main/workplace.action">
-                            <img class="img-nav" src="${ctx}/static/img/workplace.png">
-                            <cite>工作台</cite>
-                        </a>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;" data-url="">
-                            <img class="img-nav" src="${ctx}/static/img/system.png">
-                            <cite>系统管理</cite>
-                        </a>
-
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a href="javascript:;" data-url="/system/user/user_page.action">
-                                    <div class="layui-first-menu"></div>
-                                    <cite>用户管理</cite>
-                                </a>
-                            </dd>
-                        </dl>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a href="javascript:;" data-url="/system/user/user_page.action">
-                                    <div class="layui-first-menu"></div>
-                                    <cite>角色管理</cite>
-                                </a>
-                            </dd>
-                        </dl>
-                    </li>
+                    <c:forEach var="menu" items="${menuTree}">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;" data-url="${ctx}${menu.parentMenu.menuLinkAddress}">
+                                <img class="img-nav" src="${ctx}${menu.parentMenu.menuImage}" />
+                                <cite>${menu.parentMenu.menuName}</cite>
+                            </a>
+                            <c:forEach var="menuChild" items="${menu.childMenu}">
+                                <dl class="layui-nav-child">
+                                    <dd>
+                                        <a href="javascript:;" data-url="${ctx}${menuChild.menuLinkAddress}">
+                                            <div class="layui-first-menu"></div>
+                                            <cite>${menuChild.menuName}</cite>
+                                        </a>
+                                    </dd>
+                                </dl>
+                            </c:forEach>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>

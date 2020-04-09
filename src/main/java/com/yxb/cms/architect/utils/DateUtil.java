@@ -32,16 +32,11 @@
  */
 package com.yxb.cms.architect.utils;
 
-import java.text.ChoiceFormat;
-import java.text.DateFormat;
-import java.text.MessageFormat;
-import java.text.ParseException;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
+import org.springframework.util.StringUtils;
+
+import java.text.*;
 import java.util.Calendar;
 import java.util.Date;
-
-import org.springframework.util.StringUtils;
 
 /**
  * 日期处理工具类
@@ -478,7 +473,6 @@ public class DateUtil {
 	  
 		/**
 		 * 日期字符串转换，页面显示格式为：yyyy-MM-dd HH:mm:dd
-		 * @param 参数为：Date类型
 		 */
 		public static String Date2Stirng2Second(Date date){
 			return toString(date,DEFAULT_DATETIME_FORMAT);
@@ -486,7 +480,6 @@ public class DateUtil {
 		
 		/**
 		 * 日期字符串转换，页面显示格式为：yyyy-MM-dd
-		 * @param 参数为：Date类型
 		 */
 		public static String Date2Stirng(Date date){
 			return toString(date,DEFAULT_DATE_FORMAT);

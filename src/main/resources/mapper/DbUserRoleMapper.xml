@@ -108,4 +108,12 @@
       fk_role_id = #{fkRoleId,jdbcType=VARCHAR}
     where user_role_id = #{userRoleId,jdbcType=VARCHAR}
   </update>
+
+  <!-- 根据用户Id,查询用户角色信息 -->
+  <select id="selectUserRolesByUserId" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from db_user_role
+    where fk_user_id = #{userId,jdbcType=INTEGER}
+  </select>
 </mapper>

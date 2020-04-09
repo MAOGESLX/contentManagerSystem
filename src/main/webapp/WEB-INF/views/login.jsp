@@ -23,11 +23,11 @@
                     <form class="layui-form login-form " method="post">
                         <div class="layui-form-item">
                             <label class="login-label"><i class="layui-icon layui-icon-username"></i></label>
-                            <input type="text" id="username" name="username" lay-verify="required" lay-reqText="请输入您的用户名" lay-verType="tips" placeholder="请输入您的用户名" autocomplete="off" value="" class="layui-input">
+                            <input type="text" id="loginName" name="loginName" lay-verify="required" lay-reqText="请输入您的用户名" lay-verType="tips" placeholder="请输入您的用户名" autocomplete="off" value="" class="layui-input">
                         </div>
                         <div class="layui-form-item">
                             <label class="login-label"><i class="layui-icon layui-icon-password"></i></label>
-                            <input type="password" id="password" name="password" lay-verify="required" lay-reqText="请输入您的密码" lay-verType="tips" placeholder="请输入您的密码" autocomplete="off" value="" class="layui-input">
+                            <input type="password" id="loginPwd" name="loginPwd" lay-verify="required" lay-reqText="请输入您的密码" lay-verType="tips" placeholder="请输入您的密码" autocomplete="off" value="" class="layui-input">
                         </div>
                         <div class="layui-form-item login-code">
                             <label class="login-label"><i class="layui-icon layui-icon-vercode"></i></label>
@@ -72,8 +72,8 @@
                 type: 'post',
                 async: false,
                 data: {
-                    username: $("#username").val(),
-                    password: $("#password").val(),
+                    userAccount: $("#loginName").val(),
+                    password: $("#loginPwd").val(),
                     code: $("#code").val()
                 },
                 success: function (data) {

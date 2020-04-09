@@ -33,12 +33,8 @@
 package com.yxb.cms.architect.config;
 
 import com.yxb.cms.architect.interceptor.CommonInterceptor;
-import com.yxb.cms.architect.interceptor.ErrorInterceptor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.boot.web.support.ErrorPageFilter;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -53,24 +49,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
     private Logger log = LogManager.getLogger(MyWebAppConfigurer.class);
 
-    @Bean
-    public ErrorPageFilter errorPageFilter() {
-        return new ErrorPageFilter();
-    }
 
 
-    /**
-     * 只过滤*.do的错误信息
-     * @param filter
-     * @return
-     */
-    @Bean
-    public FilterRegistrationBean disableSpringBootErrorFilter(ErrorPageFilter filter) {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        filterRegistrationBean.setFilter(filter);
-        filterRegistrationBean.addUrlPatterns("*.action");
-        return filterRegistrationBean;
-    }
+
 
     /**
      * 拦截器添加
@@ -81,12 +62,6 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         log.info(">>>>拦截器注册>>>");
-
-        // 多个拦截器组成一个拦截器链依次加载
-
-
-        //通用错误页面拦截器
-        registry.addInterceptor(new ErrorInterceptor()).addPathPatterns("/*");
         //通用错误页面拦截器
         registry.addInterceptor(new CommonInterceptor()).addPathPatterns("/*");
         super.addInterceptors(registry);

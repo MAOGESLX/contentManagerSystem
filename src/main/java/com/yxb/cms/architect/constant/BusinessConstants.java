@@ -41,35 +41,22 @@ package com.yxb.cms.architect.constant;
  */
 public enum BusinessConstants {
 
-	/**用户状态*/
-	SYS_USER_STATUS_0(0,"0-有效"),
-	SYS_USER_STATUS_1(1,"1-失效"),
 
+	/**状态*/
+	STATUS_0(0,"无效"),
+	STATUS_1(1,"有效"),
 
-
-	/**角色状态*/
-	SYS_ROLE_STATUS_0(0,"0-有效"),
-	SYS_ROLE_STATUS_1(1,"1-失效"),
-	
 	
 	/**菜单资源类型*/
 	SYS_RES_TYPE_0(0,"0-菜单"),
 	SYS_RES_TYPE_1(1,"1-按钮"),
-	
-	/**菜单资源状态*/
-	SYS_RES_STATUS_0(0,"0-有效"),
-	SYS_RES_STATUS_1(1,"1-失效"),
+
+
     /**菜单级别*/
     SYS_RES_LEVEL_1(1,"一级菜单"),
     SYS_RES_LEVEL_2(2,"二级菜单"),
     SYS_RES_LEVEL_3(3,"三级菜单"),
 
-    /**公告类型*/
-    ANNOUNCEMENT_TYPE_1(1,"系统公告"),
-    ANNOUNCEMENT_TYPE_2(2,"活动公告"),
-
-    /**数据清洗类型*/
-    CLEAN_DATA_TYPE_1(1,"用户登陆"),
 
     ;
 	

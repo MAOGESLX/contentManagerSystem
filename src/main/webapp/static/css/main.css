@@ -11,7 +11,7 @@ body {
     color: #515a6e;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
+    overflow: auto;
     margin: 0;
     padding: 0;
 

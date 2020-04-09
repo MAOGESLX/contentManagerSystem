@@ -35,6 +35,7 @@ package com.yxb.cms;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -45,6 +46,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @date 2017/7/27
  */
 @SpringBootApplication
+@ServletComponentScan
 @EnableScheduling
 public class Application extends SpringBootServletInitializer{
 	

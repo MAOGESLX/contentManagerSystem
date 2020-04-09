@@ -201,4 +201,20 @@
       menu_desc = #{menuDesc,jdbcType=VARCHAR}
     where menu_info_id = #{menuInfoId,jdbcType=VARCHAR}
   </update>
+
+  <!-- 查询有效的,URL不为空的所有菜单信息-->
+  <select id="selectMenuUrlAllList" resultMap="BaseResultMap">
+      SELECT * FROM db_menu_info  WHERE menu_status = 1 AND menu_link_address != ""
+  </select>
+
+  <!-- 查询有效的所有菜单信息-->
+  <select id="selectMenuAllList" resultMap="BaseResultMap">
+        SELECT * FROM db_menu_info  WHERE menu_status = 1
+    </select>
+
+  <select id="selectMenuInfoByRoleId" resultMap="BaseResultMap">
+    select m2.* from db_role_menu m1
+    join db_menu_info m2 on m1.fk_menu_info_id = m2.menu_info_id
+    where m1.fk_role_id = #{roleId} and m2.menu_status = 1
+  </select>
 </mapper>

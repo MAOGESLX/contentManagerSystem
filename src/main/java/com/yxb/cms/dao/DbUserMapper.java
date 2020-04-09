@@ -1,6 +1,7 @@
 package com.yxb.cms.dao;
 
 import com.yxb.cms.domain.vo.DbUser;
+import org.apache.ibatis.annotations.Param;
 
 public interface DbUserMapper {
     /**
@@ -50,4 +51,13 @@ public interface DbUserMapper {
      * @mbggenerated Thu Apr 09 18:03:43 CST 2020
      */
     int updateByPrimaryKey(DbUser record);
+
+
+    /**
+     * 根据登录用户名和状态查询用户信息
+     * @param userAccount 用户账号
+     * @param userStatus  用户状态
+     * @return
+     */
+    DbUser selectUserByUserAccountAndStatus(@Param("userAccount") String userAccount, @Param("userStatus") Integer userStatus);
 }

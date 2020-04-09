@@ -1,6 +1,9 @@
 package com.yxb.cms.dao;
 
 import com.yxb.cms.domain.vo.DbMenuInfo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface DbMenuInfoMapper {
     /**
@@ -50,4 +53,28 @@ public interface DbMenuInfoMapper {
      * @mbggenerated Thu Apr 09 18:03:43 CST 2020
      */
     int updateByPrimaryKey(DbMenuInfo record);
+
+
+    /**
+     * 查询有效的,URL不为空的所有菜单信息
+     *
+     * @return
+     */
+    List<DbMenuInfo> selectMenuUrlAllList();
+
+    /**
+     * 查询有效的所有菜单信息
+     *
+     * @return
+     */
+    List<DbMenuInfo> selectMenuAllList();
+
+
+    /**
+     * 根据角色Id，查询菜单列表
+     * @param roleId
+     * @return
+     */
+    List<DbMenuInfo> selectMenuInfoByRoleId(@Param("roleId") String roleId);
+
 }

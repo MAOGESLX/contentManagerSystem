@@ -24,8 +24,7 @@
         window.history.go(-1)
     }
     function home() {
-        window.top.location.href = "${ctx}/";
-
+        window.top.location.href = "${ctx}/main/index.action";
     }
 </script>
 </body>

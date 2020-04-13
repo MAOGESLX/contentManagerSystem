@@ -22,7 +22,7 @@ layui.define(['layer'], function (exports) {
             top.layer.confirm(text, {
                 title: title,
                 resize: false,
-                skin: 'bbt-open-class',
+                skin: 'cms-open-class',
                 btn: ['确定', '取消'],
                 btnAlign: 'c',
                 icon: 0,
@@ -64,7 +64,7 @@ layui.define(['layer'], function (exports) {
                 content : url,
                 area: [width, height],
                 resize:false,
-                skin: 'bbt-open-class',
+                skin: 'cms-open-class',
                 success : function(layero, index){
                 }
             });
@@ -80,7 +80,7 @@ layui.define(['layer'], function (exports) {
                 content : url,
                 area: [width, height],
                 resize:false,
-                skin: 'bbt-open-class',
+                skin: 'cms-open-class',
                 success : function(layero, index){
                 }
             });
@@ -94,7 +94,7 @@ layui.define(['layer'], function (exports) {
                 content : url,
                 area: [width, height],
                 resize:false,
-                skin: 'bbt-open-class',
+                skin: 'cms-open-class',
                 success : function(layero, index){
                 }
             });
@@ -109,7 +109,7 @@ layui.define(['layer'], function (exports) {
                 content : url,
                 area: [width, height],
                 resize:false,
-                skin: 'bbt-open-class',
+                skin: 'cms-open-class',
                 success : function(layero, index){
 
                 }
@@ -125,7 +125,7 @@ layui.define(['layer'], function (exports) {
                 content : content,
                 area: [width, height],
                 resize:false,
-                skin: 'bbt-open-class',
+                skin: 'cms-open-class',
                 success : function(layero, index){
                 }
             });
@@ -136,7 +136,7 @@ layui.define(['layer'], function (exports) {
         logOut: function (title, text, url, type, dataType, data, callback) {
             parent.layer.confirm(text, {
                 title: title,
-                skin: 'bbt-open-class',
+                skin: 'cms-open-class',
                 resize: false,
                 btn: ['确定', '取消'],
                 btnAlign: 'c',
@@ -151,7 +151,7 @@ layui.define(['layer'], function (exports) {
         logTipInfo: function (title, text) {
             parent.layer.confirm(text, {
                 title: title,
-                skin: 'bbt-open-class',
+                skin: 'cms-open-class',
                 resize: false,
                 btn: ['关闭'],
                 btnAlign: 'c',

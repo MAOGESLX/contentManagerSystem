@@ -53,22 +53,155 @@ body {
     background-color: #fff !important;
     color: #0e9ee1 !important;
 }
-
+/**按钮*/
 .layui-btn:hover {
-
     opacity: 1 !important;
     filter: alpha(opacity=80);
     color: #ffffff;
     border: 1px solid #57a3f3;
-
     background-color: #57a3f3;
 
 }
 
-/**新增*/
 .layui-btn-add {
     background-color: #2d8cf0;
     color: #fff;
     border: 1px solid #2d8cf0;
 }
 
+.layui-btn-add {
+    background-color: #27affd;
+    color: #fff;
+    border: 1px solid #27affd;
+}
+.layui-btn-default {
+    background-color: #e3f4ff;
+    color: #54aeff;
+    border: 1px solid #54aeff;
+}
+.layui-btn-default:hover {
+    background-color: #e3f4ff;
+    color: #54aeff;
+    border: 1px solid #54aeff;
+    opacity: 1 !important;
+    filter: alpha(opacity=80);
+}
+
+
+.layui-elem-quote {
+    margin-bottom: 10px;
+    line-height: 22px;
+    border-left: 5px solid #27affd;
+    border-radius: 0 2px 2px 0;
+    background-color: #fff;
+    color: #666666;
+}
+
+
+.layui-inline-right {
+    float: right;
+    padding-right: 2px;
+    margin-top: -4px;
+}
+
+.input-serach {
+    color: #666666;
+    border: 1px solid #27affd !important;
+    font-size: 11px;
+    height: 30px;
+    line-height: 30px;
+}
+.input-serach:hover{
+    border: 1px solid #27affd !important;
+}
+
+/****弹窗皮肤*****/
+.layui-layer-msg {
+    border: 1px solid #e2f7ff !important;
+}
+
+body .cms-open-class .layui-layer-title {
+    background: #27affd;
+    color: #fff;
+    height: 37px;
+    line-height: 37px;
+    border: 1px solid #27affd !important;
+
+}
+
+body .cms-open-class .layui-layer-content {
+    background-color: #fff;
+    color: #666666;
+}
+
+body .cms-open-class .layui-layer-btn0 {
+    background-color: #27affd;
+    color: #fff;
+    border: 1px solid #27affd;
+}
+
+body .cms-open-class .layui-layer-btn1 {
+    background-color: #aaaaaa;
+    color: #fff;
+    border: 1px solid #aaaaaa;
+}
+
+/**表格样式修改*/
+.layui-table thead tr, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool, .layui-table-total, .layui-table-total tr{
+    background-color: #e2f7ff;
+}
+
+.layui-table tbody tr:hover{
+    background-color: #f6f6f9 !important;
+
+}
+.layui-table[lay-even] tr:nth-child(2n){
+    background-color: #f6f6f9 !important;
+}
+.layui-table td, .layui-table th {
+    min-height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    text-align: center;
+
+}
+.layui-table-view .layui-table[lay-size="sm"] .layui-table-cell {
+    height: 27px;
+    line-height: 27px;
+}
+.layui-table-header .layui-table {
+    border: 0;
+}
+
+
+.layui-table th {
+    color: #0e9ee1;
+    padding: 6px 4px;
+}
+.layui-table tr {
+    padding: 6px 4px;
+}
+.layui-table td {
+    font-size: 12px;
+}
+.layui-table td a {
+    color: #0e9ee1;
+    text-decoration: none;
+}
+
+.layui-table td a:hover {
+    text-decoration: underline;
+
+}
+.layui-table-sort[lay-sort="desc"] .layui-table-sort-desc {
+    border-top-color: #0e9ee1;
+}
+.layui-table-sort[lay-sort="asc"] .layui-table-sort-asc {
+    border-bottom-color: #0e9ee1;
+}
+.layui-table-sort .layui-table-sort-asc:hover {
+    border-bottom-color: #0e9ee1;
+}
+.layui-table-sort .layui-table-sort-desc:hover {
+    border-top-color: #0e9ee1;
+}

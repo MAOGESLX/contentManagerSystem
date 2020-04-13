@@ -99,31 +99,15 @@
                 {field:'roleName', title: '角色名称',minWidth:40},
                 {field:'roleType', title: '角色类型',minWidth:40,templet: function(item){
                         var roleType='';
-                        if(item.roleType==0){
-                            roleType='学校';
-                        }else if(item.roleType==1){
-                            roleType='企业';
+                        if(item.roleType==1){
+                            roleType='系统管理员';
+                        }else if(item.roleType==2){
+                            roleType='资源管理员';
                         }else{
                             roleType = item.roleType
                         }
 
                         return roleType
-                    }},
-                {field:'rolesState', title: '角色等级',minWidth:40,templet: function(item){
-                        var rolesState='';
-                        if(item.rolesState==1){
-                            rolesState='管理员';
-                        }else if(item.rolesState==2){
-                            rolesState='教师';
-                        }else if(item.rolesState==3){
-                            rolesState='学生';
-                        }else if(item.rolesState==4){
-                            rolesState='家长';
-                        }else{
-                            rolesState = item.rolesState
-                        }
-
-                        return rolesState
                     }},
                 {field:'roleStatus', title: '角色状态',minWidth:40,templet: function(item){
                         var statusName='';

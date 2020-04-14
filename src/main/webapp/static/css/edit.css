@@ -1,0 +1,47 @@
+.layui-card-body {
+    position: relative;
+    padding: 18px 15px;
+    line-height: 24px;
+}
+
+.layui-badge-rim, .layui-colla-item, .layui-elem-field, .layui-form-pane .layui-form-item[pane], .layui-form-pane .layui-form-label, .layui-input, .layui-layedit, .layui-layedit-tool, .layui-quote-nm, .layui-select, .layui-tab-bar, .layui-tab-card, .layui-tab-title, .layui-tab-title .layui-this::after, .layui-textarea {
+    border-color: #c9c9c9 !important;
+}
+
+
+.layui-form-pane .layui-form-label {
+    width: 110px;
+    padding: 8px 15px;
+    height: 30px;
+    line-height: 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px 0 0 2px;
+    text-align: center;
+    background-color: #FBFBFB;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-color: #c9c9c9;
+}
+
+.layui-form-label {
+    float: left;
+    display: block;
+    padding: 9px 15px;
+    width: 80px;
+    font-weight: 400;
+    line-height: 10px;
+    text-align: right;
+    color: #666666;
+    font-size: 13px;
+}
+
+.layui-input, .layui-select, .layui-textarea {
+    height: 30px;
+    line-height: 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #666666;
+    border: 1px solid #c9c9c9 !important;
+}

@@ -1,6 +1,7 @@
 package com.yxb.cms.dao;
 
 import com.yxb.cms.domain.vo.DbRole;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -66,5 +67,24 @@ public interface DbRoleMapper {
      * @return
      */
     List<DbRole> selectRoleListByPage(DbRole role);
+
+    /**
+     * 验证角色名称唯一性
+     * @param roleName 角色名称
+     * @param roleId   角色Id
+     * @return
+     */
+    Long selectRoleNameCheck(@Param("roleName") String roleName, @Param("roleId") String roleId);
+
+
+    /**
+     * 查询角色最大排序
+     * @return
+     */
+    Integer selectRoleMaxOrderNo();
+
+
+
+
 
 }

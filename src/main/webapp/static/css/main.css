@@ -16,7 +16,11 @@ body {
     padding: 0;
 
 }
-
+.layui-fluid {
+    position: relative;
+    margin: 0 auto;
+    padding: 7px 15px;
+}
 /**layer-tips*/
 .layui-layer-tips .layui-layer-content {
     background-color: #27affd !important;
@@ -88,6 +92,35 @@ body {
 }
 
 
+/**保存*/
+.layui-btn-save {
+    background-color: #27affd;
+    color: #fff;
+    border: 1px solid #27affd;
+    padding: 0 35px;
+}
+
+/**保存*/
+.layui-btn-file {
+    background-color: #1E9FFF;
+    color: #fff;
+    border: 1px solid #1E9FFF;
+    padding: 0 35px;
+}
+
+/**取消*/
+.layui-btn-cancel {
+    background-color: #e0e0e4;
+    color: #fff;
+    border: 1px solid #e0e0e4;
+    padding: 0 35px;
+}
+
+.layui-btn-cancel:hover {
+    background-color: #d2d2d2;
+    color: #fff;
+    border: 1px solid #d2d2d2;
+}
 .layui-elem-quote {
     margin-bottom: 10px;
     line-height: 22px;
@@ -204,4 +237,165 @@ body .cms-open-class .layui-layer-btn1 {
 }
 .layui-table-sort .layui-table-sort-desc:hover {
     border-top-color: #0e9ee1;
+}
+
+/**分页样式修改*/
+.layui-laypage a, .layui-laypage span {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    padding: 0 15px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0px 8px 5px 0px;
+    background-color: #fff;
+    color: #666666;
+    font-size: 12px;
+}
+
+.layui-laypage-count {
+    color: #666666 !important;
+}
+
+.layui-laypage a, .layui-laypage button, .layui-laypage input, .layui-laypage select, .layui-laypage span {
+    border: 1px solid #e6e8ee;
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #0e9ee1;
+    color: #666666;
+}
+
+.layui-laypage .layui-laypage-curr em {
+    position: relative;
+    color: #0e9ee1;
+}
+
+.layui-disabled, .layui-disabled:hover {
+    color: #c9c9c9 !important;
+    cursor: not-allowed !important;
+}
+
+.layui-laypage a:hover {
+    color: #666666;
+}
+
+
+
+.layui-input:hover, .layui-textarea:hover, .layui-input:focus {
+    border-color: #c9c9c9 !important;
+}
+
+.layui-form-select .layui-edge {
+    border-top-color: #c9c9c9 !important;
+
+}
+
+.layui-form-select dl {
+    left: 0;
+    top: 42px;
+    padding: 5px 0;
+    z-index: 899;
+    min-width: 100%;
+    border: 1px solid #c9c9c9;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #666666;
+    font-size: 13px;
+}
+
+.layui-form-select dl dd.layui-this {
+    background-color: #fff;
+    color: #666666;
+}
+
+.layui-form-select dl dd:hover {
+    background-color: #f2f2f2;
+
+}
+
+.layui-form-select dl dd, .layui-form-select dl dt {
+    padding: 0 9px;
+    line-height: 27px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+/**radio*/
+.layui-form-radio {
+    line-height: 23px;
+}
+
+.layui-form-radio > i {
+    margin-right: 8px;
+    font-size: 20px;
+    color: #27affd;
+}
+
+.layui-form-radio > div {
+    color: #666666;
+    font-size: 13px;
+}
+
+.layui-form-radio > i:hover, .layui-form-radioed > i {
+    color: #27affd !important;
+}
+
+.layui-form-checkbox span {
+    padding: 0 10px;
+    height: 100%;
+    font-size: 13px;
+    border-radius: 2px 0 0 2px;
+    color: #fff;
+    overflow: hidden;
+}
+
+.layui-form-checkbox:hover i {
+    border-color: #27affd !important;;
+    color: #27affd !important;;
+}
+
+.layui-form-checked, .layui-form-checked:hover {
+    border-color: #27affd !important;;
+}
+
+
+.layui-form-checked[lay-skin="primary"] i {
+    border-color: #27affd !important;
+    background-color: #fff;
+    color: #fff;
+    width: 12px !important;
+    height: 12px !important;
+    line-height: 12px !important;
+}
+
+
+.layui-form-checked i, .layui-form-checked:hover i {
+    color: #27affd !important;
+    border-color: #27affd !important;
+}
+
+.layui-tree-line .layui-tree-entry:hover .layui-tree-txt {
+
+    color:#999;
+    text-decoration: none !important;
+    transition: .3s;
+
+}
+.layui-tree-iconClick .layui-icon {
+    font-size: 13px;
+
 }

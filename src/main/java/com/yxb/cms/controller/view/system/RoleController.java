@@ -1,8 +1,11 @@
 package com.yxb.cms.controller.view.system;
 
 
+import com.yxb.cms.architect.constant.BussinessCode;
+import com.yxb.cms.architect.utils.BussinessMsgUtil;
 import com.yxb.cms.controller.view.BaseController;
 import com.yxb.cms.dao.DbRoleMapper;
+import com.yxb.cms.domain.dto.BussinessMsg;
 import com.yxb.cms.domain.vo.DbRole;
 import com.yxb.cms.service.MenuInfoService;
 import com.yxb.cms.service.RoleService;
@@ -74,19 +77,19 @@ public class RoleController extends BaseController {
         model.addAttribute("role",role);
         return "system/role_edit";
     }
-//    /**
-//     * 保存角色菜单信息
-//     * @param role  角色对象
-//     * @return
-//     */
-//    @RequestMapping("/ajax_save_role.action")
-//    @ResponseBody
-//    public BussinessMsg ajaxSaveRole(DbRole role){
-//        try {
-//            return roleService.saveOrUpdateRole(role);
-//        } catch (Exception e) {
-//            log.error("保存角色信息方法内部错误{}",e.getMessage(),e);
-//            return BussinessMsgUtil.returnCodeMessage(BussinessCode.ROLE_SAVE_ERROR);
-//        }
-//    }
+    /**
+     * 保存角色菜单信息
+     * @param role  角色对象
+     * @return
+     */
+    @RequestMapping("/ajax_save_role.action")
+    @ResponseBody
+    public BussinessMsg ajaxSaveRole(DbRole role){
+        try {
+            return roleService.saveOrUpdateRole(role);
+        } catch (Exception e) {
+            log.error("保存角色信息方法内部错误{}",e.getMessage(),e);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.ROLE_SAVE_ERROR);
+        }
+    }
 }

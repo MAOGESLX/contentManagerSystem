@@ -57,8 +57,17 @@ public enum BusinessConstants {
     SYS_RES_LEVEL_2(2,"二级菜单"),
     SYS_RES_LEVEL_3(3,"三级菜单"),
 
+	/**用户角色类型*/
+	USER_ROLE_TYPE_1(1,"系统管理员"),
+	USER_ROLE_TYPE_2(2,"资源管理员"),
+	USER_ROLE_TYPE_SUP(-1,"超级管理员"),
 
-    ;
+
+
+
+
+
+	;
 	
 
 	 BusinessConstants(Integer code, String msg) {

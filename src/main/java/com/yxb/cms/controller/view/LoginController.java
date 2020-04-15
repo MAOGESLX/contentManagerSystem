@@ -36,6 +36,7 @@ import com.yxb.cms.architect.constant.BussinessCode;
 import com.yxb.cms.architect.constant.Constants;
 import com.yxb.cms.architect.utils.BussinessMsgUtil;
 import com.yxb.cms.architect.utils.CreateImageCode;
+import com.yxb.cms.architect.utils.ShiroUtils;
 import com.yxb.cms.dao.DbUserRoleMapper;
 import com.yxb.cms.domain.dto.BussinessMsg;
 import com.yxb.cms.domain.vo.DbUser;
@@ -133,7 +134,7 @@ public class LoginController extends BaseController {
                 log.error("登陆验证失败,原因:验证码错误：code:"+code+",sessionCode:"+sessionCode);
                 return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_CAPTCHA_ERROR);
             }
-            UsernamePasswordToken token = new UsernamePasswordToken(userAccount, password);
+            UsernamePasswordToken token = new UsernamePasswordToken(userAccount, ShiroUtils.encryptPassword(password,userAccount));
             token.setRememberMe(true);
             Subject currentUser = SecurityUtils.getSubject();
 

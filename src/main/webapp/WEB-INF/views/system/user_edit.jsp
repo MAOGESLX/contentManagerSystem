@@ -4,129 +4,117 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>后台管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="后台管理系统">
-    <meta name="description" content="致力于提供通用版本后台管理解决方案">
-    <link rel="shortcut icon" href="${ctx}/static/img/favicon.ico">
-    <link rel="stylesheet" href="${ctx}/static/layui_v2/css/layui.css">
+    <style>
 
-    <script src="${ctx}/static/layui_v2/layui.js"></script>
-
+        .layui-form-label{
+            width: 132px !important;
+            flex-direction: column;
+            justify-content: center;
+            display: flex;
+        }
+        .layui-input-block {
+            margin-left: 132px !important;
+        }
+        .layui-form-select dl {
+            max-height: 118px;
+        }
+    </style>
 </head>
-<body class="childrenBody" style="font-size: 12px;margin: 10px 10px 0;">
-<form class="layui-form layui-form-pane">
-    <input id="userId" name="userId" type="hidden" value="${user.userId}">
+<body class="layui-layout-body">
+<div class="layui-fluid" >
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <form class="layui-form layui-form-pane" method="post" lay-filter="userFormFilter">
+                <!-- 隐藏表单域-->
+                <input type="hidden" id="pageFlag" value="${pageFlag}">
+                <input type="hidden" id="userId" name="userId" value="${user.userId}" >
 
-    <input id="pageFlag"  type="hidden" value="${pageFlag}">
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">登陆账号</label>
-        <div class="layui-input-block">
-            <c:if test="${pageFlag == 'addPage' }">
-             <input type="text" class="layui-input" name="userLoginName" lay-verify="required|userLoginName" maxlength="20" value="" placeholder="请输入登陆账号">
-            </c:if>
-            <c:if test="${pageFlag == 'updatePage' }">
-                <input type="text" class="layui-input" name="userLoginName" lay-verify="required|userLoginName" maxlength="20"  value="${user.userLoginName}" placeholder="请输入登陆账号" disabled>
-            </c:if>
+                <div class="layui-row layui-col-space8">
+                    <div class="layui-form-item layui-col-xs12">
+                        <div class="layui-row layui-col-space12">
+                            <div class="layui-col-xs12">
+                                <label class="layui-form-label">用户账号：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="userAccount" name="userAccount" value="${user.userAccount}" lay-verify="required" lay-verType="tips" placeholder="请输入帐号" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-col-xs12">
+                                <label class="layui-form-label">用户姓名：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="userName" name="userName" value="${user.userName}"  lay-verify="required" lay-verType="tips" placeholder="请输入姓名" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-col-xs12">
+                                <label class="layui-form-label">用户类型：</label>
+                                <div class="layui-input-block">
+                                    <select id="userType" name="userType" lay-verify="required" lay-filter="userTypeFilter" lay-verType="tips" lay-search>
+                                        <option value="1">系统管理员</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12" style="text-align: center;margin-top: 35px;">
+                        <button class="layui-btn layui-btn-radius layui-btn-save" lay-submit="" lay-filter="saveUser">保存</button>
+                        <a class="layui-btn layui-btn-radius layui-btn-cancel cancle">取消</a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">用户姓名</label>
-        <div class="layui-input-block">
-            <input type="text" class="layui-input" name="userName" lay-verify="required|userName" maxlength="20" value="${user.userName}" placeholder="请输入用户姓名">
-        </div>
-    </div>
-    <div class="layui-form-item" pane>
-        <label class="layui-form-label">用户状态</label>
-        <div class="layui-input-block">
-            <c:if test="${pageFlag == 'addPage' }">
-                <input type="radio" name="userStatus" value="0" title="有效" checked disabled>
-                <input type="radio" name="userStatus" value="1" title="失效" disabled>
-            </c:if>
-            <c:if test="${pageFlag == 'updatePage' and  user.userStatus == '0' }">
-                <input type="radio" name="userStatus" value="0" title="有效"  disabled <c:if test="${user.userStatus ==0 }">checked</c:if>/>
-                <input type="radio" name="userStatus" value="1" title="失效" disabled  <c:if test="${user.userStatus ==1 }">checked</c:if>/>
-            </c:if>
-            <c:if test="${pageFlag == 'updatePage' and  user.userStatus == '1' }">
-                <input type="radio" name="userStatus" value="0" title="有效"   <c:if test="${user.userStatus ==0 }">checked</c:if>/>
-                <input type="radio" name="userStatus" value="1" title="失效"   <c:if test="${user.userStatus ==1 }">checked</c:if>/>
-            </c:if>
-        </div>
-    </div>
-    <div class="layui-form-item" style="text-align: center;">
-            <button class="layui-btn" lay-submit="" lay-filter="saveUser">保存</button>
-            <button type="layui-btn" id="cancle" class="layui-btn layui-btn-primary">取消</button>
 
-    </div>
-</form>
+</div>
 <script type="text/javascript">
+
+    var $,layOpenWin,form,layer;
     layui.config({
-        base : "${ctx}/static/js/"
-    }).use(['form','layer','jquery','common'],function(){
-        var $ = layui.$,
-                form = layui.form,
-                common = layui.common,
-                layer = parent.layer === undefined ? layui.layer : parent.layer;
+        base: "${ctx}/static/js/"
+    }).use(['form', 'jquery', 'layer', 'layOpenWin'], function () {
+            form = layui.form,
+            layer = layui.layer,
+            $ = layui.jquery,
+            layOpenWin = layui.layOpenWin;
 
-        /**表单验证*/
-        form.verify({
-            userLoginName: function(value, item){
-                //验证登陆账号
-                if(!new RegExp("^[0-9A-Za-z_]{2,20}$").test(value)){
-                    return '登陆账号只能为英文、数字、下划线，长度2-20位';
-                }
-                //验证登陆账号是否存在
-
-            },
-            userName: function(value, item){
-                //验证用户名
-                if(!new RegExp("^([\u4e00-\u9fa5]){2,10}$").test(value)){
-                    return '用户姓名只能为中文，长度2-7位';
-                }
-            }
-        });
-
-        /**保存*/
-        form.on("submit(saveUser)",function(data){
-            var pageFlag = $("#pageFlag").val();
-            var userSaveLoading = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
-            //登陆验证
+        var pageFlag = $("#pageFlag").val();
+        if (pageFlag == 'updatePage') {
+            /**默认赋值*/
+            form.val("userFormFilter", {
+                "userType": '${user.userType}',
+            });
+        }
+        //保存
+        form.on("submit(saveUser)", function (data) {
+            var roleSaveLoading = top.layer.msg('数据提交中，请稍候', {icon: 16, time: false, shade: 0.8});
             $.ajax({
-                url : '${ctx}/user/ajax_save_user.action',
-                type : 'post',
+                url: '${ctx}/system/manager/ajax_save_manager.action',
+                type: 'post',
                 async: false,
-                data : data.field,
-                success : function(data) {
-                    if(data.returnCode == 0000){
-                        top.layer.close(userSaveLoading);
-                        if(pageFlag == 'addPage'){
-                            common.cmsLaySucMsg("保存成功,默认密码123456,请及时修改")
-                        }else {
-                            common.cmsLaySucMsg("保存成功")
-                        }
+                data: data.field,
+                success: function (data) {
+                    if (data.returnCode == 200) {
+                        top.layer.close(roleSaveLoading);
+                        window.parent.frames["ifr"].getSearchUser();// 刷新表格
                         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                        parent.layer.close(index); //再执行关闭                        //刷新父页面
-                        parent.location.reload();
-                    }else{
-                        top.layer.close(userSaveLoading);
-                        common.cmsLayErrorMsg(data.returnMessage);
-                    }
-                },error:function(data){
-                    top.layer.close(index);
+                        parent.layer.close(index); //再执行关闭
+                        layOpenWin.laySucMsg("保存成功");
 
+                    } else {
+                        top.layer.close(roleSaveLoading);
+                        layOpenWin.layErrorMsg(data.returnMessage);
+                    }
                 }
             });
             return false;
         });
-        //取消
-        $("#cancle").click(function(){
+
+        /**取消*/
+        $(".cancle").click(function () {
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.layer.close(index); //再执行关闭
         });
 
     });
-
 </script>
 </body>
 </html>

@@ -46,16 +46,15 @@ public enum BusinessConstants {
 	STATUS_0(0,"无效"),
 	STATUS_1(1,"有效"),
 
-	
-	/**菜单资源类型*/
-	SYS_RES_TYPE_0(0,"0-菜单"),
-	SYS_RES_TYPE_1(1,"1-按钮"),
+
+	MENU_TYPE_0(0,"菜单"),
+	MENU_TYPE_1(1,"按钮"),
 
 
-    /**菜单级别*/
-    SYS_RES_LEVEL_1(1,"一级菜单"),
-    SYS_RES_LEVEL_2(2,"二级菜单"),
-    SYS_RES_LEVEL_3(3,"三级菜单"),
+	/**菜单级别*/
+	MENU_LEVEL_1(1,"一级菜单"),
+	MENU_LEVEL_2(2,"二级菜单"),
+	MENU_LEVEL_3(3,"三级菜单"),
 
 	/**用户角色类型*/
 	USER_ROLE_TYPE_1(1,"系统管理员"),

@@ -202,6 +202,69 @@
     where menu_info_id = #{menuInfoId,jdbcType=VARCHAR}
   </update>
 
+  <!-- 根据菜单Id查询父级资源总记录数 -->
+  <select id="selectCountMenuParentByMenuId" resultType="Long">
+        select count(*)
+        from db_menu_info WHERE menu_type = 0 AND menu_parent_id = #{menuParentId,jdbcType=VARCHAR}
+    </select>
+
+
+  <!-- 查询菜单总记录数 -->
+  <select id="selectMenuCount" parameterType="com.yxb.cms.domain.vo.DbMenuInfo" resultType="Long">
+    select count(*)
+    from db_menu_info T1
+    LEFT JOIN db_menu_info T2 ON T1.menu_parent_id = T2.menu_info_id
+    <include refid="selectPageParmas"/>
+  </select>
+  <!-- 查询最大排序数-->
+  <select id="selectMaxOrderNo" resultType="java.lang.Long">
+        SELECT Max(i.menu_order_no)+ 1  from db_menu_info i
+    </select>
+  <!-- 菜单列表信息分页显示 -->
+  <select id="selectMenuListByPage" resultType="com.yxb.cms.domain.vo.DbMenuInfo" parameterType="com.yxb.cms.domain.vo.DbMenuInfo">
+    SELECT
+    T1.menu_info_id AS menuInfoId,
+    T1.menu_name AS menuName,
+    T1.menu_code AS menuCode,
+    T1.menu_link_address AS menuLinkAddress,
+    T1.menu_type AS menuType,
+    T1.menu_status AS menuStatus,
+    T1.menu_level  AS menuLevel,
+    T1.menu_order_no AS resDisplayOrder,
+    T1.menu_parent_id AS menuParentId,
+    T2.menu_name AS parentName,
+    T1.menu_order_no as menuOrderNo
+    FROM db_menu_info T1
+    LEFT JOIN db_menu_info T2 ON T1.menu_parent_id = T2.menu_info_id
+    <include refid="selectPageParmas"/>
+    ORDER BY T1.menu_order_no
+    LIMIT #{start},#{limit}
+  </select>
+
+  <!-- 分页查询条件 -->
+  <sql id="selectPageParmas">
+    <where>
+      T1.menu_type != 2
+      AND T1.menu_status != 0
+      <if test="menuName != null and menuName != '' ">
+        AND T1.menu_name LIKE CONCAT(#{menuName,jdbcType=VARCHAR}, '%') OR T2.menu_name LIKE CONCAT(#{menuName,jdbcType=VARCHAR}, '%')
+
+      </if>
+    </where>
+  </sql>
+
+  <!--根据菜单类型、和菜单级别查询菜单信息 -->
+  <select id="selectParentMenuListByMenuTypeAndMenuLevel" resultMap="BaseResultMap">
+    SELECT * FROM db_menu_info
+    WHERE menu_status = 1
+    AND menu_type = #{menuType,jdbcType=INTEGER}
+    AND menu_level = #{menuLevel,jdbcType=INTEGER}
+    <if test="menuInfoId != null and menuInfoId != '' " >
+      AND menu_info_id != #{menuInfoId,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+
   <!-- 查询有效的,URL不为空的所有菜单信息-->
   <select id="selectMenuUrlAllList" resultMap="BaseResultMap">
       SELECT * FROM db_menu_info  WHERE menu_status = 1 AND menu_link_address != ""

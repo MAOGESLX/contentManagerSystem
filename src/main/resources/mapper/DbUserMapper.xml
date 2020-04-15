@@ -199,4 +199,46 @@
         and user_status = #{userStatus,jdbcType=INTEGER}
   </select>
 
+
+  <!-- 查询用户总记录数 -->
+  <select id="selectUserCount" parameterType="com.yxb.cms.domain.vo.DbUser" resultType="java.lang.Long">
+    select count(*)
+    from db_user u
+    <include refid="selectPageParmas"/>
+  </select>
+
+  <!-- 用户信息分页展示 -->
+  <select id="selectUserListByPage" parameterType="com.yxb.cms.domain.vo.DbUser" resultType="com.yxb.cms.domain.vo.DbUser">
+    SELECT
+    u.user_id as userId,
+    u.user_name as userName,
+    u.user_account as userAccount,
+    u.user_status as userStatus,
+    u.user_type as userType,
+    u.creater_time as createrTime
+    from db_user u
+    <include refid="selectPageParmas"/>
+    LIMIT #{start},#{limit}
+
+  </select>
+
+  <!-- 分页查询条件 -->
+  <sql id="selectPageParmas">
+    <where>
+      u.user_status <![CDATA[<>]]> '0'
+      and u.user_account <![CDATA[<>]]> 'admin'
+      <if test="userAccount != null and userAccount != '' ">
+        and (u.user_account LIKE CONCAT(#{userAccount,jdbcType=VARCHAR}, '%')
+        OR u.user_name LIKE CONCAT(#{userAccount,jdbcType=VARCHAR}, '%')
+        )
+      </if>
+
+    </where>
+  </sql>
+
+
+
+
+
+
 </mapper>

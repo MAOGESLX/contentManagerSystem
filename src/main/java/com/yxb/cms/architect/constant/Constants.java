@@ -53,4 +53,12 @@ public class Constants {
      * 超级管理员账号
      */
     public static final String SUPER_ADMIN ="admin";
+
+
+    /**
+     * 密码加密盐
+     */
+    public static final String SALT = "yxb@2020cms";
+
+
 }

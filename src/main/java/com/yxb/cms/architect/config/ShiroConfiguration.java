@@ -6,7 +6,6 @@ import com.yxb.cms.dao.DbMenuInfoMapper;
 import com.yxb.cms.domain.vo.DbMenuInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -152,28 +151,4 @@ public class ShiroConfiguration {
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
     }
-
-
-    @Bean
-    public HashedCredentialsMatcher hashedCredentialsMatcher() {
-        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-        hashedCredentialsMatcher.setHashAlgorithmName("MD5");
-        hashedCredentialsMatcher.setHashIterations(1);
-        return hashedCredentialsMatcher;
-    }
-
-    /**
-     * 注册身份验证
-     *
-     * @param hashedCredentialsMatcher 凭证匹配器
-     * @return
-     */
-    @Bean
-    public ShiroDbRealm shiroDbRealm(HashedCredentialsMatcher hashedCredentialsMatcher) {
-        ShiroDbRealm shiroDbRealm = new ShiroDbRealm();
-        shiroDbRealm.setCredentialsMatcher(hashedCredentialsMatcher);
-        return shiroDbRealm;
-    }
-
-
 }

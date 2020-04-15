@@ -56,6 +56,54 @@ public interface DbMenuInfoMapper {
 
 
     /**
+     * 查询菜单中记录数
+     *
+     * @param menuInfo
+     * @return
+     */
+    Long selectMenuCount(DbMenuInfo menuInfo);
+
+    /**
+     * 菜单列表分页展示
+     *
+     * @param menuInfo
+     * @return
+     */
+    List<DbMenuInfo> selectMenuListByPage(DbMenuInfo menuInfo);
+
+    /**
+     * 查询菜单最大排序数量
+     *
+     * @return
+     */
+    Long selectMaxOrderNo();
+
+
+    /**
+     * 根据Id查询父级资源总记录数
+     *
+     * @param menuParentId 父级资源
+     * @return
+     */
+    Long selectCountMenuParentByMenuId(String menuParentId);
+
+
+
+
+    /**
+     * 根据菜单类型、和菜单级别查询菜单信息
+     *
+     * @param menuType   菜单类型
+     * @param menuLevel  菜单级别
+     * @param menuInfoId 菜单Id
+     * @return
+     */
+    List<DbMenuInfo> selectParentMenuListByMenuTypeAndMenuLevel(@Param("menuType") Integer menuType, @Param("menuLevel") Integer menuLevel, @Param("menuInfoId") String menuInfoId);
+
+
+
+
+    /**
      * 查询有效的,URL不为空的所有菜单信息
      *
      * @return

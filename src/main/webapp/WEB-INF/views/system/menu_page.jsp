@@ -10,21 +10,22 @@
     <div class="layui-row ">
         <div class="layui-col-md12">
             <blockquote class="layui-elem-quote">
+
                 <div class="layui-inline">
-                    角色管理
+                    菜单管理
+                </div>
+                <div class="layui-inline layui-inline-right" >
+                    <button class="layui-btn layui-btn-sm layui-btn-add"  onclick="getSearchMenuInfo();"><i class="layui-icon layui-icon-search"></i>查找</button>
                 </div>
 
+                <div class="layui-inline layui-inline-right" >
+                    <input type="text" id="menuName"  placeholder="请输入菜单名称查询" class="layui-input input-serach"  style="width: 300px;">
+                </div>
                 <div class="layui-inline layui-inline-right">
-                    <button class="layui-btn layui-btn-sm layui-btn-add" onclick="getSearchRole();"><i class="layui-icon layui-icon-search"></i>查找</button>
+                    <button class="layui-btn layui-btn-sm layui-btn-add  menuAdd_btn"><i class="layui-icon layui-icon-add-circle"></i>新增</button>
+                </div>
 
-                </div>
-                <div class="layui-inline layui-inline-right">
-                    <input type="text" id="roleName"  placeholder="请输入角色名称查询" class="layui-input input-serach"  style="width: 300px;">
-                </div>
 
-                <div class="layui-inline layui-inline-right">
-                    <button class="layui-btn layui-btn-sm  layui-btn-add  roleAdd_btn"><i class="layui-icon layui-icon-add-circle"></i>新增</button>
-                </div>
             </blockquote>
         </div>
         <div class="layui-col-md12">
@@ -41,7 +42,6 @@
 </div>
 
 <script type="text/javascript">
-
     var  $,layer,table,layOpenWin;
     layui.config({
         base: "${ctx}/static/js/"
@@ -53,35 +53,28 @@
 
         intTablePageList();
 
-        /**角色新增*/
-        $(".roleAdd_btn").click(function(){
-            var url = "${ctx}/system/role/role_add.action";
-            layOpenWin.layOpen('新增角色',url,'550px','361px');
+        /**菜单新增*/
+        $(".menuAdd_btn").click(function(){
+            var url = "${ctx}/system/menu/menu_edit.action";
+            layOpenWin.layOpen('新增菜单',url,'750px','337px');
         });
         /**监听工具条*/
         table.on('tool(tableId)', function(obj){
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值
-            //修改
+            //修改用户
             if(layEvent === 'edit') {
-                var url =  "${ctx}/system/role/role_update.action?roleId="+data.roleId;
-                layOpenWin.layOpen('编辑角色',url,'550px','361px');
-            }
-            //分配菜单
-            if(layEvent === 'grant') {
-                var url =  "${ctx}/system/role/role_grant.action?roleId="+data.roleId;
-                layOpenWin.layOpen('分配菜单',url,'255px','520px');
+                var url = "${ctx}/system/menu/menu_update.action?menuInfoId="+data.menuInfoId;
+                layOpenWin.layOpen('编辑菜单',url,'750px','337px');
             }
         });
-
     });
 
     /**加载表格**/
     function intTablePageList(){
-
         table.render({
             elem: '#tableList',
-            url: '${ctx}/system/role/ajax_role_list.action',
+            url: '${ctx}/system/menu/ajax_menu_list.action',
             response: {
                 statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
             },
@@ -92,26 +85,39 @@
             height:'full-125',
             page: {
                 layout:['prev', 'page', 'next','skip','refresh','count'],
-                groups:8,
+                groups:8
             },
             cols: [[
                 {type:"numbers"},
-                {field:'roleName', title: '角色名称',minWidth:40},
-                {field:'roleType', title: '角色类型',minWidth:40,templet: function(item){
-                        var roleType='';
-                        if(item.roleType==1){
-                            roleType='系统管理员';
-                        }else if(item.roleType==2){
-                            roleType='资源管理员';
+                {field:'menuName', title: '菜单名称',minWidth:40},
+                {field:'menuCode', title: '菜单编码',minWidth:40},
+                {field:'menuType', title: '菜单类型',minWidth:40,templet: function(item){
+                        var menuTypeName='';
+                        if(item.menuType==0){
+                            menuTypeName='菜单';
+                        }else if(item.menuType==1){
+                            menuTypeName='按钮';
                         }else{
-                            roleType = item.roleType
+                            menuTypeName = item.menuType
                         }
 
-                        return roleType
+                        return menuTypeName
                     }},
-                {field:'roleStatus', title: '角色状态',minWidth:40,templet: function(item){
+                {field:'menuLevel', title: '菜单级别',minWidth:40,templet: function(item){
+                        var menuLevelName='';
+                        if(item.menuLevel==1){
+                            menuLevelName='一级菜单';
+                        }else if(item.menuLevel==2){
+                            menuLevelName='二级菜单';
+                        }else{
+                            menuLevelName='';
+                        }
+
+                        return menuLevelName
+                    }},
+                {field:'menuStatus', title: '菜单状态',minWidth:40,templet: function(item){
                         var statusName='';
-                        if(item.roleStatus==0){
+                        if(item.menuStatus==0){
                             statusName='<span style="color: #fd6553">无效</span>';
                         }else{
                             statusName='<span style="color: #5FB878">有效</span>';
@@ -119,24 +125,23 @@
 
                         return statusName
                     }},
-                {field:'menuNames', title: '分配菜单',minWidth:240},
-                {field:'roleDesc', title: '角色描述',minWidth:140},
+                {field:'menuLinkAddress', title: '菜单路径',minWidth:240},
+                {field:'parentName', title: '上级菜单',minWidth:40},
+                {field:'menuOrderNo', title: '排序',minWidth:40},
                 {title: '操作',minWidth:140,toolbar: '#tableBar'}
             ]],
-
             done: function (res, curr, count) {
             }
         });
     }
 
-    /**角色查找*/
-    function getSearchRole() {
-
-        var roleName = $("#roleName").val();
+    /**查找*/
+    function getSearchMenuInfo() {
+        var menuName = $("#menuName").val();
         //执行重载
         table.reload('tableId', {
             where:{
-                roleName:roleName
+                menuName:menuName
             },
             page: {
                 curr: 1 //重新从第 1 页开始
@@ -145,10 +150,10 @@
         });
     }
 </script>
+
 <!--工具条 -->
 <script type="text/html" id="tableBar">
     <button class="layui-btn layui-btn-xs layui-btn-default layui-btn-radius" lay-event="edit">编辑</button>
-    <button class="layui-btn layui-btn-xs layui-btn-default layui-btn-radius" lay-event="grant">分配菜单</button>
 </script>
 
 </body>

@@ -14,7 +14,6 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -58,7 +57,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
             throw new AccountException("用户信息为空");
         }
 
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getLoginPwd(),ByteSource.Util.bytes(user.getUserAccount()), getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getLoginPwd(), getName());
         if (null != info) {
             return info;
         }

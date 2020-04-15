@@ -32,6 +32,7 @@ public class LoginFormFilter extends FormAuthenticationFilter {
             //如果是Ajax请求，返回状态码401
             if (isAjax(httpServletRequest)){
                 httpServletResponse.setStatus(401);
+
             } else {
                 saveRequestAndRedirectToLogin(request, response);
             }

@@ -20,18 +20,25 @@
 <input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" />
 <script type="text/javascript"  >
 
-    var  $;
+
+    $.ajaxSetup({
+        error: function(data) {
+            if(data.status == '401'){
+                window.top.location.href= "${ctx}/login.action";
+            }
+        }
+    });
+
     layui.use(['jquery'], function () {
-        $ =  layui.$;
-        $.ajaxSetup({
-            error: function(data) {
-                if(data.status == '401'){
+       var  ajaxSetup =  layui.jquery;
+        ajaxSetup.ajaxSetup({
+            complete:function(XMLHttpRequest, textStatus){
+                if(XMLHttpRequest.status == '401'){
                     window.top.location.href= "${ctx}/login.action";
                 }
             }
         });
 
     });
-
 
 </script>

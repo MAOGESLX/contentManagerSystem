@@ -22,6 +22,9 @@
                         <input type="text" id="userAccount" name="userAccount"  placeholder="请输入名称、账号信息查询" class="layui-input input-serach"  style="width: 200px;">
                     </form>
                 </div>
+                <div class="layui-inline layui-inline-right">
+                    <button class="layui-btn layui-btn-sm layui-btn-add  userAdd_btn"><i class="layui-icon layui-icon-add-circle"></i>新增</button>
+                </div>
             </blockquote>
         </div>
         <div class="layui-col-md12" >
@@ -47,6 +50,11 @@
             layOpenWin = layui.layOpenWin,
             table = layui.table;
 
+        /**新增*/
+        $(".userAdd_btn").click(function(){
+            var url = "${ctx}/system/user/user_add.action";
+            layOpenWin.layOpen('用户新增',url, '650px', '380px');
+        });
 
         /**加载表格*/
         intTablePageList();
@@ -61,13 +69,27 @@
             if(layEvent === 'userDetail') {
                 var url = "${ctx}/system/user/user_detail_page.action?userId=" + data.userId;
                 layOpenWin.layOpen('用户详情',url, '720px', '628px');
+
             }
+
+            //修改
+            if(layEvent === 'edit') {
+                var url = "${ctx}/system/user/user_update.action?userId="+data.userId;
+                layOpenWin.layOpen('用户编辑',url, '650px', '380px');
+            }
+
             //重置密码
             if(layEvent === 'resetUserPwd') {
-                var url = "${ctx}/system/user/ajax_reset_user_pwd.action";
+                var url = "${ctx}/system/manager/ajax_reset_manager_pwd.action";
                 var param = {userId:data.userId};
                 ajaxConfirm('消息提示', '确定要重置当前密码吗?',url,param);
 
+            }
+            //删除
+            if(layEvent === 'userDel') {
+                var url = "${ctx}/system/manager/ajax_del_manager_info.action";
+                var param = {userId:data.userId};
+                ajaxConfirm('消息提示', '确定要删除该条记录吗?',url,param);
             }
         });
     });
@@ -166,7 +188,9 @@
 <!--工具条 -->
 <script type="text/html" id="tableBar">
     <button class="layui-btn layui-btn-xs layui-btn-default layui-btn-radius" lay-event="userDetail">详情</button>
+    <button class="layui-btn layui-btn-xs layui-btn-default layui-btn-radius" lay-event="edit">编辑</button>
     <button class="layui-btn layui-btn-xs layui-btn-default layui-btn-radius" lay-event="resetUserPwd">重置密码</button>
+    <button class="layui-btn layui-btn-xs layui-btn-default layui-btn-radius" lay-event="userDel">删除</button>
 
 </script>
 

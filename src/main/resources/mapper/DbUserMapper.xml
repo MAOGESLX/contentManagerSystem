@@ -236,7 +236,19 @@
     </where>
   </sql>
 
-
+  <!-- 验证用户账号唯一性 -->
+  <select id="selectUserAccountCheck" resultType="java.lang.Long">
+    select count(*) from db_user
+    <where>
+      AND user_status != 0
+      <if test="userAccount != null and userAccount != '' ">
+        AND user_account = #{userAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null and userId != '' ">
+        AND user_id != #{userId,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
 
 
 

@@ -198,5 +198,9 @@
    select  max(order_no)  from db_role
   </select>
 
+    <!-- 查询角色Id-->
+    <select id="selectRoleId" resultType="java.lang.String">
+    select  role_id as roleId from db_role where role_status = 1 and role_type = #{roleType,jdbcType=VARCHAR}  LIMIT 1
+  </select>
 
 </mapper>

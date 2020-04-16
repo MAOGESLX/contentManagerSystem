@@ -85,6 +85,13 @@ public interface DbRoleMapper {
 
 
 
+    /**
+     * 查询角色Id
+     * @param roleType   角色类型
+     * @return
+     */
+    String selectRoleId(@Param("roleType") String roleType);
+
 
 
 }

@@ -78,10 +78,12 @@ public enum BussinessCode {
     ROLE_NAME_EXIST("1508","角色名称已存在，请重新输入"),
     ANNOUNCEMENT_SAVE_ERROR("1509","公告信息保存失败"),
     ANNOUNCEMENT_DEL_ERROR("1510","删除公告失败,程序异常"),
-    ANNOUNCEMENT_USER_INSERT_ERROR("1511","标记为已读失败,程序异常")
+    ANNOUNCEMENT_USER_INSERT_ERROR("1511","标记为已读失败,程序异常"),
+	DELETE_USER_ERROR("1511","删除用户失败"),
+	RESET_USER_PWD_ERROR("1510","重置用户密码异常"),
 
 
-    ;
+	;
 
 	BussinessCode(String code, String msg) {
 		this.code = code;

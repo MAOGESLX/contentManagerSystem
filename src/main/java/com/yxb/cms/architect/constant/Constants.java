@@ -46,8 +46,10 @@ public class Constants {
      */
     public static final String SESSION_KEY_LOGIN_ACCOUNT = "LOGIN_ACCOUNT";
 
-    /**初始化密码*/
-    public static final String INIT_LOGIN_PWD = "123456";
+    /**
+     * 默认密码
+     */
+    public static final String DEFAULT_PWD = "123456";
 
     /**
      * 超级管理员账号

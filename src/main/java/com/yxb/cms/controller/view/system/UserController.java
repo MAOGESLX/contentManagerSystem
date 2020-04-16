@@ -1,8 +1,11 @@
 package com.yxb.cms.controller.view.system;
 
 
+import com.yxb.cms.architect.constant.BussinessCode;
+import com.yxb.cms.architect.utils.BussinessMsgUtil;
 import com.yxb.cms.controller.view.BaseController;
 import com.yxb.cms.dao.DbUserMapper;
+import com.yxb.cms.domain.dto.BussinessMsg;
 import com.yxb.cms.domain.vo.DbUser;
 import com.yxb.cms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,59 +82,59 @@ public class UserController extends BaseController {
     }
 
 
-//    /**
-//     * 保存管理员用户信息
-//     * @param user 用户对象
-//     * @return
-//     */
-//    @RequestMapping(value="/ajax_save_manager.action")
-//    @ResponseBody
-//    public BussinessMsg ajaxSaveManager(SkUser user){
-//        try {
-//            return managerService.saveOrUpdateManager(user,this.getCurrentUserId());
-//        } catch (Exception e) {
-//            log.error("保存管理员用户信息内部错误{}", e.getMessage(), e);
-//            return BussinessMsgUtil.returnCodeMessage(BussinessCode.USER_SAVE_ERROR);
-//        }
-//
-//    }
+    /**
+     * 保存用户信息
+     * @param user 用户对象
+     * @return
+     */
+    @RequestMapping(value="/ajax_save_user.action")
+    @ResponseBody
+    public BussinessMsg ajaxSaveUser(DbUser user){
+        try {
+            return userService.saveOrUpdateUser(user,this.getCurrentUserId());
+        } catch (Exception e) {
+            log.error("保存用户信息内部错误{}", e.getMessage(), e);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.USER_SAVE_ERROR);
+        }
+
+    }
 
 
 
-//    /**
-//     * 重置管理员用户密码
-//     * @param userId  用户Id
-//     * @return
-//     */
-//    @RequestMapping("/ajax_reset_manager_pwd.action")
-//    @ResponseBody
-//    public BussinessMsg resetManagerPwd(String userId) {
-//        try {
-//            return managerService.resetManagerPwd(userId,this.getCurrentUserId());
-//        } catch (Exception e) {
-//            log.error("重置管理员用户密码方法内部错误{}",e.getMessage(),e);
-//            return BussinessMsgUtil.returnCodeMessage(BussinessCode.RESET_USER_PWD_ERROR);
-//
-//        }
-//    }
-//
-//
-//    /**
-//     * 删除管理员用户信息
-//     * @param userId  用户Id
-//     * @return
-//     */
-//    @RequestMapping("/ajax_del_manager_info.action")
-//    @ResponseBody
-//    public BussinessMsg delUserInfo(String userId) {
-//        try {
-//            return managerService.delManagerInfo(userId,this.getCurrentUserId());
-//        } catch (Exception e) {
-//            log.error("删除管理员用户信息方法内部错误{}",e.getMessage(),e);
-//            return BussinessMsgUtil.returnCodeMessage(BussinessCode.DELETE_USER_ERROR);
-//
-//        }
-//    }
+    /**
+     * 重置用户密码
+     * @param userId  用户Id
+     * @return
+     */
+    @RequestMapping("/ajax_reset_user_pwd.action")
+    @ResponseBody
+    public BussinessMsg resetUserPwd(String userId) {
+        try {
+            return userService.resetUserPwd(userId,this.getCurrentUserId());
+        } catch (Exception e) {
+            log.error("重置用户密码方法内部错误{}",e.getMessage(),e);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.RESET_USER_PWD_ERROR);
+
+        }
+    }
+
+
+    /**
+     * 删除用户信息
+     * @param userId  用户Id
+     * @return
+     */
+    @RequestMapping("/ajax_del_user_info.action")
+    @ResponseBody
+    public BussinessMsg delUserInfo(String userId) {
+        try {
+            return userService.delUserInfo(userId,this.getCurrentUserId());
+        } catch (Exception e) {
+            log.error("删除用户信息方法内部错误{}",e.getMessage(),e);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.DELETE_USER_ERROR);
+
+        }
+    }
 
 
 }

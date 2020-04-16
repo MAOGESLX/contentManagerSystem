@@ -79,6 +79,15 @@ public interface DbUserMapper {
     List<DbUser> selectUserListByPage(DbUser user);
 
 
+    /**
+     * 验证用户账号唯一性
+     * @param userAccount 用户账号
+     * @param userId 用户Id
+     * @return
+     */
+    Long selectUserAccountCheck(@Param("userAccount") String userAccount,@Param("userId") String userId);
+
+
 
 
 

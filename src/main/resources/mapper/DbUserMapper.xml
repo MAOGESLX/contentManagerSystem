@@ -215,7 +215,10 @@
     u.user_account as userAccount,
     u.user_status as userStatus,
     u.user_type as userType,
-    u.creater_time as createrTime
+    (select t1.user_name from db_user t1 where t1.user_id = u.creater_user_id) as createrName,
+    (select t2.user_name from db_user t2 where t2.user_id = u.modifier_user_id) as updateName,
+    u.creater_time as createrTime,
+    u.modifier_time as modifierTime
     from db_user u
     <include refid="selectPageParmas"/>
     LIMIT #{start},#{limit}
@@ -250,7 +253,22 @@
     </where>
   </select>
 
+  <!-- 根据用户Id查询用户信息-->
+  <select id="selectUserByUserId" resultType="com.yxb.cms.domain.vo.DbUser">
+    SELECT
+        u.user_id AS userId,
+        u.user_name AS userName,
+        u.user_account AS userAccount,
+        u.user_status AS userStatus,
+        u.user_type AS userType,
+        (select t1.user_name from db_user t1 where t1.user_id = u.creater_user_id) as createrName,
+        (select t2.user_name from db_user t2 where t2.user_id = u.modifier_user_id) as updateName,
+        u.creater_time as createrTime,
+        u.modifier_time as modifierTime
 
+      FROM db_user u
+      WHERE u.user_id = #{userId,jdbcType=VARCHAR}
+    </select>
 
 
 </mapper>

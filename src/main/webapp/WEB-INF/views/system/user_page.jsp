@@ -53,7 +53,7 @@
         /**新增*/
         $(".userAdd_btn").click(function(){
             var url = "${ctx}/system/user/user_add.action";
-            layOpenWin.layOpen('用户新增',url, '650px', '380px');
+            layOpenWin.layOpen('用户新增',url, '650px', '325px');
         });
 
         /**加载表格*/
@@ -68,26 +68,26 @@
             //详情
             if(layEvent === 'userDetail') {
                 var url = "${ctx}/system/user/user_detail_page.action?userId=" + data.userId;
-                layOpenWin.layOpen('用户详情',url, '720px', '628px');
+                layOpenWin.layOpen('用户详情',url, '500px', '474px');
 
             }
 
             //修改
             if(layEvent === 'edit') {
                 var url = "${ctx}/system/user/user_update.action?userId="+data.userId;
-                layOpenWin.layOpen('用户编辑',url, '650px', '380px');
+                layOpenWin.layOpen('用户编辑',url, '650px', '325px');
             }
 
             //重置密码
             if(layEvent === 'resetUserPwd') {
-                var url = "${ctx}/system/manager/ajax_reset_manager_pwd.action";
+                var url = "${ctx}/system/user/ajax_reset_user_pwd.action";
                 var param = {userId:data.userId};
                 ajaxConfirm('消息提示', '确定要重置当前密码吗?',url,param);
 
             }
             //删除
             if(layEvent === 'userDel') {
-                var url = "${ctx}/system/manager/ajax_del_manager_info.action";
+                var url = "${ctx}/system/user/ajax_del_user_info.action";
                 var param = {userId:data.userId};
                 ajaxConfirm('消息提示', '确定要删除该条记录吗?',url,param);
             }
@@ -125,7 +125,9 @@
                     }
                     return statusName
                 }},
-                {field:'userTypeLable', title: '角色',minWidth:40},
+                {field:'userTypeLable', title: '角色',minWidth:50},
+                {field:'createrName', title: '创建人',minWidth:50},
+                {field:'createTimeLable', title: '创建时间',minWidth:150},
                 {title: '操作',minWidth:300,toolbar: '#tableBar'}
             ]],
 

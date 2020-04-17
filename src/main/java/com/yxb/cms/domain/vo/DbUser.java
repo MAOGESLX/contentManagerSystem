@@ -96,7 +96,13 @@ public class DbUser  extends PageDto implements Serializable {
     @Setter
     private DbUserRole userRole;
 
+    @Getter
+    @Setter
+    private String createrName;
 
+    @Getter
+    @Setter
+    private String updateName;
 
 
 
@@ -341,6 +347,17 @@ public class DbUser  extends PageDto implements Serializable {
     }
 
 
+    public String getUserTypeLable(){
+        if(this.getUserType() == 1){
+            return "系统管理员";
+        }else if(this.getUserType() == 2) {
+            return "资源管理员";
+        }else {
+            return "";
+        }
+    }
+
+
     /**
      * 创建日期格式化
      * @return
@@ -348,6 +365,18 @@ public class DbUser  extends PageDto implements Serializable {
     public String getCreateTimeLable(){
         if(this.getCreaterTime() != null){
             return DateUtil.Date2Stirng2Second(this.getCreaterTime());
+        }
+        return "";
+    }
+
+
+    /**
+     * 修改日期格式化
+     * @return
+     */
+    public String getUpdateTimeLable(){
+        if(this.getModifierTime() != null){
+            return DateUtil.Date2Stirng2Second(this.getModifierTime());
         }
         return "";
     }

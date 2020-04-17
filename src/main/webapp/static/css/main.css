@@ -239,6 +239,9 @@ body .cms-open-class .layui-layer-btn1 {
     border-top-color: #0e9ee1;
 }
 
+.layui-table-click {
+    background-color: #f6f6f9;
+}
 /**分页样式修改*/
 .layui-laypage a, .layui-laypage span {
     display: inline-block;

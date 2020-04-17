@@ -5,17 +5,8 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="${ctx}/static/css/edit.css">
     <style>
-
-        .layui-form-label{
-            width: 132px !important;
-            flex-direction: column;
-            justify-content: center;
-            display: flex;
-        }
-        .layui-input-block {
-            margin-left: 132px !important;
-        }
         .layui-form-select dl {
             max-height: 118px;
         }
@@ -49,7 +40,9 @@
                                 <label class="layui-form-label">用户类型：</label>
                                 <div class="layui-input-block">
                                     <select id="userType" name="userType" lay-verify="required" lay-filter="userTypeFilter" lay-verType="tips" lay-search>
+                                        <option value="">请选择</option>
                                         <option value="1">系统管理员</option>
+                                        <option value="2">资源管理员</option>
                                     </select>
                                 </div>
                             </div>
@@ -87,7 +80,7 @@
         form.on("submit(saveUser)", function (data) {
             var roleSaveLoading = top.layer.msg('数据提交中，请稍候', {icon: 16, time: false, shade: 0.8});
             $.ajax({
-                url: '${ctx}/system/manager/ajax_save_manager.action',
+                url: '${ctx}/system/user/ajax_save_user.action',
                 type: 'post',
                 async: false,
                 data: data.field,

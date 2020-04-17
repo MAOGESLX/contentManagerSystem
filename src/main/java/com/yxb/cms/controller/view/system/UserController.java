@@ -136,5 +136,15 @@ public class UserController extends BaseController {
         }
     }
 
-
+    /**
+     * 跳转到用户个人详情页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/user_detail_page.action")
+    public String userDetailPage(Model model, String userId){
+        DbUser user = userMapper.selectUserByUserId(userId);
+        model.addAttribute("user",user);
+        return "system/user_detail";
+    }
 }

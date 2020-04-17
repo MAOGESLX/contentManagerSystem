@@ -84,7 +84,7 @@
             size: 'sm',
             height:'full-125',
             page: {
-                layout:['prev', 'page', 'next','skip','refresh','count'],
+                layout:['prev', 'page', 'next','skip','refresh','count',"limit"],
                 groups:8
             },
             cols: [[

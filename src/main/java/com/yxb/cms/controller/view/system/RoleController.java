@@ -77,6 +77,21 @@ public class RoleController extends BaseController {
         model.addAttribute("role",role);
         return "system/role_edit";
     }
+
+    /**
+     * 角色授权页面
+     * @param model
+     * @param roleId 角色Id
+     * @return
+     */
+    @RequestMapping("/role_grant.action")
+    public String roleGrantPage(Model model, String roleId){
+//        SkRole role = roleService.selectRoleMenuByRoleId(roleId);
+//        model.addAttribute("role",role);
+        return "system/role_grant";
+    }
+
+
     /**
      * 保存角色菜单信息
      * @param role  角色对象

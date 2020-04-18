@@ -4,38 +4,24 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>后台管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="后台管理系统">
-    <meta name="description" content="致力于提供通用版本后台管理解决方案">
-    <link rel="shortcut icon" href="${ctx}/static/img/favicon.ico">
-
-    <link rel="stylesheet" href="${ctx}/static/layui_v2/css/layui.css">
-
-    <link rel="stylesheet" href="${ctx}/static/tree/tree.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_9h680jcse4620529.css">
-
-
-    <script src="${ctx}/static/layui_v2/layui.js"></script>
-    <script type="text/javascript" src="${ctx}/static/js/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="${ctx}/static/tree/tree.min.js" ></script>
-    <script type="text/javascript" src="${ctx}/static/tree/extend.tree.js" ></script>
-
+    <link rel="stylesheet" href="${ctx}/static/css/edit.css">
 
 </head>
-<body style="font-size:12px;">
+<body>
 <fieldset class="layui-elem-field">
-    <legend  style="font-size: 12px;color:#FF5722;">请选择菜单信息</legend>
+    <legend  style="font-size: 12px;">请选择菜单信息</legend>
     <div class="layui-field-box" style="height: 375px; overflow: auto;">
         <ul id="resourceTree"></ul>
     </div>
 </fieldset>
-<input id="roleId" type="hidden"  value="${role.roleId}" >
-<div class="layui-form-item" style="text-align: center;">
-    <button class="layui-btn" id="saveRoleGrant">保存</button>
-    <button type="layui-btn" id="cancle" class="layui-btn layui-btn-primary">取消</button>
-</div>
 
+<input id="roleId" type="hidden"  value="${role.roleId}" >
+
+<div class="layui-form-item" style="text-align: center;">
+    <button id="saveRoleGrant" class="layui-btn layui-btn-save" style="padding: 0 18px;" >保存</button>
+    <button  id="cancle" class="layui-btn layui-btn-cancel" style="padding: 0 18px;">取消</button>
+</div>
 
 
 
@@ -93,6 +79,8 @@
             });
 
         });
+
+
         //取消
         $("#cancle").click(function(){
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引

@@ -1,0 +1,319 @@
+
+.layui-card {
+    color: #666 !important;
+}
+
+.layui-card:hover {
+    -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+}
+
+.header-detail {
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+    line-height: 1.5;
+    color: #515a6e;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    width: 100%;
+}
+
+.header-detail-row {
+    display: flex;
+    display: -webkit-box;
+    width: 100%;
+}
+
+.header-detail-row-title {
+    display: inline-block;
+    color: #17233d;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.header-content {
+    -webkit-box-flex: 1;
+    -ms-flex: auto;
+    flex: auto;
+}
+.header-content-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+.header-tip{
+    display: inline-block;
+    vertical-align: middle;
+}
+.header-tip-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.header-tip-desc {
+    color: #808695;
+}
+.card-header-padding{
+    padding-left: 8px!important;
+}
+.card-header-span-small {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 50%;
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+}
+.card-header-span-i{
+    font-size: 14px;
+}
+.daiban-icon{
+    color: rgb(250, 173, 20);
+    background-color: rgb(255, 251, 230);
+}
+
+.kuaijie-icon{
+    color: rgb(255, 77, 79);
+    background-color: rgb(255, 241, 240);
+}
+.dongtai-icon{
+    color: rgb(114, 46, 209);
+    background-color: rgb(249, 240, 255);
+}
+.chanping-icon{
+    color: rgb(82, 196, 26);
+    background-color: rgb(246, 255, 237);
+}
+
+.card-production a:first-child {
+    margin-top: 0;
+}
+.card-production a {
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 10px;
+    padding: 0 20px;
+    position: relative;
+    text-align: center;
+}
+.card-header-extra{
+    position: absolute;
+    right: 16px;
+    top: 1px;
+}
+
+.card-header-extra i{
+    cursor: pointer;
+}
+
+.kuaijie-item-main li {
+    text-align: center
+}
+
+.kuaijie-item-main  li i{
+    display: inline-block;
+    width: 100%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
+}
+.kuaijie-item-i-1 {
+    color: rgb(82, 196, 26);
+}
+.kuaijie-item-i-2 {
+    color: rgb(24, 144, 255);
+}
+.kuaijie-item-i-3 {
+    color: rgb(250, 173, 20);
+}
+.kuaijie-item-i-4 {
+    color: rgb(114, 46, 209);
+}
+.kuaijie-item-i-5 {
+    color: rgb(19, 194, 194);
+}
+.kuaijie-item-i-6 {
+    color: rgb(235, 47, 150);
+}
+.kuaijie-item-i-7 {
+    color: #01AAED;
+}
+
+.kuaijie-item-main  li cite {
+    position: relative;
+    display: block;
+    color: #515a6e;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+.kuaijie-item-main  li a:hover .cite-change{
+    color: #57a3f3 !important;
+}
+
+.daiban-main .daiban-body {
+    border-radius: 2px;
+    display: block;
+    padding: 10px 15px;
+    color: #515a6e;
+   text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.daiban-body h3 {
+    padding-bottom: 10px;
+    font-size: 14px
+}
+
+.daiban-body p cite {
+    font-style: normal;
+    font-size: 30px;
+    font-weight: 300;
+}
+.daiban-bg1{
+    background-color: rgb(255, 251, 230);
+}
+.daiban-color1{
+    color: rgb(250, 173, 20);
+}
+
+.daiban-bg2{
+    background-color: rgb(255, 241, 240);
+}
+.daiban-color2{
+    color: rgb(255, 77, 79);
+}
+.daiban-bg3{
+    background-color: rgb(249, 240, 255);
+}
+.daiban-color3{
+    color: rgb(114, 46, 209);
+}
+
+.daiban-bg4{
+    background-color: rgb(246, 255, 237);
+}
+.daiban-color4{
+    color: rgb(82, 196, 26);
+}
+
+
+.daiban-bg5{
+     background-color:  rgb(230, 247, 255);
+ }
+.daiban-color5{
+    color:   rgb(24, 144, 255);
+}
+
+.daiban-bg6{
+    background-color: rgb(240, 245, 255);
+}
+.daiban-color6{
+    color: rgb(89, 126, 247);
+}
+
+
+
+.remark-list {
+    min-height: 220px;
+}
+.remark-list li {
+    margin: 5px 0;
+    min-height: 50px;
+    position: relative;
+}
+
+.remark-list li .user-avator {
+    border: 1px solid #ddd;
+    padding: 2px;
+    position: absolute;
+}
+.user-avator img {
+    width: 40px;
+    height: 40px;
+}
+.remark-list li .remark-content::after {
+
+    border-color: rgba(255, 255, 255, 0) #efefef rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+    border-image: none;
+    border-style: solid;
+    border-width: 8px 10px;
+    content: "";
+    display: block;
+    left: 42px;
+    position: absolute;
+    top: 12px;
+}
+
+.remark-list li .remark-content {
+    background-color: #efefef;
+    border: 1px solid #efefef;
+    box-sizing: border-box;
+    color: #515a6e;
+    font-size: 12px;
+    height: 46px;
+    line-height: 18px;
+    margin-left: 60px;
+    overflow: hidden;
+    padding: 5px 8px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.dynamic-list li {
+    margin: 5px 0;
+    min-height: 50px;
+    position: relative;
+    padding: 10px 0 15px;
+}
+
+.dynamic-list li:not(:last-child) {
+    border-bottom: 1px solid #e8eaec;
+
+}
+.dynamic-list li .dynamic-img {
+    padding: 2px;
+    position: absolute;
+}
+.dynamic-img img {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+}
+
+.dynamic-list li .dynamic-content {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    left: 60px;
+    position: absolute;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,"\5FAE\8F6F\96C5\9ED1",Arial,sans-serif;
+}
+.dynamic-time{
+    font-size: 12px;
+    color: rgb(128, 134, 149);
+
+}
+.dynamic-a1{
+    color: #515a6e;
+}
+.dynamic-a1:hover{
+    color: inherit;
+}
+
+.dynamic-a2{
+    color: #2d8cf0;
+}
+.dynamic-a2:hover{
+    color: #57a3f3;
+}

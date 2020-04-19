@@ -9,6 +9,7 @@ import com.yxb.cms.architect.utils.KeyUtil;
 import com.yxb.cms.dao.DbMenuInfoMapper;
 import com.yxb.cms.domain.dto.BussinessMsg;
 import com.yxb.cms.domain.dto.MenuTree;
+import com.yxb.cms.domain.dto.Tree;
 import com.yxb.cms.domain.vo.DbMenuInfo;
 import com.yxb.cms.domain.vo.DbUser;
 import com.yxb.cms.domain.vo.DbUserRole;
@@ -57,6 +58,52 @@ public class MenuInfoService {
             throw e;
         }
         return map;
+    }
+
+    /**
+     * 查询所有菜单信息用以角色赋权限的时候Tree菜单显示
+     */
+    public Map<String,Object> selectMenuAllTree() {
+
+        Map<String,Object> result = new HashMap<>();
+
+
+        try {
+            List<Tree> treeList = new ArrayList<>();
+            // 菜单资源集合
+            List<DbMenuInfo> menuList = menuInfoMapper.selectMenuAllList();
+
+            // tree 树形集合
+            if (null != menuList && !menuList.isEmpty()) {
+                for (DbMenuInfo r : menuList) {
+                    Tree tree = new Tree();
+                    tree.setId(r.getMenuInfoId());
+                    if (StringUtils.isNotEmpty(r.getMenuParentId())) {
+                        tree.setParentId(r.getMenuParentId());
+                    }else{
+                        tree.setParentId("0");
+                    }
+                    tree.setTitle(r.getMenuName());
+                    treeList.add(tree);
+                }
+
+                result.put("code","200");
+                result.put("msg","操作成功");
+                result.put("data",treeList);
+            }else{
+                result.put("code","201");
+                result.put("msg","暂无数据");
+                result.put("data",treeList);
+            }
+        } catch (Exception e) {
+           log.error("获取角色对应菜单异常{}",e.getMessage(),e);
+            result.put("code","500");
+            result.put("msg","获取角色对应菜单异常");
+
+        }
+
+        return result;
+
     }
 
 

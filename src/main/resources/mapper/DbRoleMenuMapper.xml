@@ -108,4 +108,19 @@
       fk_menu_info_id = #{fkMenuInfoId,jdbcType=VARCHAR}
     where role_menu_id = #{roleMenuId,jdbcType=VARCHAR}
   </update>
+
+  <!-- 根据roleId查询角色菜单信息-->
+  <select id="selectRoleMenuByRoleId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from db_role_menu
+    where fk_role_id = #{roleId,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 根据角色Id删除 角色菜单信息-->
+  <delete id="deleteRoleMenuByRoleId">
+        delete from db_role_menu where fk_role_id = #{roleId,jdbcType=VARCHAR}
+  </delete>
+
+
 </mapper>

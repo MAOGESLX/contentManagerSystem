@@ -153,12 +153,14 @@
     <select id="selectRoleListByPage" parameterType="com.yxb.cms.domain.vo.DbRole"
             resultType="com.yxb.cms.domain.vo.DbRole">
         SELECT
-        r.role_id as roleId,
-        r.role_name as roleName,
+        r.role_id    as roleId,
+        r.role_name   as roleName,
         r.role_status as roleStatus,
-        r.role_type as roleType,
-        r.role_desc as roleDesc,
-        r.order_no as orderNo
+        r.role_type   as roleType,
+        r.role_desc   as roleDesc,
+        r.order_no    as orderNo,
+        (SELECT GROUP_CONCAT(mi.menu_name) FROM db_menu_info mi
+        where mi.menu_info_id in(SELECT m.fk_menu_info_id from db_role_menu m WHERE  m.fk_role_id = r.role_id )) as menuNames
 
         from db_role r
         <include refid="selectPageParmas"/>

@@ -32,6 +32,8 @@
  */
 package com.yxb.cms.architect.utils;
 
+import lombok.extern.log4j.Log4j2;
+
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -40,6 +42,7 @@ import java.net.NetworkInterface;
  * 主键
  * @author yangxiaobing
  */
+@Log4j2
 public class DbIdUtil {
 
     /**
@@ -212,7 +215,7 @@ public class DbIdUtil {
                 id = id % (maxDatacenterId + 1);
             }
         } catch (Exception e) {
-            System.out.println(" getDatacenterId: " + e.getMessage());
+
         }
         return id;
     }

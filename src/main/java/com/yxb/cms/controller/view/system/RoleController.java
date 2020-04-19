@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
@@ -86,14 +87,19 @@ public class RoleController extends BaseController {
      */
     @RequestMapping("/role_grant.action")
     public String roleGrantPage(Model model, String roleId){
-//        SkRole role = roleService.selectRoleMenuByRoleId(roleId);
-//        model.addAttribute("role",role);
+        String menuInfoIds =   roleService.selectRoleMenuByRoleId(roleId);
+        model.addAttribute("menuInfoIds",menuInfoIds);
+        model.addAttribute("roleId",roleId);
+
         return "system/role_grant";
     }
 
 
+
+
+
     /**
-     * 保存角色菜单信息
+     * 保存角色信息
      * @param role  角色对象
      * @return
      */
@@ -107,4 +113,34 @@ public class RoleController extends BaseController {
             return BussinessMsgUtil.returnCodeMessage(BussinessCode.ROLE_SAVE_ERROR);
         }
     }
+
+
+    /**
+     * 获取当前用户所属菜单资源Tree菜单展示
+     */
+    @RequestMapping("/ajax_menu_tree_list.action")
+    @ResponseBody
+    public Map<String,Object> ajaxMenuTreeList(){
+        return menuInfoService.selectMenuAllTree();
+    }
+
+    /**
+     * 保存角色菜单信息
+     * @param roleId        角色Id
+     * @return
+     */
+    @RequestMapping("/ajax_save_role_menu.action")
+    @ResponseBody
+    public BussinessMsg ajaxSaveOrUpdateRoleResource(String roleId, @RequestParam(value = "menuIds[]",required = false) String[] menuIds ){
+        try {
+            return roleService.saveOrUpdateRoleMenu(roleId,menuIds);
+        } catch (Exception e) {
+            log.error("保存角色信息授权信息方法内部错误",e);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.ROLE_RES_SAVE_ERROR);
+        }
+    }
+
+
+
+
 }

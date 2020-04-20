@@ -12,7 +12,57 @@
         <div class="layui-col-md12 layui-col-sm12">
             <div class="layui-card">
                 <div class="layui-card-body">
-                    工作台
+                    <div class="header-detail">
+                        <div class="header-detail-row">
+                            <div class="header-detail-row-title">工作台</div>
+                        </div>
+                        <div class="header-detail-row">
+                            <div class="header-content">
+                                <span>
+                                    <img class="header-content-img" src="${ctx}/static/img/face.jpg">
+                                </span>
+                                <div class="header-tip">
+                                    <p class="header-tip-title">欢迎您，${LOGIN_ACCOUNT.userName}，开始您一天的工作吧！</p>
+                                    <p class="header-tip-desc">
+                                        <i class="layui-icon layui-icon-water"></i>今日阴转小雨，22℃ - 32℃，出门记得带伞哦。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md8 layui-col-sm12">
+
+        </div>
+        <div class="layui-col-md4 layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    <span class="card-header-span-small kuaijie-icon">
+                        <i class="layui-icon layui-icon-heart-fill card-header-span-i"></i>
+                    </span>
+                    <span class="card-header-padding">快捷操作</span>
+                    <div class="card-header-extra"> <i class="layui-icon layui-icon-set-fill"></i></div>
+                </div>
+                <div class="layui-card-body " style="min-height: 280px;">
+
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md8 layui-col-sm12">
+
+        </div>
+        <div class="layui-col-md4 layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    <span class="card-header-span-small chanping-icon">
+                        <i class="layui-icon layui-icon-website card-header-span-i"></i>
+                    </span>
+                    <span class="card-header-padding">产品中心</span>
+                </div>
+                <div class="layui-card-body card-production">
                 </div>
             </div>
         </div>

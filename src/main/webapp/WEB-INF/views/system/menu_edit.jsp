@@ -6,6 +6,11 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="${ctx}/static/css/edit.css">
+    <style type="text/css">
+        .layui-form-select dl{
+            max-height: 180px;
+        }
+    </style>
 
 <body class="layui-layout-body" >
 <div class="layui-fluid">

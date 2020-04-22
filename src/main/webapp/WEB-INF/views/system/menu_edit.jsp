@@ -12,7 +12,6 @@
         }
 
     </style>
-
 <body class="layui-layout-body" >
 <div class="layui-fluid">
     <div class="layui-card">

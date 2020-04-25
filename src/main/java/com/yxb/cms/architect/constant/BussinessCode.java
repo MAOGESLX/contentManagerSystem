@@ -82,6 +82,9 @@ public enum BussinessCode {
 	DELETE_USER_ERROR("1511","删除用户失败"),
 	RESET_USER_PWD_ERROR("1510","重置用户密码异常"),
 
+    COMPANY_NAME_EXIST("1511","公司名称已存在，请重新输入"),
+	COMPANY_SAVE_ERROR("1512","公司信息保存失败"),
+
 
 	;
 

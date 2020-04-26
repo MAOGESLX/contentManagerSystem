@@ -37,12 +37,13 @@ package com.yxb.cms.architect.constant;
  * 系统管理平台业务常量定义
  *
  * @author yangxiaobing
- * @date 2016/8/15
  */
 public enum BusinessConstants {
 
 
-    /**状态*/
+    /**
+     * 状态
+     */
     STATUS_0(0, "无效"),
     STATUS_1(1, "有效"),
 
@@ -51,18 +52,24 @@ public enum BusinessConstants {
     MENU_TYPE_1(1, "按钮"),
 
 
-    /**菜单级别*/
+    /**
+     * 菜单级别
+     */
     MENU_LEVEL_1(1, "一级菜单"),
     MENU_LEVEL_2(2, "二级菜单"),
     MENU_LEVEL_3(3, "三级菜单"),
 
-    /**用户角色类型*/
+    /**
+     * 用户角色类型
+     */
     USER_ROLE_TYPE_1(1, "系统管理员"),
     USER_ROLE_TYPE_2(2, "资源管理员"),
     USER_ROLE_TYPE_SUP(-1, "超级管理员"),
 
 
-    /**公司性质*/
+    /**
+     * 公司性质
+     */
     COMPANY_NATURE_1(1, "国有企业"),
     COMPANY_NATURE_2(2, "集体企业"),
     COMPANY_NATURE_3(3, "联营企业"),
@@ -72,6 +79,20 @@ public enum BusinessConstants {
     COMPANY_NATURE_7(7, "合伙企业"),
     COMPANY_NATURE_8(8, "有限责任公司"),
     COMPANY_NATURE_9(9, "股份有限公司"),
+
+    /**
+     * 职位
+     */
+    EMPLOYEE_POSITION_1(1, "总经理"),
+    EMPLOYEE_POSITION_2(2, "副总经理"),
+    EMPLOYEE_POSITION_3(3, "部门经理"),
+    EMPLOYEE_POSITION_4(4, "职员"),
+
+    /**
+     * 性别
+     */
+    SEX_1(1, "男"),
+    SEX_2(2, "女"),
 
 
     ;

@@ -45,6 +45,24 @@
     from db_company
     where company_id = #{companyId,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectByPrimaryKeyByStatus" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from db_company
+    where company_id = #{companyId,jdbcType=VARCHAR}
+         AND company_status != 0
+  </select>
+
+  <select id="selectByPrimaryKeyList"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from db_company
+    where company_status != 0
+  </select>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--
       WARNING - @mbggenerated

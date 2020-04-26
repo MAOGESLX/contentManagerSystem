@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -73,7 +74,7 @@ public class CompanyController extends BaseController {
      * @return
      */
     @RequestMapping("/company_update.action")
-    public String CompanyUpdatePage(Model model,String companyId) {
+    public String companyUpdatePage(Model model,String companyId) {
         model.addAttribute("pageFlag", "updatePage");
         DbCompany company = companyMapper.selectByPrimaryKey(companyId);
         model.addAttribute("company",company);
@@ -96,6 +97,22 @@ public class CompanyController extends BaseController {
             return BussinessMsgUtil.returnCodeMessage(BussinessCode.COMPANY_SAVE_ERROR);
         }
 
+    }
+
+    /**
+     * 查询公司信息
+     * @return
+     */
+    @RequestMapping(value="/ajax_query_company_list.action")
+    @ResponseBody
+    public BussinessMsg ajaxQueryCompanyList(){
+        try {
+            List<DbCompany> lists = companyMapper.selectByPrimaryKeyList();
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_SUCCESS,lists);
+        } catch (Exception e) {
+            log.error("查询公司方法内部错误{}", e.getMessage(), e);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_ERROR);
+        }
     }
 
 }

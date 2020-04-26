@@ -84,8 +84,10 @@ public enum BussinessCode {
 
     COMPANY_NAME_EXIST("1511","公司名称已存在，请重新输入"),
 	COMPANY_SAVE_ERROR("1512","公司信息保存失败"),
+	DEPARTMENT_SAVE_ERROR("1513","部门信息保存失败"),
+	DEPARTMENT_NAME_EXIST("1514","部门名称已存在，请重新输入"),
 
-
+	DEPARTMENT_COMPANY_EXIST("1515","公司信息不存在,请检查"),
 	;
 
 	BussinessCode(String code, String msg) {

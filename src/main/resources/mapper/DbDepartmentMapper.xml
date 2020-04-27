@@ -41,6 +41,22 @@
     from db_department
     where department_id = #{departmentId,jdbcType=VARCHAR}
   </select>
+  <select id="selectByPrimaryKeyByStatus" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from db_department
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+     and department_status != 0
+  </select>
+
+  <select id="selectByPrimaryKeyList"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from db_department
+    where department_status != 0 and company_id = #{companyId,jdbcType=VARCHAR}
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--
       WARNING - @mbggenerated

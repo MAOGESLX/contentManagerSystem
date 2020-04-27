@@ -105,4 +105,23 @@ public class DepartmentController extends BaseController {
 
     }
 
+
+    /**
+     * 查询公司部门列表信息
+     * @return
+     */
+    @RequestMapping(value="/ajax_query_department_list.action")
+    @ResponseBody
+    public BussinessMsg ajaxQueryDepartmentList(String companyId){
+        try {
+            List<DbDepartment> lists = departmentMapper.selectByPrimaryKeyList(companyId);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_SUCCESS,lists);
+        } catch (Exception e) {
+            log.error("查询公司部门列表方法内部错误{}", e.getMessage(), e);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_ERROR);
+        }
+    }
+
+
+
 }

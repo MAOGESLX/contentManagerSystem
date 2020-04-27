@@ -49,3 +49,10 @@
     border:  1px solid #c9c9c9;
     height: 28px !important;
 }
+
+.layui-form-pane .layui-form-radio, .layui-form-pane .layui-form-switch {
+
+    margin-top: 3px;
+    margin-left: 10px;
+
+}

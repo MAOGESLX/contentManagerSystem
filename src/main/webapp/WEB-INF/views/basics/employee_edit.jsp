@@ -49,7 +49,7 @@
                                 <label class="layui-form-label">所属公司：</label>
                                 <div class="layui-input-block">
                                     <c:if test="${pageFlag == 'addPage'}">
-                                        <select id="companyId" name="companyId" lay-verify="required"  lay-verType="tips" lay-search>
+                                        <select id="companyId" name="companyId" lay-filter="companyFilter" lay-verify="required"  lay-verType="tips" lay-search>
                                             <option value="">请选择</option>
                                         </select>
                                     </c:if>
@@ -112,7 +112,7 @@
                                 <label class="layui-form-label">生日：</label>
                                 <div class="layui-input-block">
                                     <input type="text" id="employeeBirthday" name="employeeBirthday" value="${employee.employeeBirthday}"
-                                           placeholder="请输入" class="layui-input">
+                                           placeholder="请输入" class="Wdate layui-input" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true,maxDate:'%y-%M-%d'})" style="cursor: pointer;" readonly>
                                 </div>
                             </div>
                             <div class="layui-col-xs6">
@@ -164,6 +164,8 @@
                 "companyId": '${department.companyId}'
             });
         }
+
+        getCompanyFilter();
         //保存
         form.on("submit(saveEmployee)", function (data) {
             var roleSaveLoading = top.layer.msg('数据提交中，请稍候', {icon: 16, time: false, shade: 0.8});
@@ -198,7 +200,7 @@
     });
 
 
-    //查询单位信息
+    /**查询单位信息**/
     function getCompanyList(){
         $.ajax({
             url: '${ctx}/company/ajax_query_company_list.action',
@@ -217,8 +219,39 @@
         });
     }
 
+    /**监听单位选择*/
+    function getCompanyFilter() {
 
+        form.on('select(companyFilter)', function (data) {
+            if(data.value != ""){
+                $.ajax({
+                    url: '${ctx}/department/ajax_query_department_list.action',
+                    type: 'post',
+                    data: {
 
+                        companyId: data.value
+                    },
+                    success: function (data) {
+
+                        if (data.returnCode == 200) {
+                            $('#departmentId option').not(":first").remove();
+                            $(data.returnData).each(function (index, item) {
+                                $("#departmentId").append(
+                                    '<option value="' + item.departmentId + '">' + item.departmentName + '</option>'
+                                );
+                            });
+                            form.render("select");
+                        }
+                    }
+                });
+
+            }else{
+                $('#departmentId option').not(":first").remove();
+                form.render("select");
+            }
+        });
+
+    }
 </script>
 </body>
 </html>

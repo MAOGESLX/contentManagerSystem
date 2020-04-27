@@ -85,7 +85,7 @@ public class DepartmentService {
             DbCompany company =companyMapper.selectByPrimaryKeyByStatus(department.getCompanyId());
             if(company == null){
                 log.error("部门信息保存失败，公司信息为空");
-                return BussinessMsgUtil.returnCodeMessage(BussinessCode.DEPARTMENT_COMPANY_EXIST);
+                return BussinessMsgUtil.returnCodeMessage(BussinessCode.COMPANY_IS_NULL);
             }
             //保存部门信息
             if(StringUtils.isEmpty(department.getDepartmentId())){

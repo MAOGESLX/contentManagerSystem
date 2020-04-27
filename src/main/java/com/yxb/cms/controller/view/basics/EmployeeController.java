@@ -89,8 +89,7 @@ public class EmployeeController extends BaseController {
     @ResponseBody
     public BussinessMsg ajaxSaveEmployee(DbEmployee employee){
         try {
-           // return departmentService.saveOrUpdateDepartment(department,this.getCurrentUserId());
-            return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_SUCCESS);
+           return employeeService.saveOrUpdateEmployee(employee,this.getCurrentUserId());
         } catch (Exception e) {
             log.error("保存员工信息内部错误{}", e.getMessage(), e);
             return BussinessMsgUtil.returnCodeMessage(BussinessCode.DEPARTMENT_SAVE_ERROR);

@@ -4,8 +4,12 @@ package com.yxb.cms.controller.view.basics;
 import com.yxb.cms.architect.constant.BussinessCode;
 import com.yxb.cms.architect.utils.BussinessMsgUtil;
 import com.yxb.cms.controller.view.BaseController;
+import com.yxb.cms.dao.DbCompanyMapper;
+import com.yxb.cms.dao.DbDepartmentMapper;
 import com.yxb.cms.dao.DbEmployeeMapper;
 import com.yxb.cms.domain.dto.BussinessMsg;
+import com.yxb.cms.domain.vo.DbCompany;
+import com.yxb.cms.domain.vo.DbDepartment;
 import com.yxb.cms.domain.vo.DbEmployee;
 import com.yxb.cms.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,6 +35,12 @@ public class EmployeeController extends BaseController {
 
     @Autowired
     private DbEmployeeMapper employeeMapper;
+
+    @Autowired
+    private DbCompanyMapper companyMapper;
+
+    @Autowired
+    private DbDepartmentMapper departmentMapper;
 
 
 
@@ -76,6 +87,18 @@ public class EmployeeController extends BaseController {
         model.addAttribute("pageFlag", "updatePage");
         DbEmployee employee = employeeMapper.selectByPrimaryKey(employeeId);
         model.addAttribute("employee",employee);
+
+        if(employee != null){
+            //查询公司列表信息
+            List<DbCompany> companyList = companyMapper.selectByPrimaryKeyList();
+            model.addAttribute("companyList",companyList);
+
+            //查询公司所属部门信息
+            List<DbDepartment> departmentList = departmentMapper.selectByPrimaryKeyList(employee.getCompanyId());
+            model.addAttribute("departmentList",departmentList);
+
+
+        }
 
         return "basics/employee_edit";
     }

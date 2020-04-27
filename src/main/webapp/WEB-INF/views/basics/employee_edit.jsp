@@ -9,7 +9,7 @@
     <script type="text/javascript" src="${ctx}/static/My97DatePicker/WdatePicker.js"></script>
     <style>
         .layui-form-select dl {
-            max-height: 128px;
+            max-height: 258px;
         }
     </style>
 
@@ -54,7 +54,7 @@
                                         </select>
                                     </c:if>
                                     <c:if test="${pageFlag == 'updatePage'}">
-                                        <select id="companyId" name="companyId" lay-verify="required"  lay-verType="tips" lay-search>
+                                        <select id="companyId" name="companyId" lay-filter="companyFilter" lay-verify="required"  lay-verType="tips" lay-search>
                                             <option value="">请选择</option>
                                             <c:forEach items="${companyList}" var="employee">
                                                 <option value="${employee.companyId}">${employee.companyName}</option>
@@ -129,10 +129,16 @@
                                            placeholder="请输入" class="layui-input">
                                 </div>
                             </div>
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">住址</label>
+                                <div class="layui-input-block">
+                                    <textarea name="employeeAddress" placeholder="住址" class="layui-textarea" maxlength="100" style="resize:none;min-height:70px;">${employee.employeeAddress}</textarea>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
-                    <div class="layui-col-xs12" style="text-align: center;margin-top: 35px;">
+                    <div class="layui-col-xs12" style="text-align: center;">
                         <button class="layui-btn layui-btn-radius layui-btn-save" lay-submit="" lay-filter="saveEmployee">保存</button>
                         <a class="layui-btn layui-btn-radius layui-btn-cancel cancle">取消</a>
                     </div>
@@ -161,7 +167,10 @@
         if (pageFlag == 'updatePage') {
             /**默认赋值*/
             form.val("employeeFormFilter", {
-                "companyId": '${department.companyId}'
+                "employeePosition":'${employee.companyId}',
+                "companyId": '${employee.companyId}',
+                "departmentId": '${employee.departmentId}',
+                "employeeSex":'${employee.employeeSex}'
             });
         }
 

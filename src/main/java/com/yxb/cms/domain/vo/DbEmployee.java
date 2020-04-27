@@ -613,4 +613,42 @@ public class DbEmployee extends PageDto implements Serializable {
     public void setModifierTime(Date modifierTime) {
         this.modifierTime = modifierTime;
     }
+
+
+    public String getEmployeePositionLable(){
+        if(this.getEmployeePosition() != null){
+            if(this.getEmployeePosition() == 1){
+                return "总经理";
+            }else if(this.getEmployeePosition() == 2) {
+                return "副总经理";
+            }else if(this.getEmployeePosition() == 3) {
+                return "部门经理";
+            }else if(this.getEmployeePosition() == 4) {
+                return "职员";
+            }else {
+                return "";
+            }
+        }else{
+            return "";
+        }
+
+    }
+
+
+    public String getEmployeeSexLable(){
+        if(this.getEmployeeSex() != null){
+            if(this.getEmployeeSex() == 1){
+                return "男";
+            }else if(this.getEmployeeSex() == 2) {
+                return "女";
+            }else {
+                return "";
+            }
+        }else{
+            return "";
+        }
+
+    }
+
+
 }

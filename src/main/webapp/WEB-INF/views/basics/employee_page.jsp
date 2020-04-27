@@ -53,7 +53,7 @@
         /**新增*/
         $(".employeeAdd_btn").click(function(){
             var url = "${ctx}/employee/employee_add.action";
-            layOpenWin.layOpen('员工新增',url, '720px', '425px');
+            layOpenWin.layOpen('员工新增',url, '720px', '508px');
         });
 
         /**加载表格*/
@@ -68,7 +68,7 @@
             //修改
             if(layEvent === 'edit') {
                 var url = "${ctx}/employee/employee_update.action?employeeId="+data.employeeId;
-                layOpenWin.layOpen('员工编辑',url, '720px', '325px');
+                layOpenWin.layOpen('员工编辑',url, '720px', '508px');
             }
 
         });
@@ -95,9 +95,9 @@
             cols: [[
                 {type:"numbers"},
                 {field:'employeeName', title: '员工姓名',minWidth:100},
-                {field:'employeePosition', title: '职位',minWidth:50},
+                {field:'employeePositionLable', title: '职位',minWidth:50},
                 {field:'employeeTel', title: '电话',minWidth:50},
-                {field:'employeeSex', title: '性别',minWidth:50},
+                {field:'employeeSexLable', title: '性别',minWidth:50},
                 {field:'employeeAge', title: '年龄',minWidth:50},
                 {field:'companyName', title: '所属单位',minWidth:100},
                 {field:'departmentName', title: '所属部门',minWidth:100},

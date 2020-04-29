@@ -94,6 +94,19 @@ public enum BusinessConstants {
     SEX_1(1, "男"),
     SEX_2(2, "女"),
 
+    /**项目类型*/
+    PROJECT_TYPE_1(1, "运营类"),
+    PROJECT_TYPE_2(2, "项目类"),
+
+    /**项目状态*/
+    PROJECT_STATUS_1(1, "新建"),
+    PROJECT_STATUS_2(2, "已立项"),
+    PROJECT_STATUS_3(3, "设计中"),
+    PROJECT_STATUS_4(4, "开发中"),
+    PROJECT_STATUS_5(5, "已上线"),
+    PROJECT_STATUS_6(6, "已下线"),
+    PROJECT_STATUS_0(0, "已删除"),
+
 
     ;
 

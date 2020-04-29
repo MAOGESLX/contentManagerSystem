@@ -23,13 +23,12 @@ contentManagerSystem是一个自由软件，您可以自由分发、修改其中
 关于GPL协议的细则请参考COPYING文件，您可以在contentManagerSystem的相关目录中获得GPL协议的副本，
 如果没有找到，请连接到 http://www.gnu.org/licenses/ 查看。
 
+开发进度
+-----------------------------------
+![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/1-1.png)
 
 项目截图演示
 -----------------------------------
 ![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/1.png)
 ![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/2.png)
 ![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/3.png)
-![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/4.png)
-![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/5.png)
-![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/6.png)
-![](https://git.oschina.net/yangxiaobing_175/contentManagerSystem/raw/master/temp/7.png)

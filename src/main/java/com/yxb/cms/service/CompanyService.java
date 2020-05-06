@@ -54,7 +54,6 @@ public class CompanyService {
             log.error(e.getMessage(), e);
             map.put("code", 500);
             map.put("msg", "公司信息查询异常");
-            throw e;
         }
         return map;
     }

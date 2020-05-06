@@ -89,6 +89,8 @@ public enum BussinessCode {
 
 	COMPANY_IS_NULL("1515","公司信息不存在,请检查"),
 	DEPARTMENT_IS_NULL("1516","部门信息不存在,请检查"),
+
+	PROJECT_SAVE_ERROR("1517","项目信息保存失败"),
 	;
 
 	BussinessCode(String code, String msg) {

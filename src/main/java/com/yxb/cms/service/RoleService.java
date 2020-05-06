@@ -60,7 +60,6 @@ public class RoleService {
             log.error(e.getMessage(), e);
             map.put("code", 500);
             map.put("msg", "角色信息查询异常");
-            throw e;
         }
         return map;
 

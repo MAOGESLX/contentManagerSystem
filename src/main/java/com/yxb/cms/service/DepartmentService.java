@@ -59,7 +59,6 @@ public class DepartmentService {
             log.error(e.getMessage(), e);
             map.put("code", 500);
             map.put("msg", "部门信息查询异常");
-            throw e;
         }
         return map;
     }

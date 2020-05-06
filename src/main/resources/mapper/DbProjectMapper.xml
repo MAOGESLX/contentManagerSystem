@@ -261,4 +261,49 @@
       modifier_time = #{modifierTime,jdbcType=TIMESTAMP}
     where project_id = #{projectId,jdbcType=VARCHAR}
   </update>
+
+  <!-- 查询项目总记录数 -->
+  <select id="selectProjectCount" parameterType="com.yxb.cms.domain.vo.DbProject" resultType="java.lang.Long">
+    select count(*)
+    from db_project u
+    <include refid="selectPageParmas"/>
+  </select>
+
+
+
+  <!-- 项目信息分页展示 -->
+  <select id="selectProjectListByPage" parameterType="com.yxb.cms.domain.vo.DbProject" resultType="com.yxb.cms.domain.vo.DbProject">
+    SELECT
+    u.project_id as projectId,
+    u.project_name as projectName,
+    u.project_type as projectType,
+    u.project_status as projectStatus,
+    u.approva_time as approvaTime,
+    u.up_time as upTime,
+    u.down_time as downTime,
+    u.project_intro as projectIntro,
+    u.company_id as companyId,
+    u.company_name as companyName,
+    u.department_id as departmentId,
+    u.department_name as departmentName
+
+    from db_project u
+    <include refid="selectPageParmas"/>
+    LIMIT #{start},#{limit}
+
+  </select>
+
+  <!-- 分页查询条件 -->
+  <sql id="selectPageParmas">
+    <where>
+      u.project_status <![CDATA[<>]]> '0'
+      <if test="projectName != null and projectName != '' ">
+        and (u.project_name LIKE CONCAT(#{projectName,jdbcType=VARCHAR}, '%')
+        OR u.company_name LIKE CONCAT(#{projectName,jdbcType=VARCHAR}, '%')
+        )
+      </if>
+
+    </where>
+  </sql>
+
 </mapper>

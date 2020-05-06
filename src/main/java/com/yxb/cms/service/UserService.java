@@ -77,7 +77,6 @@ public class UserService {
             log.error(e.getMessage(), e);
             map.put("code", 500);
             map.put("msg", "用户信息查询异常");
-            throw e;
         }
         return map;
     }

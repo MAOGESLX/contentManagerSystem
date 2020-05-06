@@ -55,7 +55,6 @@ public class MenuInfoService {
             log.error(e.getMessage(), e);
             map.put("code", 500);
             map.put("msg", "菜单信息查询异常");
-            throw e;
         }
         return map;
     }

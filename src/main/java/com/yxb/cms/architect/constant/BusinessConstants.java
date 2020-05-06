@@ -48,6 +48,8 @@ public enum BusinessConstants {
     STATUS_1(1, "有效"),
 
 
+
+
     MENU_TYPE_0(0, "菜单"),
     MENU_TYPE_1(1, "按钮"),
 
@@ -106,6 +108,8 @@ public enum BusinessConstants {
     PROJECT_STATUS_5(5, "已上线"),
     PROJECT_STATUS_6(6, "已下线"),
     PROJECT_STATUS_0(0, "已删除"),
+
+
 
 
     ;

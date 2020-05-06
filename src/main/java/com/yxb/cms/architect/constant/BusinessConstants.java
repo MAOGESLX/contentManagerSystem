@@ -111,6 +111,19 @@ public enum BusinessConstants {
 
 
 
+    /**项目成员管理状态*/
+    MEMBER_STATUS_1(1, "有效"),
+    MEMBER_STATUS_2(2, "释放"),
+    MEMBER_STATUS_0(0, "删除"),
+
+
+    /**项目成员管理角色*/
+    MEMBER_ROLE_1(1,"产品/项目经理"),
+    MEMBER_ROLE_2(2,"技术负责人"),
+    MEMBER_ROLE_3(3,"web端开发"),
+    MEMBER_ROLE_4(4,"pc端开发"),
+    MEMBER_ROLE_5(5,"app端开发"),
+    MEMBER_ROLE_6(6,"小程序开发"),
 
     ;
 

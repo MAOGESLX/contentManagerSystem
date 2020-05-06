@@ -53,7 +53,7 @@
         /**新增*/
         $(".projectAdd_btn").click(function(){
             var url = "${ctx}/project/project_list_add.action";
-            layOpenWin.layOpen('项目新增',url, '720px', '508px');
+            layOpenWin.layOpen('项目新增',url, '720px', '458px');
         });
 
         /**加载表格*/
@@ -68,7 +68,7 @@
             //修改
             if(layEvent === 'edit') {
                 var url = "${ctx}/project/project_update.action?projectId="+data.projectId;
-                layOpenWin.layOpen('项目编辑',url, '720px', '508px');
+                layOpenWin.layOpen('项目编辑',url, '720px', '458px');
             }
 
         });

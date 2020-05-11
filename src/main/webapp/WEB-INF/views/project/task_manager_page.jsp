@@ -15,15 +15,15 @@
                     任务管理
                 </div>
                 <div class="layui-inline layui-inline-right">
-                    <button class="layui-btn layui-btn-sm layui-btn-add" onclick="getSearchProject();"><i class="layui-icon layui-icon-search"></i>查找</button>
+                    <button class="layui-btn layui-btn-sm layui-btn-add" onclick="getSearchTask();"><i class="layui-icon layui-icon-search"></i>查找</button>
                 </div>
                 <div class="layui-inline layui-inline-right">
                     <form  id="userSearchForm" method="post">
-                        <input type="text" id="projectName" name="projectName"  placeholder="请输入项目名称查询" class="layui-input input-serach"  style="width: 200px;">
+                        <input type="text" id="projectName" name="projectName"  placeholder="请输入任务名称查询" class="layui-input input-serach"  style="width: 200px;">
                     </form>
                 </div>
                 <div class="layui-inline layui-inline-right">
-                    <button class="layui-btn layui-btn-sm layui-btn-add projectAdd_btn"><i class="layui-icon layui-icon-add-circle"></i>新增</button>
+                    <button class="layui-btn layui-btn-sm layui-btn-add taskAdd_btn"><i class="layui-icon layui-icon-add-circle"></i>新增</button>
                 </div>
             </blockquote>
         </div>
@@ -51,9 +51,9 @@
             table = layui.table;
 
         /**新增*/
-        $(".projectAdd_btn").click(function(){
+        $(".taskAdd_btn").click(function(){
             var url = "${ctx}/project/project_list_add.action";
-            layOpenWin.layOpen('项目新增',url, '720px', '458px');
+            layOpenWin.layOpen('任务新增',url, '720px', '458px');
         });
 
         /**加载表格*/
@@ -136,8 +136,8 @@
             }
         });
     }
-    /**项目查询*/
-    function getSearchProject() {
+    /**任务查询*/
+    function getSearchTask() {
 
         var projectName = $("#projectName").val();
         //执行重载
@@ -172,7 +172,7 @@
                 data : param,
                 success : function(data) {
                     if(data.returnCode == 200){
-                        getSearchProject();
+                        getSearchTask();
                         layOpenWin.laySucMsg(data.returnMessage);
 
                     }else{

@@ -2,13 +2,15 @@ package com.yxb.cms.controller.view.project;
 
 
 import com.yxb.cms.controller.view.BaseController;
-import com.yxb.cms.dao.DbCompanyMapper;
-import com.yxb.cms.dao.DbDepartmentMapper;
-import com.yxb.cms.dao.DbProjectMapper;
-import com.yxb.cms.service.ProjectService;
+import com.yxb.cms.dao.DbMemberManagerMapper;
+import com.yxb.cms.domain.vo.DbMemberManager;
+import com.yxb.cms.service.MemberManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Map;
 
 /**
  * 项目管理-成员管理
@@ -19,17 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("project")
 public class MemberManagerController extends BaseController {
 
+    @Autowired
+    private DbMemberManagerMapper memberManagerMapper;
 
     @Autowired
-    private ProjectService projectService;
+    private MemberManagerService memberManagerService;
 
-    @Autowired
-    private DbProjectMapper projectMapper;
 
-    @Autowired
-    private DbCompanyMapper companyMapper;
-    @Autowired
-    private DbDepartmentMapper departmentMapper;
 
 
 
@@ -42,21 +40,26 @@ public class MemberManagerController extends BaseController {
     public String toMemberManagerPage() {
         return "project/member_manager_page";
     }
-//
-//
-//    /**
-//     * 项目管理信息分页展示
-//     *
-//     * @param project 项目管理对象
-//     * @return
-//     */
-//    @RequestMapping("/ajax_project_list.action")
-//    @ResponseBody
-//    public Map<String, Object> ajaxProjectList(DbProject project) {
-//
-//        return projectService.selectProjectListByPage(project);
-//    }
-//
+
+
+
+
+
+    /**
+     * 项目成员管理信息分页展示
+     *
+     * @return
+     */
+    @RequestMapping("/ajax_member_list.action")
+    @ResponseBody
+    public Map<String, Object> ajaxMemberList(DbMemberManager memberManager) {
+
+        return memberManagerService.selectMemberListByPage(memberManager);
+    }
+
+
+
+
 //    /**
 //     * 跳转到项目新增页面
 //     *

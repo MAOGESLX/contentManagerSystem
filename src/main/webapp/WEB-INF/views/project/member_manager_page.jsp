@@ -19,7 +19,7 @@
                 </div>
                 <div class="layui-inline layui-inline-right">
                     <form  id="userSearchForm" method="post">
-                        <input type="text" id="projectName" name="projectName"  placeholder="请输入成员名称查询" class="layui-input input-serach"  style="width: 200px;">
+                        <input type="text" id="employeeName" name="employeeName"  placeholder="请输入成员或项目名称查询" class="layui-input input-serach"  style="width: 200px;">
                     </form>
                 </div>
                 <div class="layui-inline layui-inline-right">
@@ -79,7 +79,7 @@
     function intTablePageList(){
         table.render({
             elem: '#tableList',
-            url: '${ctx}/project/ajax_project_list.action',
+            url: '${ctx}/project/ajax_member_list.action',
             response: {
                 statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
             },
@@ -139,11 +139,11 @@
     /**成员查询*/
     function getSearchMember() {
 
-        var projectName = $("#projectName").val();
+        var employeeName = $("#employeeName").val();
         //执行重载
         table.reload('tableId', {
             where:{
-                projectName:projectName
+                employeeName:employeeName
             },
             page: {
                 curr: 1 //重新从第 1 页开始

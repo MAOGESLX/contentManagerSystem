@@ -1,4 +1,3 @@
-
 -- ----------------------------
 -- Table structure for db_company
 -- ----------------------------
@@ -29,6 +28,33 @@ CREATE TABLE `db_company`  (
 INSERT INTO `db_company` VALUES ('1254055798049349632', '阿里巴巴', 'Alibaba Group', 'http://www.alibaba.com', 1, 8, '马云', '57185022088', 'albba@Alibaba.com', '1999-09-09', '中国浙江省杭州市余杭区', '', '1232869555121418242', '2020-04-25 22:32:56', '1232869555121418242', '2020-04-26 00:09:08');
 INSERT INTO `db_company` VALUES ('1254067825828548608', '百度', 'Baidu', 'https://www.baidu.com', 1, 9, '李彦宏', '59928888', 'baidu@baidu.com', '2000-01-25', '中国北京海淀区上地十街10号百度大厦', '', '1232869555121418242', '2020-04-25 23:20:44', NULL, NULL);
 INSERT INTO `db_company` VALUES ('1254072509066760192', '深圳市腾讯计算机系统有限公司', 'Tencent', 'http://www.tencent.com', 1, 8, '马化腾', '75586013388', 'Tencent@tencent.com', '1998-11-11', '深圳市南山区海天二路33号腾讯滨海大厦', '', '1232869555121418242', '2020-04-25 23:39:20', NULL, NULL);
+
+-- ----------------------------
+-- Table structure for db_demand_manager
+-- ----------------------------
+DROP TABLE IF EXISTS `db_demand_manager`;
+CREATE TABLE `db_demand_manager`  (
+  `demand_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键32位',
+  `demand_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '需求标题',
+  `demand_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '需求描述',
+  `demand_type` int(1) DEFAULT NULL COMMENT '需求类型  1-新增 2-修改 3-优化 ',
+  `priority` int(1) DEFAULT NULL COMMENT '优先级 1-紧急、2-高、3-中、4-低',
+  `demand_status` int(1) DEFAULT NULL COMMENT '任务状态  1-计划中;2-进行中;3-已完成;4-暂缓;5-终止/移除;6-已发布',
+  `start_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '开始时间',
+  `plan_finish_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '计划完成时间',
+  `finish_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '完成时间',
+  `finish_rate` double DEFAULT NULL COMMENT '完成率',
+  `overdue_num` double DEFAULT NULL COMMENT '逾期(H)',
+  `remaining_days` double DEFAULT NULL COMMENT '剩余天数',
+  `release_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '发布时间',
+  `project_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '所属项目id',
+  `project_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '项目名称',
+  `creater_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人id',
+  `creater_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `modifier_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '修改人id',
+  `modifier_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`demand_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '需求管理' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for db_department
@@ -87,6 +113,34 @@ CREATE TABLE `db_employee`  (
 -- Records of db_employee
 -- ----------------------------
 INSERT INTO `db_employee` VALUES ('1254795545264906240', '张三', 4, '18109898989', 2, 22, '1990-04-27', '', '', '1254067825828548608', '百度', '1254240743867490304', '软件开发一部', '北京', 1, '1232869555121418242', '2020-04-27 23:32:26', '1232869555121418242', '2020-04-28 00:00:38');
+INSERT INTO `db_employee` VALUES ('1261118152730443776', '李二', 4, '18152456066', 1, 32, '1991-05-15', '', '', '1254067825828548608', '百度', '1254240743867490304', '软件开发一部', '', 1, '1232869555121418242', '2020-05-15 10:16:13', NULL, NULL);
+
+-- ----------------------------
+-- Table structure for db_member_manager
+-- ----------------------------
+DROP TABLE IF EXISTS `db_member_manager`;
+CREATE TABLE `db_member_manager`  (
+  `member_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键',
+  `project_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '项目id',
+  `project_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '项目名称',
+  `employee_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '员工Id',
+  `employee_name` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '员工姓名',
+  `member_role` int(2) DEFAULT NULL COMMENT '项目成员角色:1-产品/项目经理;2-技术负责人;3-web端开发;4-pc端开发;5-app端开发;6-小程序开发;',
+  `member_status` int(1) DEFAULT NULL COMMENT '项目成员状态 1-有效  、2-释放 、0-删除',
+  `add_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '加入时间',
+  `release_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '释放时间',
+  `creater_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人id',
+  `creater_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `modifier_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '修改人id',
+  `modifier_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`member_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '成员管理' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of db_member_manager
+-- ----------------------------
+INSERT INTO `db_member_manager` VALUES ('1261129719228338176', '1257879931233980416', '运营管理系统', '1254795545264906240', '张三', 3, 1, '2020-05-05', NULL, '1232869555121418242', '2020-05-15 11:02:10', '1232869555121418242', '2020-05-15 11:44:21');
+INSERT INTO `db_member_manager` VALUES ('1261140385444048896', '1261134938968416256', 'ITSM', '1261118152730443776', '李二', 2, 1, '2020-05-03', NULL, '1232869555121418242', '2020-05-15 11:44:33', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for db_menu_info
@@ -130,6 +184,9 @@ INSERT INTO `db_menu_info` VALUES ('1253706803804495872', '1251052791888838656',
 INSERT INTO `db_menu_info` VALUES ('1254082192796053504', '1251052791888838656', '部门管理', 0, 'N6sENz3x', 1, 2, '/department/department_page.action', '', 17, NULL);
 INSERT INTO `db_menu_info` VALUES ('1254336612830777344', '1251052791888838656', '员工管理', 0, 'kkHoc0wR', 1, 2, '/employee/employee_page.action', '', 18, NULL);
 INSERT INTO `db_menu_info` VALUES ('1255344446808735744', '1251056208912809984', '项目列表', 0, 'ubPxbJTv', 1, 2, '/project/project_list_page.action', '', 19, NULL);
+INSERT INTO `db_menu_info` VALUES ('1257884293532438528', '1251056208912809984', '成员管理', 0, 'nNifGnaB', 1, 2, '/project/member_manager_page.action', '', 20, NULL);
+INSERT INTO `db_menu_info` VALUES ('1257884396188028928', '1251056208912809984', '需求管理', 0, 'c4QgUes1', 1, 2, '/project/demand_manager_page.action', '', 21, NULL);
+INSERT INTO `db_menu_info` VALUES ('1257884496108933120', '1251056208912809984', '任务管理', 0, 'bmwqRNAs', 1, 2, '/project/task_manager_page.action', '', 22, NULL);
 
 -- ----------------------------
 -- Table structure for db_project
@@ -154,6 +211,12 @@ CREATE TABLE `db_project`  (
   `modifier_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`project_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '项目管理' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of db_project
+-- ----------------------------
+INSERT INTO `db_project` VALUES ('1257879931233980416', '运营管理系统', 1, 5, '2020-04-01', '', '', '企业运营类项目', '1254055798049349632', '阿里巴巴', '1254240903230070784', '软件开发二部', '1232869555121418242', '2020-05-06 11:48:41', '1232869555121418242', '2020-05-06 11:50:31');
+INSERT INTO `db_project` VALUES ('1261134938968416256', 'ITSM', 1, 1, '2020-05-05', '', '', '', '1254055798049349632', '阿里巴巴', '1254240903230070784', '软件开发二部', '1232869555121418242', '2020-05-15 11:22:55', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for db_role
@@ -219,6 +282,46 @@ CREATE TABLE `db_sys_log`  (
   `log_elapsed_time` double(20, 0) DEFAULT NULL COMMENT '请求耗时',
   PRIMARY KEY (`log_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统日志表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for db_task_manager
+-- ----------------------------
+DROP TABLE IF EXISTS `db_task_manager`;
+CREATE TABLE `db_task_manager`  (
+  `task_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `project_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '项目id',
+  `project_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '项目名称',
+  `demand_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '需求Id',
+  `demand_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '需求标题',
+  `task_desc` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '任务描述',
+  `task_type` int(1) DEFAULT NULL COMMENT '任务类型  1-新增 2-修改 3-优化 ',
+  `priority` int(1) DEFAULT NULL COMMENT '优先级 1-紧急、2-高、3-中、4-低',
+  `demand_status` int(1) DEFAULT NULL COMMENT '任务状态  1-计划中;2-进行中;3-已完成;4-暂缓;5-终止/移除;6-已发布',
+  `start_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '开始时间',
+  `plan_finish_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '计划完成时间',
+  `finish_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '完成时间',
+  `finish_rate` double DEFAULT NULL COMMENT '完成率',
+  `overdue_num` double DEFAULT NULL COMMENT '逾期(H)',
+  `remaining_days` double DEFAULT NULL COMMENT '剩余天数',
+  `release_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '发布时间',
+  `creater_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人id',
+  `creater_time` datetime(0) DEFAULT NULL COMMENT '创建时间',
+  `modifier_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '修改人id',
+  `modifier_time` datetime(0) DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`task_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '任务管理表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for db_task_member
+-- ----------------------------
+DROP TABLE IF EXISTS `db_task_member`;
+CREATE TABLE `db_task_member`  (
+  `task_member_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '主键',
+  `fk_task_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '任务Id',
+  `fk_member_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '成员Id',
+  `mmember_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '成员姓名',
+  PRIMARY KEY (`task_member_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '任务成员关联表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for db_user

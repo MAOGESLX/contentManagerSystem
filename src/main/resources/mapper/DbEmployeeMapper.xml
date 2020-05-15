@@ -49,6 +49,17 @@
     from db_employee
     where employee_id = #{employeeId,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectByPrimaryKeyByStatus" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from db_employee
+    where  employee_status <![CDATA[<>]]> '0' and  employee_id = #{employeeId,jdbcType=VARCHAR}
+  </select>
+
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     <!--
       WARNING - @mbggenerated
@@ -345,5 +356,21 @@
     </where>
   </sql>
 
+  <!--根据项目Id查询员工信息 -->
+  <select id="selectEmployeeListByProjectId" resultType="com.yxb.cms.domain.vo.DbEmployee">
+   SELECT
+      u.employee_id as employeeId,
+      u.employee_name as employeeName
 
+   from db_employee u
+   where  u.employee_status <![CDATA[<>]]> '0'
+   and  u.employee_id  not in(select d.employee_id from db_member_manager d
+   where d.member_status = 1
+    <if test="memberId != null and memberId != '' ">
+      and d.member_id !=  #{memberId,jdbcType=VARCHAR}
+    </if>
+
+   )
+
+  </select>
 </mapper>

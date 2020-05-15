@@ -45,6 +45,16 @@
     from db_project
     where project_id = #{projectId,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectByPrimaryKeyByStatus" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from db_project
+    where  project_status <![CDATA[<>]]> '0' and project_id = #{projectId,jdbcType=VARCHAR}
+  </select>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     <!--
       WARNING - @mbggenerated
@@ -305,5 +315,22 @@
 
     </where>
   </sql>
+
+
+  <!-- 有效的项目列表信息展示 -->
+  <select id="selectProjectList" resultType="com.yxb.cms.domain.vo.DbProject" >
+    SELECT
+      u.project_id as projectId,
+      u.project_name as projectName
+
+    from db_project u
+   <where>
+     u.project_status <![CDATA[<>]]> '0'
+   </where>
+
+  </select>
+
+
+
 
 </mapper>

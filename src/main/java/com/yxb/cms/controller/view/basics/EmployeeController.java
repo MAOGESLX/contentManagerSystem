@@ -120,4 +120,23 @@ public class EmployeeController extends BaseController {
 
     }
 
+
+    /**
+     * 根据项目Id查询用户信息
+     * @return
+     */
+    @RequestMapping(value="/ajax_query_employee_list.action")
+    @ResponseBody
+    public BussinessMsg ajaxEmployeeListProjectId(String projectId,String memberId){
+        try {
+            List<DbEmployee> lists = employeeMapper.selectEmployeeListByProjectId(projectId,memberId);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_SUCCESS,lists);
+        } catch (Exception e) {
+            log.error("根据项目Id查询用户异常{}", e.getMessage(), e);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_ERROR);
+        }
+    }
+
+
+
 }

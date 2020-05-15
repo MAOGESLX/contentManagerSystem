@@ -52,8 +52,8 @@
 
         /**新增*/
         $(".memberAdd_btn").click(function(){
-            var url = "${ctx}/project/project_list_add.action";
-            layOpenWin.layOpen('成员新增',url, '720px', '458px');
+            var url = "${ctx}/project/member_add.action";
+            layOpenWin.layOpen('成员新增',url, '380px', '368px');
         });
 
         /**加载表格*/
@@ -67,8 +67,8 @@
 
             //修改
             if(layEvent === 'edit') {
-                var url = "${ctx}/project/project_update.action?projectId="+data.projectId;
-                layOpenWin.layOpen('项目编辑',url, '720px', '458px');
+                var url = "${ctx}/project/member_update.action?memberId="+data.memberId;
+                layOpenWin.layOpen('成员编辑',url, '380px', '368px');
             }
 
         });
@@ -94,42 +94,38 @@
             },
             cols: [[
                 {type:"numbers"},
-                {field:'projectName', title: '项目名称',minWidth:100},
-                {field:'projectType', title: '项目类型',minWidth:50,templet: function(item){
-                        var projectTypeName='';
-                        if(item.projectType==1){
-                            projectTypeName='<span style="color: #2d8cf0">运营类</span>';
-                        }else {
-                            projectTypeName='<span style="color: #2b85e4">项目类</span>';
+                {field:'employeeName', title: '成员姓名',minWidth:100},
+                {field:'memberRole', title: '成员角色',minWidth:50,templet: function(item){
+                        var memberRoleName='';
+                        if(item.memberRole==1){
+                            memberRoleName='产品/项目经理';
+                        }else if(item.memberRole==2) {
+                            memberRoleName='技术负责人';
+                        }else if(item.memberRole==3) {
+                            memberRoleName='web端开发';
+                        }else if(item.memberRole==4) {
+                            memberRoleName='pc端开发';
+                        }else if(item.memberRole==5) {
+                            memberRoleName='app端开发';
+                        }else if(item.memberRole==6) {
+                            memberRoleName='小程序开发';
                         }
-                        return projectTypeName
+                        return memberRoleName
                     }},
-
-                {field:'projectStatus', title: '项目状态',minWidth:50,templet: function(item){
-                        var projectStatusName='';
-                        if(item.projectStatus==1){
-                            projectStatusName='<span style="color: #ff9900">新建</span>';
-                        }else if(item.projectStatus==2) {
-                            projectStatusName='<span style="color: #3091f2">已立项</span>';
-                        }else if(item.projectStatus==3) {
-                            projectStatusName='<span style="color: #3399ff">设计中</span>';
-                        }else if(item.projectStatus==4) {
-                            projectStatusName='<span style="color: #3399ff">开发中</span>';
-                        }else if(item.projectStatus==5) {
-                            projectStatusName='<span style="color: #00cc66">已上线</span>';
-                        }else if(item.projectStatus==6) {
-                            projectStatusName='<span style="color: #ff6600">已下线</span>';
+                {field:'memberStatus', title: '成员状态',minWidth:50,templet: function(item){
+                        var memberStatusName='';
+                        if(item.memberStatus==1){
+                            memberStatusName='有效';
+                        }else if(item.memberStatus==2) {
+                            memberStatusName='释放';
+                        }else if(item.memberStatus==0) {
+                            memberStatusName='删除';
                         }
-                        return projectStatusName
+                        return memberStatusName
                     }},
-
-
-                {field:'approvaTime', title: '立项时间',minWidth:50},
-                {field:'upTime', title: '上线时间',minWidth:50},
-                {field:'downTime', title: '下线时间',minWidth:50},
-                {field:'companyName', title: '所属单位',minWidth:100},
-                {field:'departmentName', title: '所属部门',minWidth:100},
-                {field:'projectIntro', title: '项目简介',minWidth:100},
+                {field:'addTime', title: '加入时间',minWidth:50},
+                {field:'releaseTime', title: '释放时间',minWidth:50},
+                {field:'projectName', title: '所属项目',minWidth:100},
                 {title: '操作',minWidth:50,toolbar: '#tableBar'}
             ]],
             done: function (res, curr, count) {

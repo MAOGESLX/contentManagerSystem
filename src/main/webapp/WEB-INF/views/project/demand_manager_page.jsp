@@ -52,7 +52,7 @@
 
         /**新增*/
         $(".demandAdd_btn").click(function(){
-            var url = "${ctx}/project/project_list_add.action";
+            var url = "${ctx}/project/demand_add.action";
             layOpenWin.layOpen('需求新增',url, '720px', '458px');
         });
 
@@ -67,8 +67,8 @@
 
             //修改
             if(layEvent === 'edit') {
-                var url = "${ctx}/project/project_update.action?projectId="+data.projectId;
-                layOpenWin.layOpen('项目编辑',url, '720px', '458px');
+                var url = "${ctx}/project/demand_add.action?demandId="+data.demandId;
+                layOpenWin.layOpen('需求编辑',url, '720px', '458px');
             }
 
         });

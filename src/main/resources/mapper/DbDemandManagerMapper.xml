@@ -296,4 +296,51 @@
       modifier_time = #{modifierTime,jdbcType=TIMESTAMP}
     where demand_id = #{demandId,jdbcType=VARCHAR}
   </update>
+
+
+  <!-- 查询需求总记录数 -->
+  <select id="selectDemandManagerCount" parameterType="com.yxb.cms.domain.vo.DbDemandManager" resultType="java.lang.Long">
+    select count(*)
+    from db_demand_manager u
+    <include refid="selectPageParmas" />
+  </select>
+
+
+
+
+
+  <!-- 需求信息分页展示 -->
+  <select id="selectDemandManagerListByPage" parameterType="com.yxb.cms.domain.vo.DbDemandManager" resultType="com.yxb.cms.domain.vo.DbDemandManager">
+    SELECT
+    u.demand_id as demandId,
+    u.demand_name as demandName,
+    u.demand_desc as demandDesc,
+    u.demand_type as demandType,
+    u.priority as priority,
+    u.demand_status as demandStatus,
+    u.start_time as startTime,
+    u.plan_finish_time as planFinishTime,
+    u.finish_time as finishTime,
+    u.finish_rate as finishRate,
+    u.project_name as projectName,
+    u.overdue_num as overdueNum,
+    u.remaining_days as remainingDays
+
+    from db_demand_manager u
+    <include refid="selectPageParmas" />
+    LIMIT #{start},#{limit}
+
+  </select>
+
+  <!-- 分页查询条件 -->
+  <sql id="selectPageParmas">
+    <where>
+      <if test="demandName != null and demandName != '' ">
+        (u.demand_name LIKE CONCAT(#{demandName,jdbcType=VARCHAR}, '%')
+        OR u.demand_desc LIKE CONCAT(#{demandName,jdbcType=VARCHAR}, '%')
+        )
+      </if>
+
+    </where>
+  </sql>
 </mapper>

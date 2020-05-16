@@ -19,7 +19,7 @@
                 </div>
                 <div class="layui-inline layui-inline-right">
                     <form  id="userSearchForm" method="post">
-                        <input type="text" id="projectName" name="projectName"  placeholder="请输入需求名称查询" class="layui-input input-serach"  style="width: 200px;">
+                        <input type="text" id="demandName" name="demandName"  placeholder="请输入需求名称、描述查询" class="layui-input input-serach"  style="width: 200px;">
                     </form>
                 </div>
                 <div class="layui-inline layui-inline-right">
@@ -79,7 +79,7 @@
     function intTablePageList(){
         table.render({
             elem: '#tableList',
-            url: '${ctx}/project/ajax_project_list.action',
+            url: '${ctx}/project/ajax_demand_list.action',
             response: {
                 statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
             },
@@ -94,42 +94,66 @@
             },
             cols: [[
                 {type:"numbers"},
-                {field:'projectName', title: '项目名称',minWidth:100},
-                {field:'projectType', title: '项目类型',minWidth:50,templet: function(item){
-                        var projectTypeName='';
-                        if(item.projectType==1){
-                            projectTypeName='<span style="color: #2d8cf0">运营类</span>';
+                {field:'demandName', title: '需求名称',minWidth:100},
+
+                {field:'demandType', title: '需求类型',minWidth:50,templet: function(item){
+                        var demandTypeName='';
+                        if(item.demandType==1){
+                            demandTypeName='新增';
+                        }else if(item.demandType==2){
+                            demandTypeName='修改';
+                        }else if(item.demandType == 3){
+                            demandTypeName='优化';
                         }else {
-                            projectTypeName='<span style="color: #2b85e4">项目类</span>';
+                            demandTypeName=item.demandType;
                         }
-                        return projectTypeName
+                        return demandTypeName
                     }},
 
-                {field:'projectStatus', title: '项目状态',minWidth:50,templet: function(item){
-                        var projectStatusName='';
-                        if(item.projectStatus==1){
-                            projectStatusName='<span style="color: #ff9900">新建</span>';
-                        }else if(item.projectStatus==2) {
-                            projectStatusName='<span style="color: #3091f2">已立项</span>';
-                        }else if(item.projectStatus==3) {
-                            projectStatusName='<span style="color: #3399ff">设计中</span>';
-                        }else if(item.projectStatus==4) {
-                            projectStatusName='<span style="color: #3399ff">开发中</span>';
-                        }else if(item.projectStatus==5) {
-                            projectStatusName='<span style="color: #00cc66">已上线</span>';
-                        }else if(item.projectStatus==6) {
-                            projectStatusName='<span style="color: #ff6600">已下线</span>';
+                {field:'priority', title: '优先级',minWidth:50,templet: function(item){
+                        var priorityName='';
+                        if(item.priority==1){
+                            priorityName='<span style="color: #2d8cf0">紧急</span>';
+                        }else if(item.priority == 2) {
+                            priorityName='<span style="color: #2b85e4">高</span>';
+                        }else if(item.priority == 3) {
+                            priorityName='<span style="color: #2b85e4">中</span>';
+                        }else if(item.priority == 4) {
+                            priorityName='<span style="color: #2b85e4">低</span>';
+                        }else {
+                            priorityName=item.priority;
                         }
-                        return projectStatusName
+                        return priorityName
                     }},
 
-
-                {field:'approvaTime', title: '立项时间',minWidth:50},
-                {field:'upTime', title: '上线时间',minWidth:50},
-                {field:'downTime', title: '下线时间',minWidth:50},
-                {field:'companyName', title: '所属单位',minWidth:100},
-                {field:'departmentName', title: '所属部门',minWidth:100},
-                {field:'projectIntro', title: '项目简介',minWidth:100},
+                {field:'demandStatus', title: '状态',minWidth:50,templet: function(item){
+                        var demandStatusName='';
+                        if(item.demandStatus==1){
+                            demandStatusName='<span style="color: #ff9900">计划中</span>';
+                        }else if(item.demandStatus==2) {
+                            demandStatusName='<span style="color: #3091f2">已下发</span>';
+                        }else if(item.demandStatus==3) {
+                            demandStatusName='<span style="color: #3399ff">进行中</span>';
+                        }else if(item.demandStatus==4) {
+                            demandStatusName='<span style="color: #3399ff">已完成</span>';
+                        }else if(item.demandStatus==5) {
+                            demandStatusName='<span style="color: #00cc66">暂缓</span>';
+                        }else if(item.demandStatus==6) {
+                            demandStatusName='<span style="color: #ff6600">终止/移除</span>';
+                        }else if(item.demandStatus==7) {
+                            demandStatusName='<span style="color: #ff6600">已发布</span>';
+                        }else if(item.demandStatus==8) {
+                            demandStatusName='<span style="color: #ff6600">已逾期</span>';
+                        }else{
+                            demandStatusName = item.demandStatus
+                        }
+                        return demandStatusName
+                    }},
+                {field:'startTime', title: '开始时间',minWidth:100},
+                {field:'planFinishTime', title: '计划完成时间',minWidth:100},
+                {field:'finishTime', title: '实际完成时间',minWidth:100},
+                {field:'remainingDays', title: '剩余天数',minWidth:50},
+                {field:'finishRate', title: '完成率',minWidth:150},
                 {title: '操作',minWidth:50,toolbar: '#tableBar'}
             ]],
             done: function (res, curr, count) {
@@ -139,11 +163,11 @@
     /**需求查询*/
     function getSearchDemand() {
 
-        var projectName = $("#projectName").val();
+        var demandName = $("#demandName").val();
         //执行重载
         table.reload('tableId', {
             where:{
-                projectName:projectName
+                demandName:demandName
             },
             page: {
                 curr: 1 //重新从第 1 页开始

@@ -2,13 +2,19 @@ package com.yxb.cms.controller.view.project;
 
 
 import com.yxb.cms.controller.view.BaseController;
-import com.yxb.cms.dao.DbCompanyMapper;
-import com.yxb.cms.dao.DbDepartmentMapper;
+import com.yxb.cms.dao.DbDemandManagerMapper;
 import com.yxb.cms.dao.DbProjectMapper;
-import com.yxb.cms.service.ProjectService;
+import com.yxb.cms.domain.vo.DbDemandManager;
+import com.yxb.cms.domain.vo.DbProject;
+import com.yxb.cms.service.DemandManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 项目管理-需求管理
@@ -20,17 +26,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DemandManagerController extends BaseController {
 
 
+
     @Autowired
-    private ProjectService projectService;
+    private DemandManagerService demandManagerService;
 
     @Autowired
     private DbProjectMapper projectMapper;
 
     @Autowired
-    private DbCompanyMapper companyMapper;
-    @Autowired
-    private DbDepartmentMapper departmentMapper;
-
+    private DbDemandManagerMapper demandManagerMapper;
 
 
     /**
@@ -38,58 +42,58 @@ public class DemandManagerController extends BaseController {
      *
      * @return
      */
-    @RequestMapping("/demand_manager_page.action")
-    public String toMemberManagerPage() {
+        @RequestMapping("/demand_manager_page.action")
+    public String toDemandManagerPage() {
         return "project/demand_manager_page";
     }
 
-//
-//    /**
-//     * 项目管理信息分页展示
-//     *
-//     * @param project 项目管理对象
-//     * @return
-//     */
-//    @RequestMapping("/ajax_project_list.action")
-//    @ResponseBody
-//    public Map<String, Object> ajaxProjectList(DbProject project) {
-//
-//        return projectService.selectProjectListByPage(project);
-//    }
-//
-//    /**
-//     * 跳转到项目新增页面
-//     *
-//     * @return
-//     */
-//    @RequestMapping("/project_list_add.action")
-//    public String projectListAddPage(Model model) {
-//        model.addAttribute("pageFlag", "addPage");
-//        return "project/project_list_edit";
-//    }
-//    /**
-//     * 跳转到项目编辑页面
-//     *
-//     * @return
-//     */
-//    @RequestMapping("/project_update.action")
-//    public String projectUpdatePage(Model model,String projectId) {
-//        model.addAttribute("pageFlag", "updatePage");
-//        DbProject project = projectMapper.selectByPrimaryKey(projectId);
-//        model.addAttribute("project",project);
-//
-//        if(project != null){
-//            //查询公司列表信息
-//            List<DbCompany> companyList = companyMapper.selectByPrimaryKeyList();
-//            model.addAttribute("companyList",companyList);
-//
-//            //查询公司所属部门信息
-//            List<DbDepartment> departmentList = departmentMapper.selectByPrimaryKeyList(project.getCompanyId());
-//            model.addAttribute("departmentList",departmentList);
-//        }
-//
-//        return "project/project_list_edit";
-//    }
+
+    /**
+     * 需求信息分页展示
+     **/
+    @RequestMapping("/ajax_demand_list.action")
+    @ResponseBody
+    public Map<String, Object> ajaxDemandList(DbDemandManager demandManager) {
+
+        return demandManagerService.selectMemberListByPage(demandManager);
+    }
+
+
+
+    /**
+     * 跳转到需求新增页面
+     *
+     * @return
+     */
+    @RequestMapping("/demand_add.action")
+    public String demandAddPage(Model model) {
+        model.addAttribute("pageFlag", "addPage");
+        List<DbProject> projects =  projectMapper.selectProjectList();
+        model.addAttribute("projects", projects);
+
+
+        return "project/demand_manager_edit";
+    }
+    /**
+     * 跳转到需求编辑页面
+     *
+     * @return
+     */
+    @RequestMapping("/demand_update.action")
+    public String demandUpdatePage(Model model,String demandId) {
+        model.addAttribute("pageFlag", "updatePage");
+
+        DbDemandManager demand = demandManagerMapper.selectByPrimaryKey(demandId);
+        model.addAttribute("demand", demand);
+
+        //项目列表
+        List<DbProject> projects =  projectMapper.selectProjectList();
+        model.addAttribute("projects", projects);
+
+        return "project/demand_manager_edit";
+    }
+
+
 //
 //    /**
 //     * 保存项目信息

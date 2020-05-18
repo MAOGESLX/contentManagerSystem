@@ -125,6 +125,31 @@ public enum BusinessConstants {
     MEMBER_ROLE_5(5,"app端开发"),
     MEMBER_ROLE_6(6,"小程序开发"),
 
+
+    /**需求类型*/
+    DEMAND_TYPE_1(1,"新增"),
+    DEMAND_TYPE_2(2,"修改"),
+    DEMAND_TYPE_3(3,"优化"),
+
+    /**优先级*/
+    PRIORITY_1(1,"紧急"),
+    PRIORITY_2(2,"高"),
+    PRIORITY_3(3,"中"),
+    PRIORITY_4(4,"低"),
+
+
+    /**需求状态*/
+    DEMAND_STATUS_1(1,"计划中"),
+    DEMAND_STATUS_2(2,"已下发"),
+    DEMAND_STATUS_3(3,"进行中"),
+    DEMAND_STATUS_4(4,"已完成"),
+    DEMAND_STATUS_5(5,"暂缓"),
+    DEMAND_STATUS_6(6,"终止/移除"),
+    DEMAND_STATUS_7(7,"已发布"),
+    DEMAND_STATUS_8(8,"已逾期"),
+
+
+
     ;
 
 

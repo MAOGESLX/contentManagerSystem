@@ -21,7 +21,7 @@
             <form class="layui-form layui-form-pane" method="post" lay-filter="demandFormFilter">
                 <!-- 隐藏表单域-->
                 <input type="hidden" id="pageFlag" value="${pageFlag}">
-                <input type="hidden" id="demandId" name="demandId" value="${demand.projectId}" >
+                <input type="hidden" id="demandId" name="demandId" value="${demand.demandId}" >
 
                 <div class="layui-row layui-col-space8">
                     <div class="layui-form-item layui-col-xs12">
@@ -128,7 +128,7 @@
         form.on("submit(saveDemand)", function (data) {
             var roleSaveLoading = top.layer.msg('数据提交中，请稍候', {icon: 16, time: false, shade: 0.8});
             $.ajax({
-                url: '${ctx}/project/ajax_save_project.action',
+                url: '${ctx}/project/ajax_save_demand.action',
                 type: 'post',
                 async: false,
                 data: data.field,

@@ -1,12 +1,22 @@
 package com.yxb.cms.service;
 
 
+import com.yxb.cms.architect.constant.BusinessConstants;
+import com.yxb.cms.architect.constant.BussinessCode;
+import com.yxb.cms.architect.utils.BussinessMsgUtil;
+import com.yxb.cms.architect.utils.DateUtil;
+import com.yxb.cms.architect.utils.DbIdUtil;
 import com.yxb.cms.dao.DbDemandManagerMapper;
+import com.yxb.cms.dao.DbProjectMapper;
+import com.yxb.cms.domain.dto.BussinessMsg;
 import com.yxb.cms.domain.vo.DbDemandManager;
+import com.yxb.cms.domain.vo.DbProject;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +32,9 @@ public class DemandManagerService {
 
     @Autowired
     private DbDemandManagerMapper demandManagerMapper;
+
+    @Autowired
+    private DbProjectMapper projectMapper;
 
 
     /**
@@ -49,74 +62,63 @@ public class DemandManagerService {
         return map;
     }
 
-//
-//
-//    /**
-//     * 保存修改项目成员信息
-//     * @return
-//     */
-//    public BussinessMsg saveOrUpdateMember(DbMemberManager member, String userId) {
-//
-//
-//        log.info("保存项目成员信息开始");
-//        long start = System.currentTimeMillis();
-//        try {
-//
-//
-//            //验证项目是否存在
-//            DbProject project = projectMapper.selectByPrimaryKeyByStatus(member.getProjectId());
-//            if(project == null){
-//                log.error("项目成员信息保存失败，所属项目不存在");
-//                return BussinessMsgUtil.returnCodeMessage(BussinessCode.PROJECT_IS_NULL);
-//            }
-//
-//            //验证员工是否存在
-//            DbEmployee employee = employeeMapper.selectByPrimaryKeyByStatus(member.getEmployeeId());
-//            if(employee == null){
-//                log.error("项目成员信息保存失败，员工不存在");
-//                return BussinessMsgUtil.returnCodeMessage(BussinessCode.EMPLOYEE_IS_NULL);
-//            }
-//
-//            //TODO 验证员工是否已加入项目
-//
-//            //保存项目成员信息
-//            if(StringUtils.isEmpty(member.getMemberId())){
-//
-//                member.setMemberId(DbIdUtil.generate());
-//                //项目信息
-//                member.setProjectId(project.getProjectId());
-//                member.setProjectName(project.getProjectName());
-//
-//                //项目成员信息
-//                member.setEmployeeId(employee.getEmployeeId());
-//                member.setEmployeeName(employee.getEmployeeName());
-//
-//                member.setMemberStatus(BusinessConstants.MEMBER_STATUS_1.getCode());
-//                member.setCreaterUserId(userId);
-//                member.setCreaterTime(new Date());
-//                memberManagerMapper.insertSelective(member);
-//
-//            }else{
-//
-//                //项目信息
-//                member.setProjectId(project.getProjectId());
-//                member.setProjectName(project.getProjectName());
-//
-//                //项目成员信息
-//                member.setEmployeeId(employee.getEmployeeId());
-//                member.setEmployeeName(employee.getEmployeeName());
-//
-//                member.setModifierTime(new Date());
-//                member.setModifierUserId(userId);
-//                memberManagerMapper.updateByPrimaryKeySelective(member);
-//            }
-//        } catch (Exception e) {
-//            log.error("保存项目成员信息内部错误{}", e.getMessage(), e);
-//            throw e;
-//        } finally {
-//            log.info("保存项目成员信息结束,用时" + (System.currentTimeMillis() - start) + "毫秒");
-//        }
-//        return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_SUCCESS);
-//
-//    }
+
+
+    /**
+     * 保存修改需求信息
+     * @return
+     */
+    public BussinessMsg saveOrUpdateDemand(DbDemandManager demand, String userId) {
+
+
+        log.info("保存需求信息开始");
+        long start = System.currentTimeMillis();
+        try {
+
+
+            //验证项目是否存在
+            DbProject project = projectMapper.selectByPrimaryKeyByStatus(demand.getProjectId());
+            if(project == null){
+                log.error("需求信息保存失败，所属项目不存在");
+                return BussinessMsgUtil.returnCodeMessage(BussinessCode.PROJECT_IS_NULL);
+            }
+
+
+            //保存需求信息
+            if(StringUtils.isEmpty(demand.getDemandId())){
+
+                demand.setDemandId(DbIdUtil.generate());
+
+                //项目信息
+                demand.setProjectId(project.getProjectId());
+                demand.setProjectName(project.getProjectName());
+
+                //需求开始时间
+                demand.setStartTime(DateUtil.Date2Stirng(new Date()));
+
+                demand.setDemandStatus(BusinessConstants.DEMAND_STATUS_1.getCode());
+                demand.setCreaterUserId(userId);
+                demand.setCreaterTime(new Date());
+                demandManagerMapper.insertSelective(demand);
+
+            }else{
+
+                //项目信息
+                demand.setProjectId(project.getProjectId());
+                demand.setProjectName(project.getProjectName());
+
+
+                demand.setModifierTime(new Date());
+                demand.setModifierUserId(userId);
+                demandManagerMapper.updateByPrimaryKeySelective(demand);
+            }
+        } catch (Exception e) {
+            log.error("保存需求信息内部错误{}", e.getMessage(), e);
+            throw e;
+        } finally {
+            log.info("保存需求信息结束,用时" + (System.currentTimeMillis() - start) + "毫秒");
+        }
+        return BussinessMsgUtil.returnCodeMessage(BussinessCode.GLOBAL_SUCCESS);
+
+    }
 }

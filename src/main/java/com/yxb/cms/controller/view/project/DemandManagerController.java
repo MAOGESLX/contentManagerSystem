@@ -1,9 +1,12 @@
 package com.yxb.cms.controller.view.project;
 
 
+import com.yxb.cms.architect.constant.BussinessCode;
+import com.yxb.cms.architect.utils.BussinessMsgUtil;
 import com.yxb.cms.controller.view.BaseController;
 import com.yxb.cms.dao.DbDemandManagerMapper;
 import com.yxb.cms.dao.DbProjectMapper;
+import com.yxb.cms.domain.dto.BussinessMsg;
 import com.yxb.cms.domain.vo.DbDemandManager;
 import com.yxb.cms.domain.vo.DbProject;
 import com.yxb.cms.service.DemandManagerService;
@@ -94,22 +97,22 @@ public class DemandManagerController extends BaseController {
     }
 
 
-//
-//    /**
-//     * 保存项目信息
-//     * @return
-//     */
-//    @RequestMapping(value="/ajax_save_project.action")
-//    @ResponseBody
-//    public BussinessMsg ajaxSaveProject(DbProject project){
-//        try {
-//            return projectService.saveOrUpdateProject(project,this.getCurrentUserId());
-//        } catch (Exception e) {
-//            log.error("保存项目信息内部错误{}", e.getMessage(), e);
-//            return BussinessMsgUtil.returnCodeMessage(BussinessCode.PROJECT_SAVE_ERROR);
-//        }
-//
-//    }
+
+    /**
+     * 保存需求信息
+     * @return
+     */
+    @RequestMapping(value="/ajax_save_demand.action")
+    @ResponseBody
+    public BussinessMsg ajaxSaveDemand(DbDemandManager demandManager){
+        try {
+            return demandManagerService.saveOrUpdateDemand(demandManager,this.getCurrentUserId());
+        } catch (Exception e) {
+            log.error("保存需求信息内部错误{}", e.getMessage(), e);
+            return BussinessMsgUtil.returnCodeMessage(BussinessCode.PROJECT_SAVE_ERROR);
+        }
+
+    }
 
 
 

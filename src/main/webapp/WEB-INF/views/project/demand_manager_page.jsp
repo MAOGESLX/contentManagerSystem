@@ -152,7 +152,6 @@
                 {field:'startTime', title: '开始时间',minWidth:100},
                 {field:'planFinishTime', title: '计划完成时间',minWidth:100},
                 {field:'finishTime', title: '实际完成时间',minWidth:100},
-                {field:'remainingDays', title: '剩余天数',minWidth:50},
                 {field:'finishRate', title: '完成率',minWidth:150},
                 {title: '操作',minWidth:50,toolbar: '#tableBar'}
             ]],

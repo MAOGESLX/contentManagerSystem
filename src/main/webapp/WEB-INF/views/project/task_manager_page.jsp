@@ -79,7 +79,7 @@
     function intTablePageList(){
         table.render({
             elem: '#tableList',
-            url: '${ctx}/project/ajax_project_list.action',
+            url: '${ctx}/project/ajax_task_list.action',
             response: {
                 statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
             },

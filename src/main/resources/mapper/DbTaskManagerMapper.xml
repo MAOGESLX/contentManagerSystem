@@ -308,4 +308,53 @@
       modifier_time = #{modifierTime,jdbcType=TIMESTAMP}
     where task_id = #{taskId,jdbcType=VARCHAR}
   </update>
+
+
+  <!-- 查询任务总记录数 -->
+  <select id="selectTaskManagerCount" parameterType="com.yxb.cms.domain.vo.DbTaskManager" resultType="java.lang.Long">
+    select count(*)
+    from db_task_manager u
+    <include refid="selectPageParmas" />
+  </select>
+
+
+
+
+
+  <!-- 任务信息分页展示 -->
+  <select id="selectTaskManagerListByPage" parameterType="com.yxb.cms.domain.vo.DbTaskManager" resultType="com.yxb.cms.domain.vo.DbTaskManager">
+    SELECT
+    u.task_id as taskId,
+    u.demand_name as demandName,
+    u.task_desc as taskDesc,
+    u.task_type as taskType,
+    u.priority as priority,
+    u.demand_status as demandStatus,
+    u.start_time as startTime,
+    u.plan_finish_time as planFinishTime,
+    u.finish_time as finishTime,
+    u.finish_rate as finishRate,
+    u.overdue_num as overdueNum,
+    u.remaining_days as remainingDays,
+    u.release_time as releaseTime
+
+    from db_task_manager u
+    <include refid="selectPageParmas" />
+    LIMIT #{start},#{limit}
+
+  </select>
+
+  <!-- 分页查询条件 -->
+  <sql id="selectPageParmas">
+    <where>
+      <if test="demandName != null and demandName != '' ">
+        (u.demand_name LIKE CONCAT(#{demandName,jdbcType=VARCHAR}, '%')
+        OR u.task_desc LIKE CONCAT(#{demandName,jdbcType=VARCHAR}, '%')
+        )
+      </if>
+
+    </where>
+  </sql>
+
+
 </mapper>

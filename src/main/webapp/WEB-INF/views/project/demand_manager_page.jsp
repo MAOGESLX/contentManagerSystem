@@ -67,7 +67,7 @@
 
             //修改
             if(layEvent === 'edit') {
-                var url = "${ctx}/project/demand_add.action?demandId="+data.demandId;
+                var url = "${ctx}/project/demand_update.action?demandId="+data.demandId;
                 layOpenWin.layOpen('需求编辑',url, '720px', '458px');
             }
 
